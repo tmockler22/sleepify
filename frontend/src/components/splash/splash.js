@@ -15,3 +15,5 @@ class Splash extends React.Component {
 }
 
 export default Splash;
+
+//test
