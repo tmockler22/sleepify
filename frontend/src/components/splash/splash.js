@@ -10,7 +10,7 @@ class Splash extends React.Component {
         <div id="splash-container">
           <h1>Music for sleepy people.</h1>
           <h4>Millions of songs. No credit card needed</h4>
-          <button className="splash-download-bttn"> GET SPOTIFY FREE</button>
+          <button className="splash-download-bttn"> GET SLEEPIFY FREE</button>
         </div>
       </div>
     );
