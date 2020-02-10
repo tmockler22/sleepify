@@ -1,19 +1,20 @@
-import React from 'react';
-
+import React from "react";
 class Splash extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  //   constructor(props) {
+  //     super(props);
+  //   }
 
-    render() {
-        return (
-            <div>This is the splash.</div>
-        )
-
-    }
-
+  render() {
+    return (
+      <div id="colorsplash">
+        <div id="splash-container">
+          <h1>Music for sleepy people.</h1>
+          <h4>Millions of songs. No credit card needed</h4>
+          <button className="splash-download-bttn"> GET SPOTIFY FREE</button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Splash;
-
-//test
