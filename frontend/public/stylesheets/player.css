@@ -73,7 +73,7 @@ button {
 
 .p-timeline-container {
     display: flex;
-    width: 600px;
+    width: 650px;
     height: 20px;
     justify-content: center;
     align-items: center;
@@ -111,7 +111,7 @@ input[type=range]:hover::-webkit-slider-runnable-track {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .p-timeline {
       overflow: hidden;
-      width: 550px;
+      width: 575px;
       height: 4px;
       -webkit-appearance: none;
       background-color: #666666;
@@ -130,6 +130,6 @@ input[type=range]:hover::-webkit-slider-runnable-track {
       height: 10px;
       cursor: pointer;
       background: transparent;
-      box-shadow: -500px 0 0 500px #43e5f7;
+      box-shadow: -575px 0 0 575px #43e5f7;
     }
 }

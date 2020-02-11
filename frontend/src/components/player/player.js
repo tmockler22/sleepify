@@ -7,21 +7,23 @@ class Player extends React.Component {
             play: false,
             url: "static/shingo.mp3",
             time: 0,
-            duration: 0
+            duration: 0,
+            volume: props.volume
         }
         this.audio = new Audio(this.state.url);
         this.play = this.play.bind(this);
         this.pause = this.pause.bind(this);
         this.updateTime = this.updateTime.bind(this);
         this.parseTime = this.parseTime.bind(this);
+        this.updateVolume = this.updateVolume.bind(this);
     }
 
 
     play(e) {
         e.preventDefault();
         this.setState({ play: true })
+        this.audio.volume = this.props.volume;
         this.audio.play();
-        this.audio.volume = 0.1;
         setInterval(() => {
             this.setState({ 
                 time: this.audio.currentTime, 
@@ -39,6 +41,12 @@ class Player extends React.Component {
     updateTime(e) {
         this.audio.currentTime = e.target.value;
         this.setState({time: e.target.value})
+    }
+
+    updateVolume(e) {
+        this.props.changeVolume(e.target.value / 100)
+        this.audio.volume = this.props.volume;
+   
     }
 
     parseTime(time) {
@@ -97,6 +105,10 @@ class Player extends React.Component {
 
         return (
             <div className="p-container">
+                <div className="p-now-playing">
+
+                </div>
+
                 <div className="p-audio-control">
                     <div className='p-buttons-container'>
                         { shuffle }
@@ -124,6 +136,16 @@ class Player extends React.Component {
                         </span>
                     </div>
                 </div>
+
+                <div className="p-volume-container">
+                    <input type="range" 
+                    onChange={this.updateVolume} 
+                    value={this.props.volume * 100}
+                    max="100">
+        
+                    </input>
+                </div>
+
             </div>
 
                 

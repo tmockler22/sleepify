@@ -2,7 +2,7 @@ export const RECEIVE_VOLUME = 'RECEIVE_VOLUME';
 export const RECEIVE_CURRENT_TIME = 'RECEIVE_CURRENT_TIME';
 
 
-const receiveVolume = volume => ({
+export const receiveVolume = volume => ({
     type: RECEIVE_VOLUME,
     volume
 });
