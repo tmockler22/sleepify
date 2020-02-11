@@ -6,11 +6,10 @@ import Header from "./header/header";
 import { Switch } from "react-router-dom";
 
 const App = () => (
-  <div id="app-container">
+  <div>
     <Header />
     <Splash />
   </div>
 );
-
 
 export default App;
