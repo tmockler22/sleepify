@@ -24,7 +24,7 @@ button {
     background: #282828;
     border-top: 2px solid black;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .p-audio-control {
@@ -85,14 +85,6 @@ button {
     font-family: sans-serif;
 }
 
-.p-timeline {
-    /* width: 500px; */
-    /* height: 4px;
-    background: #666666;
-    border-radius: 1px;
-    position: relative; */
-    margin: 0 5px;
-}
 
 /* .p-timeline::-webkit-slider-runnable-track {
   width: 100%;
@@ -108,28 +100,69 @@ input[type=range]:hover::-webkit-slider-runnable-track {
   background: #367ebd;
 } */
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    .p-timeline {
-      overflow: hidden;
-      width: 575px;
-      height: 4px;
-      -webkit-appearance: none;
-      background-color: #666666;
-    }
-    
-    .p-timeline::-webkit-slider-runnable-track {
-      height: 4px;
-      -webkit-appearance: none;
-      color: #13bba4;
-      margin-top: -1px;
-    }
-    
-    .p-timeline::-webkit-slider-thumb {
-      width: 10px;
-      -webkit-appearance: none;
-      height: 10px;
-      cursor: pointer;
-      background: transparent;
-      box-shadow: -575px 0 0 575px #43e5f7;
-    }
+
+.p-timeline {
+    overflow: hidden;
+    width: 575px;
+    height: 4px;
+    -webkit-appearance: none;
+    background-color: #666666;
+    margin: 0 5px;
 }
+
+/* .p-timeline::-webkit-slider-runnable-track {
+    height: 4px;
+    -webkit-appearance: none;
+    color: #13bba4;
+    margin-top: -1px;
+} */
+
+.p-timeline::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: pointer;
+    background: transparent;
+    box-shadow: -575px 0 0 575px #43e5f7;
+}
+
+
+.p-volume-container {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    width: 110px;
+}
+
+.p-volume-btn {
+    color: #b3b3b3;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-volume-btn:hover {
+    color: white;
+}
+
+.p-volume {
+    overflow: hidden;
+    -webkit-appearance: none;
+    width: 84px;
+    height: 4px;
+    background: #666666;
+    border-radius: 5px;
+}
+
+.p-volume::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: gray;
+    box-shadow: -84px 0 0 84px #13db1d;
+}
+

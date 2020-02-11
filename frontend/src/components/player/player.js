@@ -8,7 +8,7 @@ class Player extends React.Component {
             url: "static/shingo.mp3",
             time: 0,
             duration: 0,
-            volume: props.volume
+            mute: false
         }
         this.audio = new Audio(this.state.url);
         this.play = this.play.bind(this);
@@ -16,8 +16,15 @@ class Player extends React.Component {
         this.updateTime = this.updateTime.bind(this);
         this.parseTime = this.parseTime.bind(this);
         this.updateVolume = this.updateVolume.bind(this);
+        this.volumeBtn = this.volumeBtn.bind(this);
+        this.toggleMute = this.toggleMute.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.volume !== this.props.volume) {
+            this.audio.volume = this.props.volume;
+        }
+    }
 
     play(e) {
         e.preventDefault();
@@ -45,8 +52,21 @@ class Player extends React.Component {
 
     updateVolume(e) {
         this.props.changeVolume(e.target.value / 100)
-        this.audio.volume = this.props.volume;
-   
+        
+        // this.audio.volume = this.props.volume;
+    }
+
+    toggleMute(e) {
+        this.setState({ mute: !this.state.mute }, () => {
+            if (this.props.volume > 0) this.prevVolume = this.props.volume;
+            if (this.state.mute) {
+                this.props.changeVolume(0);
+                this.audio.volume = 0;
+            } else {
+                this.props.changeVolume(this.prevVolume);
+                this.audio.volume = this.prevVolume;
+            }
+        })
     }
 
     parseTime(time) {
@@ -55,6 +75,25 @@ class Player extends React.Component {
         let seconds = Math.floor(time - (min*60));
         if (seconds < 10) seconds = `0${seconds}`;
         return `${min}:${seconds}`;
+    }
+
+    volumeBtn() {
+        let button;
+        const volume = this.props.volume;
+        if (volume >= 0.5) {
+            button = <i className="fas fa-volume-up"></i>;
+        } else if (volume < 0.5 && volume > 0) {
+            button = <i className="fas fa-volume-down"></i>;
+        } else {
+            button = <i className="fas fa-volume-mute"></i>;
+        }
+
+        return (
+            <div onClick={this.toggleMute} className="p-volume-btn">
+                { button }
+            </div>
+        )
+
     }
 
     render() {
@@ -138,7 +177,10 @@ class Player extends React.Component {
                 </div>
 
                 <div className="p-volume-container">
-                    <input type="range" 
+                    {this.volumeBtn()}
+                    <input 
+                    className="p-volume"
+                    type="range" 
                     onChange={this.updateVolume} 
                     value={this.props.volume * 100}
                     max="100">
