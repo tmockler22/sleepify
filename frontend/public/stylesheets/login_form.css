@@ -1,6 +1,6 @@
 .login-form-container {
     padding: 30px;
-    padding-top: 0;
+    padding-top: 5px;
     text-align: center;
     width: 350px;
     margin: auto;
@@ -23,35 +23,30 @@
 }
 
 .login-form > .password-input > input {
-    width: 100%;
+    width: calc(100% - 14px);
     height: 24px;
     padding: 7px;
-    padding-right: 0;
     border: 1px solid rgb(140, 140, 140)
 
 }
 
 .login-form input::placeholder {
-    color: rgb(180, 180, 180)
+    color: rgb(180, 180, 180);
 }
 
 .login-form > .email-input > input {
-    width: 100%;
+    width: calc(100% - 14px);
     padding: 7px;
     height: 24px;
-    padding-right: 0;
     border: 1px solid rgb(140, 140, 140)
 }
 
 .submit-button {
     display: flex;
     justify-content: flex-end;
-    position: relative;
 }
 
 .submit-button > input {
-    position: absolute;
-    right: -10px;
     background-color: #1db954;
     color: white;
     font-weight: bold;
@@ -106,4 +101,30 @@
 .login-form-container > .disclaimer {
     font-size: 10px;
     color: rgb(180, 180, 180);
+}
+
+.login.error-div {
+    color: red;
+    text-align: left;
+    padding-top: 10px;
+    font-size: 15px;
+}
+
+.has-error {
+    border: 1px solid #eb1e32 !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.login-form-error {
+    width: 100%;
+    margin-top: 30px;;
+
+    padding: 12px 0;
+    /* height: 30px; */
+    background-color: #e22134;
+    color: white;
+    font-size: 12px;
 }

@@ -20,7 +20,7 @@ class SignupForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      this.props.history.push('/login');
+      this.props.history.push('/home');
     }
 
     this.setState({errors: nextProps.errors})
@@ -46,19 +46,18 @@ class SignupForm extends React.Component {
     this.props.signup(user, this.props.history); 
   }
 
-  renderErrors() {
-    return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
+  changeBorder() {
+    let elements = document.querySelectorAll('.signup-border');
+    if (elements) {
+      Array.from(elements).forEach(elm => {
+        elm.classList.add('has-error')
+      });
+    }
   }
 
   render() {
+    // debugger;
+    this.changeBorder()
     return (
       <div className="signup-form-container">
         <div className="heading">
@@ -69,42 +68,62 @@ class SignupForm extends React.Component {
             <br/>
               <div className="signup-input email">
                 <input type="text"
+                  className="signup-border"
                   value={this.state.email}
                   onChange={this.update('email')}
                   placeholder="Email"
                 />
+                <div className='signup error-div'>
+                  {this.state.errors.email}
+                </div>
               </div>
             <br/>
               <div className="signup-input email2">
                 <input type="text"
+                  className="signup-border"
                   value={this.state.email2}
                   onChange={this.update('email2')}
                   placeholder="Confirm Email"
                 />
+                <div className='signup error-div'>
+                  {this.state.errors.email2}
+                </div>
               </div>
             <br/>
               <div className="signup-input password">
                 <input type="password"
+                  className="signup-border"
                   value={this.state.password}
                   onChange={this.update('password')}
                   placeholder="Password"
                 />
+                <div className='signup error-div'>
+                  {this.state.errors.password}
+                </div>
               </div>
             <br/>
               <div className="signup-input password2">
                 <input type="password"
+                  className="signup-border"
                   value={this.state.password2}
                   onChange={this.update('password2')}
                   placeholder="Confirm Password"
                 />
+                <div className='signup error-div'>
+                  {this.state.errors.password2}
+                </div>
               </div>
             <br/>
               <div className="signup-input username">
                 <input type="text"
+                  className="signup-border"
                   value={this.state.username}
                   onChange={this.update('username')}
                   placeholder="Username"
                 />
+                <div className='signup error-div'>
+                  {this.state.errors.username}
+                </div>
               </div>
             <br/>
               <div className="signup-input birthdate">
@@ -112,9 +131,13 @@ class SignupForm extends React.Component {
                   Date of Birth
                   <div className="birthdate">
                     <input type="Date"
+                      className="signup-border"
                       value={this.state.birthdate}
                       onChange={this.update('birthdate')}
                     />
+                    <div className='signup error-div'>
+                      {this.state.errors.birthdate}
+                    </div>
                   </div>
                 </label>
               </div>
@@ -125,8 +148,6 @@ class SignupForm extends React.Component {
             <div className="signup-button">
               <input type="submit" value="SIGN UP" />
             </div>
-            {this.renderErrors()}
-
             <div className="login-instead">
               <label>
                 Already have an account? 

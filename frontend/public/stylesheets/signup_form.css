@@ -76,3 +76,10 @@
 .login-instead a:hover {
     color: #1ED760;
 }
+
+.signup.error-div {
+    color: red;
+    text-align: left;
+    padding-top: 10px;
+    font-size: 15px;
+}

@@ -12,9 +12,12 @@ class LoginForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
   }
 
+
+  componentDidUpdate() {
+    this.changeBorder();
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
       this.props.history.push('/');
@@ -31,6 +34,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.resetClasses();
 
     let user = {
       email: this.state.email,
@@ -38,18 +42,6 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user); 
-  }
-
-  renderErrors() {
-    return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
   }
 
   renderSignUp() {
@@ -65,40 +57,115 @@ class LoginForm extends React.Component {
     )
   }
 
+  resetClasses() {
+    let element = document.getElementById('email');
+    let error = document.getElementById('email-error')
+    if(element) {
+      element.classList.remove("has-error")
+      error.classList.remove("hidden")
+    }
+    element = document.getElementById('password');
+    error = document.getElementById('password-error')
+    if (element) {
+      element.classList.remove("has-error")
+      error.classList.remove("hidden")
+    }
+  }
+
+  changeBorder(values = "all") {
+    if(values === "all") {
+      let element = document.getElementById('email');
+      if(element) {
+        element.classList.add("has-error")
+      }
+      element = document.getElementById('password');
+      if (element) {
+        element.classList.add("has-error")
+      }
+    } else {
+      let element = document.getElementById(values);
+      const errorId = values + "-error"
+      let error = document.getElementById(errorId)
+      // debugger;
+      if(element && error) {
+        element.classList.remove("has-error")
+        error.classList.add("hidden")
+      }
+    }
+  }
+
+  changeBorderonBlur(value) {
+    let element = document.getElementById(value);
+    if(element && !this.state[value]) {
+      const errorId = value + "-error"
+      let error = document.getElementById(errorId)
+      error.classList.remove("hidden")
+      element.classList.add("has-error")
+    }
+  }
+  renderLoginError() {
+    if(this.state.errors.login) {
+      return (
+        <div className='login-form-error'>
+          {this.state.errors.login}
+        </div>
+      )
+    } else {
+      return (null)
+    }
+  }
+
   render() {
+    this.changeBorder();
     return (
       <div className='login-form-container'>
         <div className='heading'>
           <img src="static/images/black-logo-white-music.png" alt="sleepify-logo" height="30"/>
         </div>
+        <div className='login-form-error-container'>
+          {this.renderLoginError()}
+        </div>
         <form onSubmit={this.handleSubmit}>
           <div className='login-form'>
             <br/>
               <div className='email-input'>
-                <input type="text"
+                <input id="email"
+                  className="form-email"
+                  type="text"
                   value={this.state.email}
                   onChange={this.update('email')}
-                  placeholder="Email address"
+                  placeholder="Email address or username"
+                  onFocus={() => this.changeBorder('email')}
+                  onBlur={()=>this.changeBorderonBlur('email')}
                 />
+                <div id="email-error" className='login error-div'>
+                  {this.state.errors.email}
+                </div>
               </div>
             <br/>
               <div className='password-input'>
-                <input type="password"
+                <input id="password" 
+                  className="form-password"
+                  type="password"
                   value={this.state.password}
                   onChange={this.update('password')}
                   placeholder="Password"
+                  onFocus={() => this.changeBorder('password')}
+                  onBlur={()=>this.changeBorderonBlur('password')}
                 />
+                <div id="password-error" className='login error-div'>
+                  {this.state.errors.password}
+                </div>
               </div>
             <br/>
             <div className='submit-button'>
               <input type="submit" value="LOG IN" />
             </div>
-            {this.renderErrors()}
           </div>
         </form>
         {this.renderSignUp()}
         <div className='disclaimer'>
-          <p>By Signing Up, you agree to Sleepify's strict Terms &amp; Conditions and Privacy Policy</p>
+          <p>By Signing in, you agree to Sleepify's strict Terms &amp; Conditions and Privacy Policy</p>
         </div>
       </div>
     );
