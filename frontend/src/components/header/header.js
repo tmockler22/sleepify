@@ -1,20 +1,19 @@
 import React from "react";
+import logo from "../../assets/images/white-logo-black-music.png";
+import Navbar from "../navbar/navbar";
+class Header extends React.Component {
+  //   constructor(props) {
+  //     super(props);
+  //   }
 
-// class Header extends React.Component {
-//   //   constructor(props) {
-//   //     super(props);
-//   //   }
+  render() {
+    return (
+      <div id="header-container">
+        <img id="white-logo" src={logo} alt="logo" />
+        <Navbar />
+      </div>
+    );
+  }
+}
 
-//   render() {
-//     return (
-//       <div id="header-container">
-//         <img>logo</img>
-//         <h1>Music for sleepy people.</h1>
-//         <h4>Millions of songs. No credit card needed</h4>
-//         <button className="splash-download-bttn"> GET SPOTIFY FREE</button>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Splash;
+export default Header;

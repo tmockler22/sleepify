@@ -1,0 +1,29 @@
+#header-container {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  max-width: 1808px;
+  max-height: 80px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#white-logo {
+  min-width: 80px;
+  max-width: 125px;
+  min-height: 30px;
+  max-height: 45px;
+  margin: 15px;
+}
+
+.navbar-container {
+  color: white;
+  width: 10%;
+  display: flex;
+  justify-content: space-around;
+}
