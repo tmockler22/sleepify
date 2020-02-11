@@ -21,7 +21,6 @@ button {
     left: 0;
     width: 100%;
     height:90px;
-    padding: 0 16px;
     background: #282828;
     border-top: 2px solid black;
     display: flex;
@@ -33,18 +32,41 @@ button {
     justify-content: center;
     align-items: center;
     width: 30%;
+    flex-direction: column;
+}
+
+.player-buttons-container {
+    width: 224px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 12px;
 }
 
 .player-button-circle {
-    border: 1px solid #a8a6a6;
+    border: 1px solid #b3b3b3;
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    color: #a3a2a2;
+    color: #b3b3b3;
     font-size: 12px;
 }
 
 .player-button-circle:hover {
     border: 1px solid white;
     color: white;
+}
+
+.pbtn {
+    color: #b3b3b3;
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+}
+
+.pbtn:hover {
+    color: white;
+}
+
+.player-range {
+    width: 90%;
 }
