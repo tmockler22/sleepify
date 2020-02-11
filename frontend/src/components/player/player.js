@@ -7,20 +7,26 @@ class Player extends React.Component {
             play: false,
             url: "static/shingo.mp3",
             time: 0,
-            duration: ""
+            duration: 0
         }
         this.audio = new Audio(this.state.url);
         this.play = this.play.bind(this);
         this.pause = this.pause.bind(this);
         this.updateTime = this.updateTime.bind(this);
+        this.parseTime = this.parseTime.bind(this);
     }
+
 
     play(e) {
         e.preventDefault();
         this.setState({ play: true })
         this.audio.play();
+        this.audio.volume = 0.1;
         setInterval(() => {
-            this.setState({time: this.audio.currentTime})
+            this.setState({ 
+                time: this.audio.currentTime, 
+                duration: this.audio.duration 
+            })
         }, 500)
     }
 
@@ -35,17 +41,25 @@ class Player extends React.Component {
         this.setState({time: e.target.value})
     }
 
+    parseTime(time) {
+        // if (!this.state.duration) return null;
+        let min = Math.floor(time / 60);
+        let seconds = Math.floor(time - (min*60));
+        if (seconds < 10) seconds = `0${seconds}`;
+        return `${min}:${seconds}`;
+    }
+
     render() {
         const playBtn = (
             <button 
-                className="player-button-circle" 
+                className="p-button-circle" 
                 onClick={this.play}>
                 <i className="fas fa-play"></i>
             </button>
         )
         const pauseBtn = (
             <button 
-                className="player-button-circle"
+                className="p-button-circle"
                 onClick={this.pause}>
                 <i className="fas fa-pause"></i>
             </button>
@@ -53,38 +67,38 @@ class Player extends React.Component {
         
         const shuffle = (
             <button 
-                className="player-button-shuffle pbtn">
+                className="p-button-shuffle pbtn">
                 <i className="fas fa-random"></i>
             </button>
         )
 
         const repeat = (
             <button
-                className="player-button-repeat pbtn">
+                className="p-button-repeat pbtn">
                 <i className="fas fa-redo"></i>
             </button>
         )
 
         const prevTrackBtn = (
             <button
-                className="player-button-prev pbtn">
+                className="p-button-prev pbtn">
                 <i className="fas fa-step-backward"></i>
             </button>
         )
 
         const nextTrackBtn = (
             <button
-                className="player-button-fwd pbtn">
+                className="p-button-fwd pbtn">
                 <i className="fas fa-step-forward"></i>
             </button>
         )
         
-        const { play } = this.state;
+        const { play, time, duration } = this.state;
 
         return (
-            <div className="player-container">
-                <div className="player-audio-control">
-                    <div className='player-buttons-container'>
+            <div className="p-container">
+                <div className="p-audio-control">
+                    <div className='p-buttons-container'>
                         { shuffle }
                         { prevTrackBtn }
                         { !play && playBtn }
@@ -93,15 +107,27 @@ class Player extends React.Component {
                         { repeat }
                     </div>
 
-                <input 
-                    className="player-range"
-                    type="range" 
-                    onChange={this.updateTime} 
-                    value={this.state.time} 
-                    max={100}>
-                </input>
+                    <div className="p-timeline-container">
+                        <span className="p-current-time">
+                            { this.parseTime(time) }
+                        </span>
+                    <input 
+                        className="p-timeline"
+                        type="range" 
+                        onChange={this.updateTime} 
+                        value={time} 
+                        max={duration}>
+                    </input>
+                    
+                        <span className="p-duration">
+                            { this.parseTime(duration) }
+                        </span>
+                    </div>
                 </div>
             </div>
+
+                
+
         )
     }
 }

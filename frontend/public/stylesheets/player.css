@@ -15,7 +15,7 @@ button {
     cursor: pointer;
 }
 
-.player-container {
+.p-container {
     position: fixed;
     bottom: 0%;
     left: 0;
@@ -27,38 +27,42 @@ button {
     justify-content: center;
 }
 
-.player-audio-control {
+.p-audio-control {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 600px;
     flex-direction: column;
 }
 
-.player-buttons-container {
+.p-buttons-container {
     width: 224px;
     display: flex;
     justify-content: space-between;
     margin: 0 0 12px;
 }
 
-.player-button-circle {
+.p-button-circle {
     border: 1px solid #b3b3b3;
     width: 32px;
     height: 32px;
     border-radius: 50%;
     color: #b3b3b3;
-    font-size: 12px;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    transition: 0.2s;
 }
 
-.player-button-circle:hover {
+.p-button-circle:hover {
     border: 1px solid white;
     color: white;
+    transform: scale(1.08);
 }
 
 .pbtn {
     color: #b3b3b3;
-    font-size: 14px;
+    font-size: 13px;
     width: 32px;
     height: 32px;
 }
@@ -67,6 +71,65 @@ button {
     color: white;
 }
 
-.player-range {
-    width: 90%;
+.p-timeline-container {
+    display: flex;
+    width: 600px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-timeline-container > span {
+    font-size: 12px;
+    color: #b3b3b3;
+    font-family: sans-serif;
+}
+
+.p-timeline {
+    /* width: 500px; */
+    /* height: 4px;
+    background: #666666;
+    border-radius: 1px;
+    position: relative; */
+    margin: 0 5px;
+}
+
+/* .p-timeline::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #666666;
+  border-radius: 1.3px;
+ 
+}
+
+input[type=range]:hover::-webkit-slider-runnable-track {
+  background: #367ebd;
+} */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .p-timeline {
+      overflow: hidden;
+      width: 550px;
+      height: 4px;
+      -webkit-appearance: none;
+      background-color: #666666;
+    }
+    
+    .p-timeline::-webkit-slider-runnable-track {
+      height: 4px;
+      -webkit-appearance: none;
+      color: #13bba4;
+      margin-top: -1px;
+    }
+    
+    .p-timeline::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      cursor: pointer;
+      background: transparent;
+      box-shadow: -500px 0 0 500px #43e5f7;
+    }
 }
