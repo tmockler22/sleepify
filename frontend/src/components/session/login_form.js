@@ -69,7 +69,7 @@ class LoginForm extends React.Component {
     return (
       <div className='login-form-container'>
         <div className='heading'>
-          <h1 id='title'>Sleepify</h1>
+          <img src="static/images/black-logo-white-music.png" alt="sleepify-logo" height="30"/>
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className='login-form'>
