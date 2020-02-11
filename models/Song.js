@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Artist = mongoose.model("artists");
 
 // db.songs.insertMany([
 //   { title: "All At Once", genre: "Soft Rock", artist: "5e42ca083ce1c82e3858d128", imageUrl: "https://sleepify-dev.s3.us-east-2.amazonaws.com/artists/jack_johnson.jpg", songUrl: "https://sleepify-dev.s3.us-east-2.amazonaws.com/01+All+At+Once.mp3"},
@@ -9,7 +8,7 @@ const Artist = mongoose.model("artists");
 //   { title: "New Light", genre: "Alternative Rock", artist: "5e42ca083ce1c82e3858d129", imageUrl: "https://sleepify-dev.s3.us-east-2.amazonaws.com/artists/john_mayer.jpg", songUrl: "https://sleepify-dev.s3.us-east-2.amazonaws.com/John+Mayer+-+01+-+New+Light.mp3" }
 // ]);
 
-
+//
 const SongSchema = new Schema({
   title: {
     type: String,
@@ -38,8 +37,5 @@ const SongSchema = new Schema({
     }
   ],
 });
-
-
-
 
 module.exports = mongoose.model('songs', SongSchema);
