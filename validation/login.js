@@ -8,16 +8,16 @@ module.exports = function validateLoginInput(data) {
   data.email = validText(data.email) ? data.email : '';
   data.password = validText(data.password) ? data.password : '';
 
-  if (!Validator.isEmail(data.email)) {
-    errors.email = 'Email is invalid';
-  }
+  // if (!Validator.isEmail(data.email)) {
+  //   errors.email = 'Email is invalid';
+  // }
 
   if (Validator.isEmpty(data.email)) {
-    errors.email = 'Email field is required';
+    errors.email = 'Please enter your Sleepify username or email address';
   }
 
   if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password field is required';
+    errors.password = 'Please enter your password';
   }
 
   return {
