@@ -8,6 +8,7 @@ const keys = require('../../config/keys');
 
 router.get('/search/:search', (req, res) => {
   Artist.find({ name: { $regex: req.params.search + '.*', $options: 'i' } })
+    .limit(4)
     .populate('songs')
     .sort({ date: -1 })
     .then(artists => res.json(artists))

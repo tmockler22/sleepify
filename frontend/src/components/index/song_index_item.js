@@ -12,7 +12,7 @@ class SongIndexItem extends React.Component {
           <li><img className="song-photo" src={song.imageUrl}/></li> 
           <li className="song-title">{song.title}</li>
           <li className="song-artist">{song.artist.name}</li>
-        <li><div className="play-button"><i class="fas fa-play-circle"></i></div></li>
+          <li><div className="play-button"><i class="fas fa-play-circle"></i></div></li>
         </div>
     )
   }
