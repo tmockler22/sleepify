@@ -9,22 +9,26 @@ class SideBarNav extends React.Component {
     return (
       <nav id="navBar">
         <div id="navBar-header">
-          <Link to="/">
-            <img className="white-logo-nav" src={logo} />
+          <Link to="/open">
+            <img className="white-logo-nav" src={logo} alt="" />
           </Link>
           <ul id="navBar-entry-points">
             <li>
               <div className="navBar-item">
-                <Link className="navBar-link" to="/">
-                  <img className="home-icon" src={homeIcon}></img>
+                <Link className="navBar-link" to="/open">
+                  <img className="home-icon" src={homeIcon} alt=""></img>
                   Home
                 </Link>
               </div>
             </li>
             <li>
               <div className="navBar-item">
-                <Link className="navBar-link" to="/search">
-                  <img className="magGlass-icon" src={magGlassIcon}></img>
+                <Link className="navBar-link" to="/open/search">
+                  <img
+                    className="magGlass-icon"
+                    src={magGlassIcon}
+                    alt=""
+                  ></img>
                   Search
                 </Link>
               </div>
@@ -32,7 +36,7 @@ class SideBarNav extends React.Component {
             <li>
               <div className="navBar-item">
                 <Link className="navBar-link" to="/library">
-                  <img className="library-icon" src={libraryIcon}></img>
+                  <img className="library-icon" src={libraryIcon} alt=""></img>
                   Your Library
                 </Link>
               </div>

@@ -5,11 +5,11 @@
   top: 0;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.6);
-  max-width: 1808px;
+  max-width: 1920px;
   max-height: 80px;
   padding: 0 15px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
