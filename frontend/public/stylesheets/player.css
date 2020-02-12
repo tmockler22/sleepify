@@ -174,8 +174,8 @@ button {
     border-radius: 50%;
 }
 
-.player-body {
+.open-player-body {
     position: absolute; 
     top: 80px; 
-    left: 210px; 
+    left: 255px; 
 }

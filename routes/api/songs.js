@@ -11,6 +11,7 @@ router.get('/search/:search', (req, res) => {
   const songRegex = new RegExp(req.params.search, 'i');
   // Song.find({ title: songRegex })
   Song.find({ title: { $regex: req.params.search + '.*', $options: 'i'  }})
+    .limit(4)
     .populate('artist')
     .sort({ date: -1 })
     .then(songs => res.json(songs))

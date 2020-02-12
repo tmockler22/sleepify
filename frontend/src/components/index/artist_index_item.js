@@ -11,6 +11,7 @@ class ArtistIndexItem extends React.Component {
       <div className="artist">
         <li><img className="artist-photo" src={artist.imageUrl} /></li>
         <li className="artist-name">{artist.name}</li>
+        <li className="artist-description">Artist</li>
         <li><div className="play-button"><i class="fas fa-play-circle"></i></div></li>
       </div>
     )

@@ -1,6 +1,6 @@
 .song {
   position: relative; 
-  margin-left: 12px; 
+  margin-left: 14px; 
   margin-top: 20px; 
   background: #282828; 
   padding: 22px 22px 30px; 
@@ -59,11 +59,17 @@
 }
 
 .song-photo {
-  width: 175px;
-  height: 185px; 
+  width: 155px;
+  height: 165px; 
 }
 
 .songs-list {
   display: flex; 
-  margin-left: 40px;  
+}
+
+.songs-list-title {
+  color: white; 
+  font-size: 24px; 
+  margin-top: 18px; 
+  margin-left: 14px; 
 }
