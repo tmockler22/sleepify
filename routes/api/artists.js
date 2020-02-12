@@ -6,6 +6,15 @@ const Song = require('../../models/Song');
 const Artist = require('../../models/Artist');
 const keys = require('../../config/keys');
 
+router.get('/search/:search', (req, res) => {
+  Artist.find({ name: { $regex: req.params.search + '.*', $options: 'i' } })
+    .populate('songs')
+    .sort({ date: -1 })
+    .then(artists => res.json(artists))
+    .catch(err => res.status(404).json({ nosongsfound: 'No artists found' }));
+});
+
+
 router.get('/', (req, res) => {
   Artist.find()
     .sort({ date: -1 })

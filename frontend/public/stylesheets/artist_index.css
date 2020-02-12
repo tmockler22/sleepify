@@ -1,0 +1,31 @@
+.artist {
+  position: relative;
+  margin-left: 12px; 
+  margin-top: 20px; 
+  background: #282828; 
+  padding: 22px 22px 30px; 
+  border-radius: 8px; 
+}
+
+.artist:hover {
+  cursor: pointer; 
+}
+
+.artist-name {
+  margin-top: 10px; 
+  font-family: sans-serif; 
+  font-size: 14px;
+  font-weight: 100; 
+  text-align: left; 
+  color: white; 
+}
+
+.artist-photo {
+  width: 175px;
+  height: 185px; 
+}
+
+.artists-list {
+  display: flex; 
+  margin-left: 40px;  
+}
