@@ -7,11 +7,32 @@ const Artist = require('../../models/Artist');
 const keys = require('../../config/keys');
 const validateSongInput = require('../../validation/song');
 
-router.get('/', (req, res) => {
-  Song.find()
+router.get('/search/:search', (req, res) => {
+  const songRegex = new RegExp(req.params.search, 'i');
+  // Song.find({ title: songRegex })
+  Song.find({ title: { $regex: req.params.search + '.*', $options: 'i'  }})
+    .populate('artist')
     .sort({ date: -1 })
     .then(songs => res.json(songs))
     .catch(err => res.status(404).json({ nosongsfound: 'No songs found' }));
+});
+
+router.get('/', (req, res) => {
+  Song.find()
+    .populate('artist')
+    .sort({ date: -1 })
+    .then(songs => res.json(songs))
+    .catch(err => res.status(404).json({ nosongsfound: 'No songs found' }));
+});
+
+router.get('/:id', (req, res) => {
+  Song.findById(req.params.id)
+    .then(song => {
+          res.json(song)
+        })
+    .catch(err =>
+      res.status(404).json({ nosongfound: 'No song found with that ID' })
+    );
 });
 
 router.post('/new', (req, res) => {

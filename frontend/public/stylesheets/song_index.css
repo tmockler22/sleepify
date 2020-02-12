@@ -1,0 +1,67 @@
+.song {
+  position: relative; 
+  margin-left: 12px; 
+  margin-top: 20px; 
+  background: #282828; 
+  padding: 22px 22px 30px; 
+  border-radius: 8px; 
+}
+
+.search-input {
+  width: 275px; 
+  padding: 13px 34px 13px 50px; 
+  background: white; 
+  margin-top: 100px; 
+  margin-left: 40px;
+  border-radius: 25px;  
+  font-size: 14px; 
+}
+
+.song:hover {
+  cursor: pointer; 
+}
+
+.play-button {
+  position: absolute; 
+  right: 28px;
+  bottom: 18px;   
+  display: none; 
+  color: green; 
+  font-size: 30px; 
+}
+
+.song:hover .play-button {
+    display: block;
+}
+
+.song-title {
+  margin-top: 10px; 
+  font-family: sans-serif; 
+  font-size: 14px;
+  font-weight: 100; 
+  text-align: left; 
+  color: white; 
+}
+
+.song-artist {
+  margin-top: 8px; 
+  font-family: sans-serif; 
+  font-size: 10px;
+  font-weight: 100; 
+  text-align: left; 
+  color: white; 
+}
+
+.song-artist:hover {
+  text-decoration: underline; 
+}
+
+.song-photo {
+  width: 175px;
+  height: 185px; 
+}
+
+.songs-list {
+  display: flex; 
+  margin-left: 40px;  
+}
