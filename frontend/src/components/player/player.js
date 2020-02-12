@@ -194,8 +194,13 @@ class Player extends React.Component {
                     type="range" 
                     onChange={this.updateVolume} 
                     value={this.props.volume * 100}
-                    max="100">
-        
+                    max="100"
+                    style={{
+                        backgroundImage: '-webkit-gradient(linear, left top, right top, '
+                            + 'color-stop(' + this.props.volume + ', #13db1d), '
+                            + 'color-stop(' + this.props.volume + ', #666666)'
+                            + ')'
+                    }}>    
                     </input>
                 </div>
 
