@@ -26,7 +26,6 @@ class SideBarNav extends React.Component {
                     src={magGlassIcon}
                     alt=""
                   ></img>
-                  <img className="magGlass-icon" src={magGlassIcon}></img>
                   Search
                 </Link>
               </div>
