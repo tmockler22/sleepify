@@ -140,7 +140,7 @@ class LoginForm extends React.Component {
             <br/>
               <div className='email-input'>
                 <input id="email"
-                  className="form-email"
+                  className="form-email login"
                   type="text"
                   value={this.state.email}
                   onChange={this.update('email')}
@@ -155,7 +155,7 @@ class LoginForm extends React.Component {
             <br/>
               <div className='password-input'>
                 <input id="password" 
-                  className="form-password"
+                  className="form-password login"
                   type="password"
                   value={this.state.password}
                   onChange={this.update('password')}

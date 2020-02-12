@@ -11,11 +11,20 @@ class SignupForm extends React.Component {
       password: '',
       password2: '',
       birthdate: '',
-      errors: {}
+      errors: {},
+      error_touched: {
+        email: false,
+        email2: false,
+        password: false,
+        password2: false,
+        username: false,
+        birthdate: false,
+      }
+
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.changeBorderOnBlur = this.changeBorderOnBlur.bind(this);
+    this.changeOnBlur = this.changeOnBlur.bind(this);
     this.changeBorder = this.changeBorder.bind(this);
     this.clearedErrors = false;
   }
@@ -48,8 +57,13 @@ class SignupForm extends React.Component {
     this.props.signup(user, this.props.history); 
   }
 
+  handleOnFocus(field) {
+    const touchField = this.state.error_touched;
+    touchField[field] = true;
+    return () => this.setState({touchField})
+  }
+
   changeBorder(value = "all") {
-    // const e = this.state.errors
     if (value === "all") {
       let elements = document.querySelectorAll('.signup-border');
       if (elements) {
@@ -59,29 +73,23 @@ class SignupForm extends React.Component {
           }
         });
       }
-    } else {
-      let element = document.getElementById(value);
-      const errorId = value + "-error"
-      let error = document.getElementById(errorId)
-      if(element && error) {
-        element.classList.remove("has-error")
-        // error.classList.add("hidden")
-      }
     }
   }
 
-  changeBorderOnBlur(value) {
+  changeOnBlur(value) {
     let element = document.getElementById(value);
-    if(element && !this.state[value]) {
-      const errorId = value + "-error"
-      let error = document.getElementById(errorId)
-      error.classList.remove("hidden")
-      element.classList.add("has-error")
-    } else if (element && this.state[value]){
-      const errorId = value + "-error"
-      let error = document.getElementById(errorId)
-      // error.classList.add("hidden")
-      element.classList.remove("has-error")
+    if (element) {
+      if(this.state[value]){
+        const errorId = value + "-error"
+        let error = document.getElementById(errorId)
+        error.classList.remove("hidden")
+        element.classList.add("has-error")
+      } else {
+        const errorId = value + "-error"
+        let error = document.getElementById(errorId)
+        error.classList.add("hidden")
+        element.classList.remove("has-error")
+      }
     }
   }
 
@@ -103,8 +111,8 @@ class SignupForm extends React.Component {
                   value={this.state.email}
                   onChange={this.update('email')}
                   placeholder="Email"
-                  onFocus={() => this.changeBorder('email')}
-                  onBlur={() => this.changeBorderOnBlur('email')}
+                  onFocus={() => this.handleOnFocus('email')}
+                  onBlur={() => this.changeOnBlur('email')}
                 />
                 <div id='email-error' className='signup error-div'>
                   {this.state.errors.email}
@@ -118,8 +126,8 @@ class SignupForm extends React.Component {
                   value={this.state.email2}
                   onChange={this.update('email2')}
                   placeholder="Confirm Email"
-                  onFocus={() => this.changeBorder('email2')}
-                  onBlur={() => this.changeBorderOnBlur('email2')}
+                  onFocus={() => this.handleOnFocus('email2')}
+                  onBlur={() => this.changeOnBlur('email2')}
                 />
                 <div  id='email2-error' className='signup error-div'>
                   {this.state.errors.email2}
@@ -133,8 +141,8 @@ class SignupForm extends React.Component {
                   value={this.state.password}
                   onChange={this.update('password')}
                   placeholder="Password"
-                  onFocus={() => this.changeBorder('password')}
-                  onBlur={() => this.changeBorderOnBlur('password')}
+                  onFocus={() => this.handleOnFocus('password')}
+                  onBlur={() => this.changeOnBlur('password')}
                 />
                 <div id='password-error' className='signup error-div'>
                   {this.state.errors.password}
@@ -148,8 +156,8 @@ class SignupForm extends React.Component {
                   value={this.state.password2}
                   onChange={this.update('password2')}
                   placeholder="Confirm Password"
-                  onFocus={() => this.changeBorder('password2')}
-                  onBlur={() => this.changeBorderOnBlur('password2')}
+                  onFocus={() => this.handleOnFocus('password2')}
+                  onBlur={() => this.changeOnBlur('password2')}
                 />
                 <div id='password2-error' className='signup error-div'>
                   {this.state.errors.password2}
@@ -164,8 +172,8 @@ class SignupForm extends React.Component {
                   value={this.state.username}
                   onChange={this.update('username')}
                   placeholder="Username"
-                  onFocus={() => this.changeBorder('username')}
-                  onBlur={() => this.changeBorderOnBlur('username')}
+                  onFocus={() => this.handleOnFocus('username')}
+                  onBlur={() => this.changeOnBlur('username')}
                 />
                 <div id='username-error' className='signup error-div'>
                   {this.state.errors.username}
@@ -181,8 +189,8 @@ class SignupForm extends React.Component {
                       className="signup-border"
                       value={this.state.birthdate}
                       onChange={this.update('birthdate')}
-                      onFocus={() => this.changeBorder('birthdate')}
-                      onBlur={() => this.changeBorderOnBlur('birthdate')}
+                      onFocus={() => this.handleOnFocus('birthdate')}
+                      onBlur={() => this.changeOnBlur('birthdate')}
                     />
                     <div id='birthdate-error' className='signup error-div'>
                       {this.state.errors.birthdate}

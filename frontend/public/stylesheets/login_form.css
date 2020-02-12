@@ -110,11 +110,11 @@
     font-size: 15px;
 }
 
-.has-error {
+.login.has-error {
     border: 1px solid #eb1e32 !important;
 }
 
-.hidden {
+.login.hidden {
     display: none !important;
 }
 

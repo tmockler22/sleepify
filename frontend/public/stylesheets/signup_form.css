@@ -83,3 +83,11 @@
     padding-top: 10px;
     font-size: 15px;
 }
+
+.signup.hidden {
+    display: none !important;
+}
+
+.signup-border.has-error {
+    border: 1px solid #eb1e32 !important;
+}
