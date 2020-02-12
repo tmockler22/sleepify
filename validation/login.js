@@ -13,11 +13,11 @@ module.exports = function validateLoginInput(data) {
   // }
 
   if (Validator.isEmpty(data.email)) {
-    errors.email = 'Email/Username field is required';
+    errors.email = 'Please enter your Sleepify username or email address';
   }
 
   if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password field is required';
+    errors.password = 'Please enter your password';
   }
 
   return {

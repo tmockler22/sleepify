@@ -14,7 +14,6 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
   componentDidUpdate() {
     this.changeBorder();
   }
@@ -51,7 +50,7 @@ class LoginForm extends React.Component {
           Don't have an account?
         </span>
         <div>
-          <Link to='/signup' >SIGN UP FOR SPOTIFY</Link>
+          <Link to='/signup' >SIGN UP FOR SLEEPIFY</Link>
         </div>
       </div>
     )
@@ -75,12 +74,18 @@ class LoginForm extends React.Component {
   changeBorder(values = "all") {
     if(values === "all") {
       let element = document.getElementById('email');
+      let error = document.getElementById('email-error')
       if(element) {
-        element.classList.add("has-error")
+        if (!error.classList.contains("hidden") && (!this.state.errors.login)){
+          element.classList.add("has-error")
+        }
       }
       element = document.getElementById('password');
+      error = document.getElementById('password-error')
       if (element) {
-        element.classList.add("has-error")
+        if (!error.classList.contains("hidden") && (!this.state.errors.login)){
+          element.classList.add("has-error")
+        }
       }
     } else {
       let element = document.getElementById(values);
@@ -101,9 +106,14 @@ class LoginForm extends React.Component {
       let error = document.getElementById(errorId)
       error.classList.remove("hidden")
       element.classList.add("has-error")
+    } else if (element && this.state[value]){
+      const errorId = value + "-error"
+      let error = document.getElementById(errorId)
+      error.classList.add("hidden")
+      element.classList.remove("has-error")
     }
   }
-  renderLoginError() {
+  renderMismatchError() {
     if(this.state.errors.login) {
       return (
         <div className='login-form-error'>
@@ -123,7 +133,7 @@ class LoginForm extends React.Component {
           <img src="static/images/black-logo-white-music.png" alt="sleepify-logo" height="30"/>
         </div>
         <div className='login-form-error-container'>
-          {this.renderLoginError()}
+          {this.renderMismatchError()}
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className='login-form'>

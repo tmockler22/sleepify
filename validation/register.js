@@ -60,7 +60,6 @@ module.exports = function validateRegisterInput(data) {
     errors.birthdate = 'Birthdate field is required';
   }
 
-
   return {
     errors,
     isValid: Object.keys(errors).length === 0
