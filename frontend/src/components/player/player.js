@@ -8,7 +8,8 @@ class Player extends React.Component {
             url: "static/shingo.mp3",
             time: 0,
             duration: 0,
-            mute: false
+            mute: false,
+            repeat: false,
         }
         this.audio = new Audio(this.state.url);
         this.play = this.play.bind(this);
@@ -18,6 +19,7 @@ class Player extends React.Component {
         this.updateVolume = this.updateVolume.bind(this);
         this.volumeBtn = this.volumeBtn.bind(this);
         this.toggleMute = this.toggleMute.bind(this);
+        this.toggleRepeat = this.toggleRepeat.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -54,6 +56,13 @@ class Player extends React.Component {
         this.props.changeVolume(e.target.value / 100)
         
         // this.audio.volume = this.props.volume;
+    }
+
+    toggleRepeat(e) {
+        this.setState({ repeat: !this.state.repeat }, () => {
+            debugger
+            this.audio.loop = this.state.repeat;
+        })
     }
 
     toggleMute(e) {
@@ -119,9 +128,11 @@ class Player extends React.Component {
             </button>
         )
 
+        const active = this.state.repeat ? "-active" : null;
         const repeat = (
             <button
-                className="p-button-repeat pbtn">
+                className={`p-button-repeat${active} pbtn`}
+                onClick={this.toggleRepeat}>
                 <i className="fas fa-redo"></i>
             </button>
         )

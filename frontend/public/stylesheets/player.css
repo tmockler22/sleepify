@@ -67,6 +67,14 @@ button {
     height: 32px;
 }
 
+.p-button-repeat-active {
+    color: #13db1d;
+}
+
+.p-button-repeat-active:hover {
+    color: #13db1d !important;
+}
+
 .pbtn:hover {
     color: white;
 }
@@ -85,22 +93,6 @@ button {
     font-family: sans-serif;
 }
 
-
-/* .p-timeline::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 4px;
-  cursor: pointer;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #666666;
-  border-radius: 1.3px;
- 
-}
-
-input[type=range]:hover::-webkit-slider-runnable-track {
-  background: #367ebd;
-} */
-
-
 .p-timeline {
     overflow: hidden;
     width: 575px;
@@ -110,17 +102,10 @@ input[type=range]:hover::-webkit-slider-runnable-track {
     margin: 0 5px;
 }
 
-/* .p-timeline::-webkit-slider-runnable-track {
-    height: 4px;
-    -webkit-appearance: none;
-    color: #13bba4;
-    margin-top: -1px;
-} */
-
 .p-timeline::-webkit-slider-thumb {
-    width: 10px;
+    width: 0;
     -webkit-appearance: none;
-    height: 10px;
+    height: 0;
     cursor: pointer;
     background: transparent;
     box-shadow: -575px 0 0 575px #43e5f7;
@@ -158,11 +143,10 @@ input[type=range]:hover::-webkit-slider-runnable-track {
 }
 
 .p-volume::-webkit-slider-thumb {
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: gray;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 5px;
+    background: rgb(248, 248, 248);
     box-shadow: -84px 0 0 84px #13db1d;
 }
 
