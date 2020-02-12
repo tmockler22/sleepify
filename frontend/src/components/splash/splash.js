@@ -11,7 +11,7 @@ class Splash extends React.Component {
           <div id="splash-container">
             <h1>Music for sleepy people.</h1>
             <h4>Millions of songs. No credit card needed</h4>
-            <Link to="/player" className="splash-download-bttn">
+            <Link to="/open" className="splash-download-bttn">
               Launch Web Player
             </Link>
           </div>

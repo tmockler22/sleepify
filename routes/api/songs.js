@@ -7,15 +7,18 @@ const Artist = require('../../models/Artist');
 const keys = require('../../config/keys');
 const validateSongInput = require('../../validation/song');
 
-router.get('/search/:search', (req, res) => {
+router.get('/search/:search', async (req, res) => {
   const songRegex = new RegExp(req.params.search, 'i');
-  // Song.find({ title: songRegex })
-  Song.find({ title: { $regex: req.params.search + '.*', $options: 'i'  }})
+  const songObj = {};
+  const songs = await Song.find({ title: { $regex: req.params.search + '.*', $options: 'i'  }})
     .limit(4)
     .populate('artist')
-    .sort({ date: -1 })
-    .then(songs => res.json(songs))
     .catch(err => res.status(404).json({ nosongsfound: 'No songs found' }));
+  for (let index = songs.length - 1; index > -1; index--) {
+    const song = songs[index].toJSON();
+    songObj[song._id] = song
+  } 
+  res.json(songObj)
 });
 
 router.get('/', (req, res) => {
