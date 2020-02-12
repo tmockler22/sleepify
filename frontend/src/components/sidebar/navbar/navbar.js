@@ -13,7 +13,7 @@ class SideBarNav extends React.Component {
             <li>
               <div className="navBar-item">
                 <Link className="navBar-link" to="/open">
-                  <img className="home-icon" src={homeIcon}></img>
+                  <img className="home-icon" src={homeIcon} alt=""></img>
                   Home
                 </Link>
               </div>
@@ -21,6 +21,11 @@ class SideBarNav extends React.Component {
             <li>
               <div className="navBar-item">
                 <Link className="navBar-link" to="/open/search">
+                  <img
+                    className="magGlass-icon"
+                    src={magGlassIcon}
+                    alt=""
+                  ></img>
                   <img className="magGlass-icon" src={magGlassIcon}></img>
                   Search
                 </Link>
@@ -29,7 +34,7 @@ class SideBarNav extends React.Component {
             <li>
               <div className="navBar-item">
                 <Link className="navBar-link" to="/library">
-                  <img className="library-icon" src={libraryIcon}></img>
+                  <img className="library-icon" src={libraryIcon} alt=""></img>
                   Your Library
                 </Link>
               </div>

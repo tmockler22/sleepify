@@ -37,6 +37,7 @@ class Header extends React.Component {
                   <img
                     className="social-icon"
                     src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-1/1024/instagram-512.png"
+                    alt=""
                   ></img>
                 </a>
               </li>
@@ -45,6 +46,7 @@ class Header extends React.Component {
                   <img
                     className="social-icon"
                     src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-1/1024/twitter-512.png"
+                    alt=""
                   ></img>
                 </a>
               </li>
@@ -53,6 +55,7 @@ class Header extends React.Component {
                   <img
                     className="social-icon"
                     src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-1/1024/facebook-512.png"
+                    alt=""
                   ></img>
                 </a>
               </li>
@@ -60,7 +63,10 @@ class Header extends React.Component {
           </div>
           <div id="country">
             <p>USA</p>
-            <img src="https://icons.iconarchive.com/icons/wikipedia/flags/1024/US-United-States-Flag-icon.png"></img>
+            <img
+              src="https://icons.iconarchive.com/icons/wikipedia/flags/1024/US-United-States-Flag-icon.png"
+              alt=""
+            ></img>
           </div>
           <div id="bottom-links">
             <ul>
