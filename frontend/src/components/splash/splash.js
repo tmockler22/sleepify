@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-
 class Splash extends React.Component {
   render() {
     return (

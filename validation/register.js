@@ -56,6 +56,10 @@ module.exports = function validateRegisterInput(data) {
     errors.password2 = 'Passwords must match';
   }
 
+  if (Validator.isEmpty(data.birthdate)) {
+    errors.birthdate = 'Birthdate field is required';
+  }
+
   return {
     errors,
     isValid: Object.keys(errors).length === 0

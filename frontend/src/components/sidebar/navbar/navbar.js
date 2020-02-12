@@ -9,9 +9,6 @@ class SideBarNav extends React.Component {
     return (
       <nav id="navBar">
         <div id="navBar-header">
-          <Link to="/open">
-            <img className="white-logo-nav" src={logo} alt="" />
-          </Link>
           <ul id="navBar-entry-points">
             <li>
               <div className="navBar-item">
@@ -29,6 +26,7 @@ class SideBarNav extends React.Component {
                     src={magGlassIcon}
                     alt=""
                   ></img>
+                  <img className="magGlass-icon" src={magGlassIcon}></img>
                   Search
                 </Link>
               </div>
