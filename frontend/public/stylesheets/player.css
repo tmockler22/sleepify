@@ -15,7 +15,7 @@ button {
     cursor: pointer;
 }
 
-.player-container {
+.p-container {
     position: fixed;
     bottom: 0%;
     left: 0;
@@ -24,49 +24,129 @@ button {
     background: #282828;
     border-top: 2px solid black;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.player-audio-control {
+.p-audio-control {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 600px;
     flex-direction: column;
 }
 
-.player-buttons-container {
+.p-buttons-container {
     width: 224px;
     display: flex;
     justify-content: space-between;
     margin: 0 0 12px;
 }
 
-.player-button-circle {
+.p-button-circle {
     border: 1px solid #b3b3b3;
     width: 32px;
     height: 32px;
     border-radius: 50%;
     color: #b3b3b3;
-    font-size: 12px;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    transition: 0.2s;
 }
 
-.player-button-circle:hover {
+.p-button-circle:hover {
     border: 1px solid white;
     color: white;
+    transform: scale(1.08);
 }
 
 .pbtn {
     color: #b3b3b3;
-    font-size: 14px;
+    font-size: 13px;
     width: 32px;
     height: 32px;
+}
+
+.p-button-repeat-active {
+    color: #13db1d;
+}
+
+.p-button-repeat-active:hover {
+    color: #13db1d !important;
 }
 
 .pbtn:hover {
     color: white;
 }
 
-.player-range {
-    width: 90%;
+.p-timeline-container {
+    display: flex;
+    width: 650px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
 }
+
+.p-timeline-container > span {
+    font-size: 12px;
+    color: #b3b3b3;
+    font-family: sans-serif;
+}
+
+.p-timeline {
+    overflow: hidden;
+    width: 575px;
+    height: 4px;
+    -webkit-appearance: none;
+    background-color: #666666;
+    margin: 0 5px;
+}
+
+.p-timeline::-webkit-slider-thumb {
+    width: 0;
+    -webkit-appearance: none;
+    height: 0;
+    cursor: pointer;
+    background: transparent;
+    box-shadow: -575px 0 0 575px #43e5f7;
+}
+
+
+.p-volume-container {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    width: 110px;
+}
+
+.p-volume-btn {
+    color: #b3b3b3;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-volume-btn:hover {
+    color: white;
+}
+
+.p-volume {
+    overflow: hidden;
+    -webkit-appearance: none;
+    width: 84px;
+    height: 4px;
+    background: #666666;
+    border-radius: 5px;
+}
+
+.p-volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 5px;
+    background: rgb(248, 248, 248);
+    box-shadow: -84px 0 0 84px #13db1d;
+}
+
