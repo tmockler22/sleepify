@@ -133,7 +133,7 @@ button {
     color: white;
 }
 
-.p-volume {
+/* .p-volume {
     overflow: hidden;
     -webkit-appearance: none;
     width: 84px;
@@ -149,4 +149,26 @@ button {
     background: rgb(248, 248, 248);
     box-shadow: -84px 0 0 84px #13db1d;
 }
+ */
 
+ .p-volume {
+  -webkit-appearance: none;
+  -moz-apperance: none;
+  border-radius: 5px;
+  height: 4px;
+  width: 84px;
+}
+.p-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 0;
+  width: 0;
+  
+}
+
+.p-volume:hover::-webkit-slider-thumb {
+    background-color: #E9E9E9;
+    border: 1px solid #CECECE;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+}
