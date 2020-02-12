@@ -10,13 +10,12 @@ import PlayerContainer from './player/player_container';
 
 const App = () => (
   <div>
-    <SideBar />
+    {/* <SideBar /> */}
     <Route path="/player" component={PlayerContainer} />
-    <Header />
+    {/* <Header /> */}
     <Route exact path ="/" component={Splash} />
     <Route exact path="/search" component={SearchContainer} />
-    <Splash />
-    <Footer />
+    {/* <Footer /> */}
 
   </div>
 );

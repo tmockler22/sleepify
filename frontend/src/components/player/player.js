@@ -11,7 +11,7 @@ class Player extends React.Component {
             mute: false,
             repeat: false,
         }
-        this.audio = new Audio(this.state.url);
+  
         this.play = this.play.bind(this);
         this.pause = this.pause.bind(this);
         this.updateTime = this.updateTime.bind(this);
@@ -20,6 +20,11 @@ class Player extends React.Component {
         this.volumeBtn = this.volumeBtn.bind(this);
         this.toggleMute = this.toggleMute.bind(this);
         this.toggleRepeat = this.toggleRepeat.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchSongs()
+        .then(() => this.audio = new Audio(this.props.songs[0].songUrl))
     }
 
     componentDidUpdate(prevProps) {
