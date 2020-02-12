@@ -4,8 +4,10 @@ const db = require('./config/keys').mongoURI;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const path = require('path')
+const songs = require("./routes/api/songs");
 const users = require("./routes/api/users");
+const artists = require("./routes/api/artists");
+const path = require('path');
 
 
 mongoose
@@ -20,8 +22,11 @@ require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 app.use("/api/users", users);
+app.use("/api/songs", songs);
+app.use("/api/artists", artists);
 
 app.use('/static', express.static(path.join(__dirname, 'assets')))
 
