@@ -1,100 +1,56 @@
 import React from "react";
 
 class Player extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      play: false,
-      url: "static/shingo.mp3",
-      time: 0,
-      duration: 0,
-      mute: false,
-      repeat: false
-    };
-    this.audio = new Audio(this.state.url);
-    this.play = this.play.bind(this);
-    this.pause = this.pause.bind(this);
-    this.updateTime = this.updateTime.bind(this);
-    this.parseTime = this.parseTime.bind(this);
-    this.updateVolume = this.updateVolume.bind(this);
-    this.volumeBtn = this.volumeBtn.bind(this);
-    this.toggleMute = this.toggleMute.bind(this);
-    this.toggleRepeat = this.toggleRepeat.bind(this);
-  }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.volume !== this.props.volume) {
-      this.audio.volume = this.props.volume;
+    constructor(props) {
+        super(props);
+        this.state = {
+            play: false,
+            url: "static/shingo.mp3",
+            time: 0,
+            duration: 0,
+            mute: false,
+            repeat: false,
+        }
+  
+        this.play = this.play.bind(this);
+        this.pause = this.pause.bind(this);
+        this.updateTime = this.updateTime.bind(this);
+        this.parseTime = this.parseTime.bind(this);
+        this.updateVolume = this.updateVolume.bind(this);
+        this.volumeBtn = this.volumeBtn.bind(this);
+        this.toggleMute = this.toggleMute.bind(this);
+        this.toggleRepeat = this.toggleRepeat.bind(this);
     }
-  }
 
-  play(e) {
-    e.preventDefault();
-    this.setState({ play: true });
-    this.audio.volume = this.props.volume;
-    this.audio.play();
-    setInterval(() => {
-      this.setState({
-        time: this.audio.currentTime,
-        duration: this.audio.duration
-      });
-    }, 500);
-  }
+    componentDidMount() {
+        this.props.fetchSongs()
+        .then(() => this.audio = new Audio(this.props.songs[0].songUrl))
+    }
 
-  pause(e) {
-    e.preventDefault();
-    this.setState({ play: false });
-    this.audio.pause();
-  }
+    componentDidUpdate(prevProps) {
+        if (prevProps.volume !== this.props.volume) {
+            this.audio.volume = this.props.volume;
+        }
+    }
 
-  updateTime(e) {
-    this.audio.currentTime = e.target.value;
-    this.setState({ time: e.target.value });
-  }
+    play(e) {
+        e.preventDefault();
+        this.setState({ play: true })
+        this.audio.volume = this.props.volume;
+        this.audio.play();
+        setInterval(() => {
+            this.setState({ 
+                time: this.audio.currentTime, 
+                duration: this.audio.duration 
+            })
+        }, 500)
+    }
 
-  updateVolume(e) {
-    this.props.changeVolume(e.target.value / 100);
-
-    // this.audio.volume = this.props.volume;
-  }
-
-  toggleRepeat(e) {
-    this.setState({ repeat: !this.state.repeat }, () => {
-      debugger;
-      this.audio.loop = this.state.repeat;
-    });
-  }
-
-  toggleMute(e) {
-    this.setState({ mute: !this.state.mute }, () => {
-      if (this.props.volume > 0) this.prevVolume = this.props.volume;
-      if (this.state.mute) {
-        this.props.changeVolume(0);
-        this.audio.volume = 0;
-      } else {
-        this.props.changeVolume(this.prevVolume);
-        this.audio.volume = this.prevVolume;
-      }
-    });
-  }
-
-  parseTime(time) {
-    // if (!this.state.duration) return null;
-    let min = Math.floor(time / 60);
-    let seconds = Math.floor(time - min * 60);
-    if (seconds < 10) seconds = `0${seconds}`;
-    return `${min}:${seconds}`;
-  }
-
-  volumeBtn() {
-    let button;
-    const volume = this.props.volume;
-    if (volume >= 0.5) {
-      button = <i className="fas fa-volume-up"></i>;
-    } else if (volume < 0.5 && volume > 0) {
-      button = <i className="fas fa-volume-down"></i>;
-    } else {
-      button = <i className="fas fa-volume-mute"></i>;
+    pause(e) {
+        e.preventDefault();
+        this.setState({ play: false })
+        this.audio.pause();
     }
 
     return (

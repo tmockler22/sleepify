@@ -6,6 +6,7 @@ import LoginFormContainer from './session/login_form_container'
 import SignupFormContainer from './session/signup_form_container'
 import OpenPlayer from './open/open_player'
 const App = () => (
+
     <div>
         <Switch>
             <Route exact path="/" component={Splash}/>
@@ -15,5 +16,6 @@ const App = () => (
         </Switch>
     </div>
 )
+
 
 export default App;
