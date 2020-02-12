@@ -1,0 +1,68 @@
+.root-navBar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.sidebar-container {
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#navBar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.015em;
+}
+
+#navBar {
+  display: flex;
+  flex-direction: column;
+}
+
+.navBar-link {
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.015em;
+  color: #b3b3b3;
+}
+
+.navBar-link:hover {
+  font-weight: 900;
+}
+
+.white-logo-nav {
+  padding: 20px;
+  height: 40px;
+  width: 100px;
+}
+
+.home-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.magGlass-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.navBar-item {
+  display: block;
+  padding: 7px;
+}
+
+.navBar-item img {
+  padding: 0px 20px;
+}
