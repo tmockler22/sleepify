@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../footer/footer";
 class Splash extends React.Component {
   render() {
     return (
@@ -10,6 +11,7 @@ class Splash extends React.Component {
             <button className="splash-download-bttn"> GET SLEEPIFY FREE</button>
           </div>
         </div>
+        <Footer /> 
       </div>
     );
   }

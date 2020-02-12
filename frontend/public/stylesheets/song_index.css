@@ -11,10 +11,12 @@
   width: 275px; 
   padding: 13px 34px 13px 50px; 
   background: white; 
-  margin-top: 100px; 
-  margin-left: 40px;
   border-radius: 25px;  
   font-size: 14px; 
+  position: fixed; 
+  top: 15px; 
+  left: 255px; 
+  z-index: 1500; 
 }
 
 .song:hover {
