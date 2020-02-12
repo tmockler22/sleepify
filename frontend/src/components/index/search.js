@@ -20,7 +20,7 @@ class Search extends React.Component {
 
   getResults() {
     return this.state.search ? (
-        <div>
+        <div className="open-player-body">
           <SongIndexContainer search={this.state.search} />
           <ArtistIndexContainer search={this.state.search} />
         </div>

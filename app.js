@@ -28,6 +28,7 @@ app.use("/api/users", users);
 app.use("/api/songs", songs);
 app.use("/api/artists", artists);
 
+app.use('/static', express.static(path.join(__dirname, 'assets')))
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
