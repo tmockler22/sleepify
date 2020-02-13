@@ -1,10 +1,42 @@
 import React from "react";
 
 class CreatePlaylist extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: ""
+    };
+    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeModal = this.props.closeModal.bind(this);
+  }
+
+  update(field) {
+    return e =>
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    let playlist = {
+      title: this.state.title,
+      userId: 1
+    };
+    this.props.createPlaylist(playlist, this.props.history);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.closeModal();
+  }
+
   render() {
     return (
       <div className="create-playlist-modal">
-        <button className="btn-transparent">
+        <button className="btn-transparent" onClick={this.handleClick}>
           <svg
             width="32"
             height="32"
@@ -27,9 +59,22 @@ class CreatePlaylist extends React.Component {
                 className="playlist-name-input-field"
                 type="text"
                 name="playlist-name"
+                onChange={this.update("title")}
                 placeholder="New Playlist"
               ></input>
             </div>
+          </div>
+        </div>
+        <div id="form-buttons-container">
+          <div id="cancel-button-container">
+            <button className="cancel-button" onClick={this.handleClick}>
+              Cancel
+            </button>
+          </div>
+          <div id="create-button-container">
+            <button className="create-button" onClick={this.handleSubmit}>
+              create
+            </button>
           </div>
         </div>
       </div>

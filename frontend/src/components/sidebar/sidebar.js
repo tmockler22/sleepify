@@ -1,6 +1,7 @@
 import React from "react";
 import SideBarNav from "./navbar/navbar";
 import Playlist from "./playlist/playlist_container";
+import Mainview from "./mainview";
 class SideBar extends React.Component {
   render() {
     return (
@@ -9,6 +10,7 @@ class SideBar extends React.Component {
           <SideBarNav />
           <Playlist />
         </div>
+        <Mainview />
       </div>
     );
   }
