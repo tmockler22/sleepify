@@ -1,10 +1,32 @@
 import React from "react";
 
 class CreatePlaylist extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: ""
+    };
+    this.handleClick = this.handleClick.bind(this);
+    this.closeModal = this.props.closeModal.bind(this);
+  }
+
+  update(field) {
+    return e =>
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.closeModal();
+  }
+
   render() {
     return (
       <div className="create-playlist-modal">
-        <button className="btn-transparent">
+        <button className="btn-transparent" onClick={this.handleClick}>
           <svg
             width="32"
             height="32"
@@ -27,9 +49,22 @@ class CreatePlaylist extends React.Component {
                 className="playlist-name-input-field"
                 type="text"
                 name="playlist-name"
+                onChange={this.update("name")}
                 placeholder="New Playlist"
               ></input>
             </div>
+          </div>
+        </div>
+        <div id="form-buttons-container">
+          <div id="cancel-button-container">
+            <button className="cancel-button" onClick={this.handleClick}>
+              Cancel
+            </button>
+          </div>
+          <div id="create-button-container">
+            <button className="create-button" onClick={this.handleSubmit}>
+              create
+            </button>
           </div>
         </div>
       </div>
