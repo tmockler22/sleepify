@@ -25,6 +25,7 @@ const playerQueueReducer = (state=[], action) => {
             return nextState;
         case PREV_TRACK:
             nextState.unshift(nextState.pop());
+            return nextState;
         default: 
             return state;
     }

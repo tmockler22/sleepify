@@ -15,19 +15,19 @@ export const receiveTracks = tracks => ({
     tracks
 });
 
-export const REMOVE_TRACK = trackId => ({
+export const removeTrack = trackId => ({
     type: RECEIVE_TRACK,
     trackId
 });
 
-export const REMOVE_ALL_TRACKS = () => ({
+export const removeAllTracks = () => ({
     type: REMOVE_ALL_TRACKS
 });
 
-export const NEXT_TRACK = () => ({
+export const nextTrack = () => ({
     type: NEXT_TRACK
 });
 
-export const PREV_TRACK = () => ({
+export const prevTrack = () => ({
     type: PREV_TRACK
 });

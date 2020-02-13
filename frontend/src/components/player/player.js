@@ -5,14 +5,14 @@ class Player extends React.Component {
         super(props);
         this.state = {
             play: false,
-            url: "static/shingo.mp3",
             time: 0,
             duration: 0,
             mute: false,
             repeat: false,
         }
-
+        this.audio = React.createRef();
         this.play = this.play.bind(this);
+        this.handleonPlay = this.handleonPlay.bind(this);
         this.pause = this.pause.bind(this);
         this.updateTime = this.updateTime.bind(this);
         this.parseTime = this.parseTime.bind(this);
@@ -20,36 +20,62 @@ class Player extends React.Component {
         this.volumeBtn = this.volumeBtn.bind(this);
         this.toggleMute = this.toggleMute.bind(this);
         this.toggleRepeat = this.toggleRepeat.bind(this);
-    }
-
-    componentDidMount() {
-        this.props.fetchSongs()
-            .then(() => this.audio = new Audio(this.props.songs[0].songUrl))
+        this.fetchy = this.fetchy.bind(this);
+        this.nextTrack = this.nextTrack.bind(this);
+        this.prevTrack = this.prevTrack.bind(this);
+      
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.volume !== this.props.volume) {
             this.audio.volume = this.props.volume;
         }
+
+        if (prevProps.currentTrack !== this.props.currentTrack) {
+            clearInterval(this.interval);
+        }
+    }
+
+    fetchy(e) {
+        e.preventDefault();
+        this.props.fetchSongs()
+            .then(() => {
+                this.props.queueAll(this.props.songs)
+            })
     }
 
     play(e) {
         e.preventDefault();
+        if (!this.props.currentTrack) return null;
+        this.handleonPlay();
+        this.audio.play();
+    }
+    
+    handleonPlay() {
         this.setState({ play: true })
         this.audio.volume = this.props.volume;
-        this.audio.play();
-        setInterval(() => {
+        this.interval = setInterval(() => {
             this.setState({
                 time: this.audio.currentTime,
                 duration: this.audio.duration
             })
-        }, 500)
+        }, 500)   
     }
 
     pause(e) {
         e.preventDefault();
         this.setState({ play: false })
         this.audio.pause();
+    }
+
+    nextTrack(e) {
+        e.preventDefault();
+        this.props.nextTrack()
+    }
+
+    prevTrack(e) {
+        e.preventDefault();
+        this.props.prevTrack();
     }
 
     updateTime(e) {
@@ -59,13 +85,10 @@ class Player extends React.Component {
 
     updateVolume(e) {
         this.props.changeVolume(e.target.value / 100)
-
-        // this.audio.volume = this.props.volume;
     }
 
     toggleRepeat(e) {
         this.setState({ repeat: !this.state.repeat }, () => {
-            debugger
             this.audio.loop = this.state.repeat;
         })
     }
@@ -84,7 +107,7 @@ class Player extends React.Component {
     }
 
     parseTime(time) {
-        // if (!this.state.duration) return null;
+        if (!time) return "0:00";
         let min = Math.floor(time / 60);
         let seconds = Math.floor(time - (min * 60));
         if (seconds < 10) seconds = `0${seconds}`;
@@ -144,6 +167,7 @@ class Player extends React.Component {
 
         const prevTrackBtn = (
             <button
+                onClick={this.prevTrack}
                 className="p-button-prev pbtn">
                 <i className="fas fa-step-backward"></i>
             </button>
@@ -151,21 +175,27 @@ class Player extends React.Component {
 
         const nextTrackBtn = (
             <button
+                onClick={this.nextTrack}
                 className="p-button-fwd pbtn">
                 <i className="fas fa-step-forward"></i>
             </button>
         )
 
         const { play, time, duration } = this.state;
-
+        const { currentTrack } = this.props;
         return (
             <div className="p-container">
                 <div className="p-now-playing">
-
+                    <button onClick={this.fetchy}>Fetch Songs</button>
                 </div>
 
                 <div className="p-audio-control">
                     <div className='p-buttons-container'>
+                        <audio src={currentTrack ? currentTrack.songUrl : null}
+                            ref={audio => this.audio = audio}
+                            onPlay={this.handleonPlay}
+                            onEnded={this.nextTrack}
+                            autoPlay />
                         {shuffle}
                         {prevTrackBtn}
                         {!play && playBtn}

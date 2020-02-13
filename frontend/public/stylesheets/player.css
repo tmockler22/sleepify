@@ -40,7 +40,15 @@ button {
 .p-now-playing {
     width: 125px;
     height: 56px;
+    display: flex;
+    align-items: center;
 }
+
+.p-now-playing button {
+    color: white;
+    font-weight: bold;
+}
+
 
 
 /* Center */
