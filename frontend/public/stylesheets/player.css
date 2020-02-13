@@ -15,10 +15,6 @@ li {
   background: transparent;
 }
 
-body {
-  background: #181818;
-}
-
 button {
   cursor: pointer;
 }
@@ -34,6 +30,7 @@ button {
     display: flex;
     justify-content: space-between;
     z-index: 1500; 
+
 }
 
 
@@ -195,7 +192,7 @@ button {
 }
 
 .open-player-body {
-    position: absolute; 
-    top: 80px; 
-    left: 255px; 
+  position: absolute;
+  top: 80px;
+  left: 255px;
 }
