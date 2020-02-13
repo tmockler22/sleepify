@@ -14,7 +14,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
         <Component {...props} />
       ) : (
         // Redirect to the home page if the user is authenticated
-        <Redirect to="/home" />  //---------------------------------------------has not been created yet
+        <Redirect to="/open" />  //---------------------------------------------has not been created yet
       )
     }
   />

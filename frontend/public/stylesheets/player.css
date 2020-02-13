@@ -1,18 +1,11 @@
-html,
-body,
-button,
-input,
-label,
-h1,
-form,
-ul,
-li {
-  padding: 0;
-  margin: 0;
-  outline: none;
-  list-style: none;
-  border: none;
-  background: transparent;
+
+html, body, button, input, label, h1, form, ul, li {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    list-style: none;
+    border: none;
+    background: transparent;
 }
 
 button {
