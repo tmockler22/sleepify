@@ -4,6 +4,7 @@ import errors from "./errors_reducer";
 import entitiesReducer from "./entities_reducer";
 import player from "./player_reducer";
 import queue from "./player_queue_reducer";
+import uiReducer from "./ui_reducer";
 
 const RootReducer = combineReducers({
   session,
@@ -11,8 +12,7 @@ const RootReducer = combineReducers({
   player,
   entities: entitiesReducer,
   queue,
- 
+  ui: uiReducer
 });
 
 export default RootReducer;
-

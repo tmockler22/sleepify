@@ -1,23 +1,18 @@
-html,
-body,
-button,
-input,
-label,
-h1,
-form,
-ul,
-li {
-  padding: 0;
-  margin: 0;
-  outline: none;
-  list-style: none;
-  border: none;
-  background: transparent;
-}
+
 
 /* body {
   background: #181818;
 } */
+
+html, body, button, input, label, h1, form, ul, li {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    list-style: none;
+    border: none;
+    background: transparent;
+}
+
 
 button {
   cursor: pointer;
@@ -36,7 +31,6 @@ button {
     z-index: 1500; 
 }
 
-
 .p-now-playing {
     width: 125px;
     height: 56px;
@@ -50,14 +44,13 @@ button {
 }
 
 
-
 /* Center */
 .p-audio-control {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 650px;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 650px;
+  flex-direction: column;
 }
 
 .p-buttons-container {
@@ -137,10 +130,10 @@ button {
 }
 
 .p-volume-container {
-    display: flex;
-    align-items: center;
-    width: 110px;
-    padding-right: 15px;
+  display: flex;
+  align-items: center;
+  width: 110px;
+  padding-right: 15px;
 }
 
 .p-volume-btn {
@@ -203,7 +196,7 @@ button {
 }
 
 .open-player-body {
-    position: absolute; 
-    top: 80px; 
-    left: 255px; 
+  position: absolute;
+  top: 80px;
+  left: 255px;
 }
