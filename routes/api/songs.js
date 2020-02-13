@@ -60,19 +60,35 @@ router.post('/new', (req, res) => {
   }
 );
 
-router.post('/like/:id', (req, res) => {
+router.patch('/like/:id', (req, res) => {
   const { errors, isValid } = validateLikeInput(req.body);
-
   if (!isValid) {
       return res.status(400).json(errors);
   }
+
+  Song.findById(req.params.id)
+    .then(song => {
+      song.likedUsers.push(req.body.userId)
+      User.findById(req.body.userId)
+        .then(user => {
+          user.likedSongs.push(req.params.id)
+        })
+        .catch(err =>
+          res.status(404).json({ nouserfound: 'No user found with that ID' })
+        )
+    })
+    .catch(err =>
+      res.status(404).json({ nosongfound: 'No song found with that ID' })
+    );
+  // req.body.
 })
 
-router.delete('/like/delete/:id', (req, res) => {
+router.patch('/like/delete/:id', (req, res) => {
   const { errors, isValid } = validateLikeInput(req.body);
-
   if (!isValid) {
       return res.status(400).json(errors);
-  }
+  } 
+
+
 })
 module.exports = router;
