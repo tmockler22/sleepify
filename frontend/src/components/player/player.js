@@ -40,7 +40,7 @@ class Player extends React.Component {
         e.preventDefault();
         this.props.fetchSongs()
             .then(() => {
-                this.props.queueAll(this.props.songs)
+                this.props.playAllTracks(this.props.songs)
             })
     }
 

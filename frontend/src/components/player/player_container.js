@@ -3,7 +3,7 @@ import Player from './player';
 import { receiveVolume } from '../../actions/player_actions';
 import { fetchSongs } from '../../actions/song_actions';
 import {
-    receiveTracks,
+    playAllTracks,
     nextTrack,
     prevTrack,
 
@@ -22,7 +22,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     changeVolume: volume => dispatch(receiveVolume(volume)),
     fetchSongs: () => dispatch(fetchSongs()),
-    queueAll: (tracks) => dispatch(receiveTracks(tracks)),
+    playAllTracks: (tracks) => dispatch(playAllTracks(tracks)),
     nextTrack: () => dispatch(nextTrack()),
     prevTrack: () => dispatch(prevTrack()),
 });
