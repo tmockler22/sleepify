@@ -1,10 +1,9 @@
 import * as SongApiUtil from "../util/song_util";
-import { RECEIVE_LIKE } from "./like_actions";
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
 
 export const RECEIVE_LIKE = "RECEIVE_LIKE";
-export const REMOVE_LIKE = "REMOVE_LIKE"
+export const DELETE_LIKE = "DELETE_LIKE"
 
 const receiveSong = (song) => {
   return {
@@ -27,9 +26,9 @@ const receiveLike = (likeData) => {
   })
 }
 
-const removeLike = (likeData) => {
+const deleteLike = (likeData) => {
   return ({
-    type: REMOVE_LIKE,
+    type: DELETE_LIKE,
     likeData
   })
 }
@@ -49,11 +48,10 @@ export const searchSongs = (search) => (dispatch) => {
     .then((songs) => { dispatch(receiveSongs(songs)) })
 };
 
-
 export const likeSong = likeData => dispatch => {
   return SongApiUtil.likeSong(likeData).then((data) => { dispatch(receiveLike(data))});
 }
 
 export const unlikeSong = likeData => dispatch => {
-  return SongApiUtil.unlikeSong(likeData).then(data => dispatch(removeLike(data)));
+  return SongApiUtil.unlikeSong(likeData).then(data => dispatch(deleteLike(data)));
 }
