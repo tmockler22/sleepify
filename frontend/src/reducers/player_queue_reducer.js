@@ -1,6 +1,7 @@
 import { 
-    RECEIVE_TRACK,
-    RECEIVE_TRACKS,
+    PLAY_TRACK,
+    PLAY_ALL_TRACKS,
+    ADD_TRACK,
     REMOVE_TRACK,
     REMOVE_ALL_TRACKS,
     NEXT_TRACK,
@@ -11,11 +12,13 @@ const playerQueueReducer = (state=[], action) => {
     Object.freeze(state);
     let nextState = [...state]
     switch (action.type) {
-        case RECEIVE_TRACK: 
+        case PLAY_TRACK:
+            return [action.track];
+        case PLAY_ALL_TRACKS:
+            return action.tracks;
+        case ADD_TRACK: 
             nextState.push(action.track);
             return nextState;
-        case RECEIVE_TRACKS:
-            return action.tracks;
         case REMOVE_TRACK:
             //to be added
         case REMOVE_ALL_TRACKS:
@@ -25,6 +28,7 @@ const playerQueueReducer = (state=[], action) => {
             return nextState;
         case PREV_TRACK:
             nextState.unshift(nextState.pop());
+            return nextState;
         default: 
             return state;
     }
