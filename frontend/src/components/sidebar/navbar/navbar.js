@@ -8,6 +8,9 @@ class SideBarNav extends React.Component {
   render() {
     return (
       <nav id="navBar">
+        <Link className="navBar-link" to="/open">
+          <img id="white-logo" src={logo} alt=""></img>
+        </Link>
         <div id="navBar-header">
           <ul id="navBar-entry-points">
             <li>

@@ -7,7 +7,7 @@ class SideBar extends React.Component {
       <div className="root-navBar">
         <div className="sidebar-container">
           <SideBarNav />
-          {/* <Playlist /> */}
+          <Playlist />
         </div>
       </div>
     );
