@@ -17,6 +17,7 @@ router.get('/search/:search', (req, res) => {
 
 router.get('/:id', (req, res) => {
   Artist.findById(req.params.id)
+    .populate('songs')
     .then(artist => {
       res.json(artist)
     })

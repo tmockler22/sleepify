@@ -10,7 +10,7 @@ import { Switch, Route } from "react-router-dom";
 class Open extends React.Component {
   render() {
     return (
-      <div>
+      <div className="open-player">
         <OpenHeader />
         <SideBar />
         <Player />

@@ -1,9 +1,12 @@
 .root-navBar {
-  min-height: 789px;
-  max-height: 1080px;
-  width: 230px;
+  min-height: 1050px;
+  width: 230px !important;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
 }
 
 .sidebar-container {

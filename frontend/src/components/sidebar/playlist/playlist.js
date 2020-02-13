@@ -17,9 +17,9 @@ class Playlist extends React.Component {
           </div>
         </div>
         <ul id="playlist">
-          <li>HardRock ZzZzzzz</li>
+          {/* <li>HardRock ZzZzzzz</li>
           <li>Softrock ZzZzzzz</li>
-          <li>Smooth Jazz ZzZzzzz</li>
+          <li>Smooth Jazz ZzZzzzz</li> */}
         </ul>
       </div>
     );
