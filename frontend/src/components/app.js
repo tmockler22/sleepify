@@ -7,6 +7,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import OpenPlayer from "./open/open_player";
 import Modal from "./sidebar/playlist/modal";
 const App = () => (
+
   <div>
     <Modal />
     <Switch>
@@ -17,5 +18,6 @@ const App = () => (
     </Switch>
   </div>
 );
+
 
 export default App;

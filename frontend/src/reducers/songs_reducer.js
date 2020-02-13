@@ -3,7 +3,7 @@ import { RECEIVE_SONG, RECEIVE_SONGS } from '../actions/song_actions';
 const songsReducer = (oldState = {}, action) => {
   
   Object.freeze(oldState);
-
+  debugger; 
   switch (action.type) {
     case RECEIVE_SONG:
       return Object.assign({}, oldState, { [action.song._id]: action.song });

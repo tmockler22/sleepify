@@ -30,6 +30,10 @@ const SongSchema = new Schema({
     type: String,
     required: true
   },
+  album: {
+    type: Schema.Types.ObjectId,
+    ref: "album"
+  },
   playlists: [
     {
       type: Schema.Types.ObjectId,
