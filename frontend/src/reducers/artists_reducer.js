@@ -4,6 +4,8 @@ const artistsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
 
   switch (action.type) {
+    case RECEIVE_ARTIST:
+      return action.artist.data;
     case RECEIVE_ARTISTS:
       return action.artists.data;
     default:

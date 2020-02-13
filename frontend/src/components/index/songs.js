@@ -7,7 +7,7 @@ class SongsIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.search !== this.props.search) {
+    if (this.props.search && prevProps.search !== this.props.search) {
     this.props.searchSongs(this.props.search);
     }
   }
@@ -16,8 +16,7 @@ class SongsIndex extends React.Component {
     let liSongs;
     if (!this.props.songs || this.props.songs.length === 0) return null;
     let songs = this.props.songs;
-    
-    liSongs = Object.values(songs).map(song => <SongIndexItem key={song.id} song={song} />);
+    liSongs = Object.values(songs).map(song => <SongIndexItem key={song.id} song={song} playTrack={this.props.playTrack} />);
 
     return (
       <div>
