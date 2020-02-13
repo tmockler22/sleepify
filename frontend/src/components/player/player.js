@@ -65,7 +65,6 @@ class Player extends React.Component {
 
     toggleRepeat(e) {
         this.setState({ repeat: !this.state.repeat }, () => {
-            debugger
             this.audio.loop = this.state.repeat;
         })
     }
