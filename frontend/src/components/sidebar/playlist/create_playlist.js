@@ -5,9 +5,10 @@ class CreatePlaylist extends React.Component {
     super(props);
 
     this.state = {
-      name: ""
+      title: ""
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.closeModal = this.props.closeModal.bind(this);
   }
 
@@ -16,6 +17,15 @@ class CreatePlaylist extends React.Component {
       this.setState({
         [field]: e.currentTarget.value
       });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    let playlist = {
+      title: this.state.title
+    };
+    this.resetErrorDisplay();
+    this.props.signup(user, this.props.history);
   }
 
   handleClick(e) {
@@ -49,7 +59,7 @@ class CreatePlaylist extends React.Component {
                 className="playlist-name-input-field"
                 type="text"
                 name="playlist-name"
-                onChange={this.update("name")}
+                onChange={this.update("title")}
                 placeholder="New Playlist"
               ></input>
             </div>

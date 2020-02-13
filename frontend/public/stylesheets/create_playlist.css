@@ -142,3 +142,9 @@
   line-height: 1.6;
   vertical-align: middle;
 }
+.cancel-button:hover {
+  transform: scale(1.06);
+}
+.create-button:hover {
+  transform: scale(1.06);
+}
