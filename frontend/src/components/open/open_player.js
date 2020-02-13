@@ -1,13 +1,12 @@
 import React from "react";
-import Player from '../player/player_container';
+import Player from "../player/player_container";
 import SideBar from "../sidebar/sidebar";
-import { Route } from "react-router-dom";
 import Search from "../index/search_container";
+import OpenHeader from "../header/open_header";
 class Open extends React.Component {
-
   search() {
     if (this.props.history.location.pathname === "/open/search") {
-      return <Search /> 
+      return <Search />;
     }
   }
 
@@ -15,6 +14,7 @@ class Open extends React.Component {
     return (
       <div>
         {this.search()}
+        <OpenHeader />
         <SideBar />
         <Player />
       </div>

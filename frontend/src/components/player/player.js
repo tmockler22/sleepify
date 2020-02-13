@@ -11,7 +11,7 @@ class Player extends React.Component {
             mute: false,
             repeat: false,
         }
-        this.audio = new Audio(this.state.url);
+
         this.play = this.play.bind(this);
         this.pause = this.pause.bind(this);
         this.updateTime = this.updateTime.bind(this);
@@ -20,6 +20,11 @@ class Player extends React.Component {
         this.volumeBtn = this.volumeBtn.bind(this);
         this.toggleMute = this.toggleMute.bind(this);
         this.toggleRepeat = this.toggleRepeat.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchSongs()
+            .then(() => this.audio = new Audio(this.props.songs[0].songUrl))
     }
 
     componentDidUpdate(prevProps) {
@@ -34,9 +39,9 @@ class Player extends React.Component {
         this.audio.volume = this.props.volume;
         this.audio.play();
         setInterval(() => {
-            this.setState({ 
-                time: this.audio.currentTime, 
-                duration: this.audio.duration 
+            this.setState({
+                time: this.audio.currentTime,
+                duration: this.audio.duration
             })
         }, 500)
     }
@@ -49,18 +54,17 @@ class Player extends React.Component {
 
     updateTime(e) {
         this.audio.currentTime = e.target.value;
-        this.setState({time: e.target.value})
+        this.setState({ time: e.target.value })
     }
 
     updateVolume(e) {
         this.props.changeVolume(e.target.value / 100)
-        
+
         // this.audio.volume = this.props.volume;
     }
 
     toggleRepeat(e) {
         this.setState({ repeat: !this.state.repeat }, () => {
-            debugger
             this.audio.loop = this.state.repeat;
         })
     }
@@ -81,7 +85,7 @@ class Player extends React.Component {
     parseTime(time) {
         // if (!this.state.duration) return null;
         let min = Math.floor(time / 60);
-        let seconds = Math.floor(time - (min*60));
+        let seconds = Math.floor(time - (min * 60));
         if (seconds < 10) seconds = `0${seconds}`;
         return `${min}:${seconds}`;
     }
@@ -99,7 +103,7 @@ class Player extends React.Component {
 
         return (
             <div onClick={this.toggleMute} className="p-volume-btn">
-                { button }
+                {button}
             </div>
         )
 
@@ -107,22 +111,22 @@ class Player extends React.Component {
 
     render() {
         const playBtn = (
-            <button 
-                className="p-button-circle" 
+            <button
+                className="p-button-circle"
                 onClick={this.play}>
                 <i className="fas fa-play"></i>
             </button>
         )
         const pauseBtn = (
-            <button 
+            <button
                 className="p-button-circle"
                 onClick={this.pause}>
                 <i className="fas fa-pause"></i>
             </button>
         )
-        
+
         const shuffle = (
-            <button 
+            <button
                 className="p-button-shuffle pbtn">
                 <i className="fas fa-random"></i>
             </button>
@@ -150,7 +154,7 @@ class Player extends React.Component {
                 <i className="fas fa-step-forward"></i>
             </button>
         )
-        
+
         const { play, time, duration } = this.state;
 
         return (
@@ -161,52 +165,52 @@ class Player extends React.Component {
 
                 <div className="p-audio-control">
                     <div className='p-buttons-container'>
-                        { shuffle }
-                        { prevTrackBtn }
-                        { !play && playBtn }
-                        { play && pauseBtn }
-                        { nextTrackBtn }
-                        { repeat }
+                        {shuffle}
+                        {prevTrackBtn}
+                        {!play && playBtn}
+                        {play && pauseBtn}
+                        {nextTrackBtn}
+                        {repeat}
                     </div>
 
                     <div className="p-timeline-container">
                         <span className="p-current-time">
-                            { this.parseTime(time) }
+                            {this.parseTime(time)}
                         </span>
-                    <input 
-                        className="p-timeline"
-                        type="range" 
-                        onChange={this.updateTime} 
-                        value={time} 
-                        max={duration}>
-                    </input>
-                    
+                        <input
+                            className="p-timeline"
+                            type="range"
+                            onChange={this.updateTime}
+                            value={time}
+                            max={duration}>
+                        </input>
+
                         <span className="p-duration">
-                            { this.parseTime(duration) }
+                            {this.parseTime(duration)}
                         </span>
                     </div>
                 </div>
 
                 <div className="p-volume-container">
                     {this.volumeBtn()}
-                    <input 
-                    className="p-volume"
-                    type="range" 
-                    onChange={this.updateVolume} 
-                    value={this.props.volume * 100}
-                    max="100"
-                    style={{
-                        backgroundImage: '-webkit-gradient(linear, left top, right top, '
-                            + 'color-stop(' + this.props.volume + ', #13db1d), '
-                            + 'color-stop(' + this.props.volume + ', #666666)'
-                            + ')'
-                    }}>    
+                    <input
+                        className="p-volume"
+                        type="range"
+                        onChange={this.updateVolume}
+                        value={this.props.volume * 100}
+                        max="100"
+                        style={{
+                            backgroundImage: '-webkit-gradient(linear, left top, right top, '
+                                + 'color-stop(' + this.props.volume + ', #13db1d), '
+                                + 'color-stop(' + this.props.volume + ', #666666)'
+                                + ')'
+                        }}>
                     </input>
                 </div>
 
             </div>
 
-                
+
 
         )
     }

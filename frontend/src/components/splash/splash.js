@@ -1,17 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Header from "../header/header";
 import Footer from "../footer/footer";
 class Splash extends React.Component {
   render() {
     return (
       <div id="app-container">
+        <Header />
         <div id="colorsplash">
           <div id="splash-container">
             <h1>Music for sleepy people.</h1>
             <h4>Millions of songs. No credit card needed</h4>
-            <button className="splash-download-bttn"> GET SLEEPIFY FREE</button>
+            <Link to="/open" className="launch-web-player-bttn">
+              Launch Web Player
+            </Link>
           </div>
         </div>
-        <Footer /> 
+        <Footer />
       </div>
     );
   }

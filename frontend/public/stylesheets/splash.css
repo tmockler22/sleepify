@@ -5,8 +5,8 @@
 }
 
 #colorsplash {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(
       farthest-side at bottom left,
       rgba(242, 102, 137, 0.5),
@@ -68,8 +68,9 @@
   margin: 0.5em 0 1em;
 }
 
-.splash-download-bttn {
+.launch-web-player-bttn {
   -webkit-font-smoothing: antialiased;
+  text-decoration: none;
   font-size: 14px;
   line-height: 1;
   border-radius: 500px;
@@ -84,7 +85,7 @@
   padding: 16px 48px 18px;
 }
 
-.splash-download-bttn:hover {
+.launch-web-player-bttn:hover {
   background: #1ed760;
 }
 

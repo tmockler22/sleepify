@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import SideBarNav from "./navbar/navbar";
-import Playlist from "./playlist/playlist";
+import Playlist from "./playlist/playlist_container";
 class SideBar extends React.Component {
   render() {
     return (
