@@ -22,10 +22,10 @@ class CreatePlaylist extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let playlist = {
-      title: this.state.title
+      title: this.state.title,
+      userId: 1
     };
-    this.resetErrorDisplay();
-    this.props.signup(user, this.props.history);
+    this.props.createPlaylist(playlist, this.props.history);
   }
 
   handleClick(e) {
