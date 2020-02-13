@@ -11,3 +11,11 @@ export const fetchSong = id => {
 export const searchSongs = search => {
   return axios.get(`/api/songs/search/${search}`);
 };
+
+export const likeSong = (id) => {
+  return axios.post(`/api/songs/like/${id}`)
+};
+
+export const unlikeSong = (id) => {
+  return axios.delete(`/api/songs/like/delete/${id}`)
+};

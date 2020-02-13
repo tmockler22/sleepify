@@ -21,7 +21,13 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  likedSongs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'songs'
+    }
+  ]
 })
 
 module.exports = User = mongoose.model('User', UserSchema);

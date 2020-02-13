@@ -60,4 +60,19 @@ router.post('/new', (req, res) => {
   }
 );
 
+router.post('/like/:id', (req, res) => {
+  const { errors, isValid } = validateLikeInput(req.body);
+
+  if (!isValid) {
+      return res.status(400).json(errors);
+  }
+})
+
+router.delete('/like/delete/:id', (req, res) => {
+  const { errors, isValid } = validateLikeInput(req.body);
+
+  if (!isValid) {
+      return res.status(400).json(errors);
+  }
+})
 module.exports = router;
