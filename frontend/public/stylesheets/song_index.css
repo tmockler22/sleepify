@@ -1,75 +1,85 @@
 .song {
-  position: relative; 
-  margin-left: 14px; 
-  margin-top: 20px; 
-  background: #282828; 
-  padding: 22px 22px 30px; 
-  border-radius: 8px; 
+  position: relative;
+  display: flex;
+  margin-top: 2px;
+  background: black;
+  margin-left: 30px;
+}
+
+.song-item-info {
+  align-self: center;
+  margin-left: 14px;
 }
 
 .search-input {
-  width: 275px; 
-  padding: 13px 34px 13px 50px; 
-  background: white; 
-  border-radius: 25px;  
-  font-size: 14px; 
-  position: fixed; 
-  top: 15px; 
-  left: 255px; 
-  z-index: 1500; 
+  width: 275px;
+  padding: 13px 34px 13px 50px;
+  background: white;
+  border-radius: 25px;
+  font-size: 14px;
+  position: fixed;
+  top: 15px;
+  left: 255px;
+  z-index: 1500;
 }
 
 .song:hover {
-  cursor: pointer; 
+  cursor: pointer;
+  transition: 0.5s ease;
+  background: #323232;
 }
 
 .play-button {
-  position: absolute; 
-  right: 28px;
-  bottom: 18px;   
-  display: none; 
-  color: green; 
-  font-size: 30px; 
+  position: absolute;
+  right: 18px;
+  top: 28px;
+  display: none;
+  color: green;
+  font-size: 30px;
+  cursor: pointer;
 }
 
 .song:hover .play-button {
-    display: block;
+  display: block;
 }
 
 .song-title {
-  margin-top: 10px; 
-  font-family: sans-serif; 
+  margin-left: 10px;
+  font-family: sans-serif;
   font-size: 14px;
-  font-weight: 100; 
-  text-align: left; 
-  color: white; 
+  font-weight: 100;
+  text-align: left;
+  color: white;
 }
 
 .song-artist {
-  margin-top: 8px; 
-  font-family: sans-serif; 
+  margin-top: 4px;
+  margin-left: 10px;
+  font-family: sans-serif;
   font-size: 10px;
-  font-weight: 100; 
-  text-align: left; 
-  color: white; 
+  font-weight: 100;
+  text-align: left;
+  color: white;
 }
 
 .song-artist:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 .song-photo {
-  width: 155px;
-  height: 165px; 
+  width: 75px;
+  height: 75px;
 }
 
 .songs-list {
-  display: flex; 
+  display: flex;
+  flex-direction: column;
+  width: 600px;
 }
 
 .songs-list-title {
-  color: white; 
-  font-size: 24px; 
-  margin-top: 18px; 
-  margin-left: 14px; 
+  color: white;
+  font-size: 24px;
+  margin-top: 18px;
+  margin-left: 14px;
 }
