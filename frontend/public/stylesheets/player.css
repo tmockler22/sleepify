@@ -1,18 +1,18 @@
 
 
-/* body {
-  background: #181818;
-} */
 
 html, body, button, input, label, h1, form, ul, li {
-    padding: 0;
-    margin: 0;
-    outline: none;
-    list-style: none;
-    border: none;
-    background: transparent;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  list-style: none;
+  border: none;
+  background: transparent;
 }
 
+body {
+  background: #181818;
+}
 
 button {
   cursor: pointer;
@@ -29,18 +29,6 @@ button {
     display: flex;
     justify-content: space-between;
     z-index: 1500; 
-}
-
-.p-now-playing {
-    width: 125px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-}
-
-.p-now-playing button {
-    color: white;
-    font-weight: bold;
 }
 
 
@@ -199,4 +187,84 @@ button {
   position: absolute;
   top: 80px;
   left: 255px;
+}
+
+/* player info  */
+.pi-container {
+    width: 200px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.pi-image {
+  width: 60px;
+  height: 60px;
+}
+
+.pi-details {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  position: relative;
+}
+
+.pi-details-title, .pi-details-artist {
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  padding: 2px 0;
+}
+
+.pi-details-title:hover, .pi-details-artist:hover {
+  text-decoration: underline;
+}
+
+.pi-details-title {
+  color: white;
+  font-size: 14px;  
+}
+
+.pi-details-artist {
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.p-now-playing button {
+    color: white;
+    font-weight: bold;
+}
+
+.pi-details-next {
+  width: fit-content;
+  color: #b3b3b3;
+  font-size: 10px;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: scrollText 10s infinite linear;
+  padding-top: 1px;
+  padding-left: 90%;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-110%, 0);
+  }
+}
+.fa-heart {
+  margin-left: 15px;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.fa-heart:hover {
+  color: white;
 }

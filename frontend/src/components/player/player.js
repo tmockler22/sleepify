@@ -1,4 +1,5 @@
 import React from 'react';
+import PlayerInfoContainer from './player_info_container';
 
 class Player extends React.Component {
     constructor(props) {
@@ -185,9 +186,11 @@ class Player extends React.Component {
         const { currentTrack } = this.props;
         return (
             <div className="p-container">
-                <div className="p-now-playing">
+                {/* <div className="p-now-playing">
                     <button onClick={this.fetchy}>Fetch Songs</button>
-                </div>
+                </div> */}
+
+                <PlayerInfoContainer />
 
                 <div className="p-audio-control">
                     <div className='p-buttons-container'>
@@ -202,6 +205,7 @@ class Player extends React.Component {
                         {play && pauseBtn}
                         {nextTrackBtn}
                         {repeat}
+                        <button onClick={this.fetchy}>Fetch Songs</button>
                     </div>
 
                     <div className="p-timeline-container">

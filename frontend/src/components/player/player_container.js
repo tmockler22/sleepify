@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
     volume: state.player.volume,
     songs: Object.values(state.entities.songs),
     currentTrack: state.queue[0],
-    track: state.queue
+    tracks: state.queue
 });
 
 
