@@ -15,25 +15,21 @@ li {
   background: transparent;
 }
 
-body {
-  background: #181818;
-}
-
 button {
   cursor: pointer;
 }
 
 .p-container {
-    position: fixed;
-    bottom: 0%;
-    left: 0;
-    width: 100%;
-    height:90px;
-    background: #282828;
-    border-top: 2px solid black;
-    display: flex;
-    justify-content: space-between;
-    z-index: 1500; 
+  position: fixed;
+  bottom: 0%;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background: #282828;
+  border-top: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1500;
 }
 
 .p-audio-control {
@@ -187,7 +183,7 @@ button {
 }
 
 .open-player-body {
-    position: absolute; 
-    top: 80px; 
-    left: 255px; 
+  position: absolute;
+  top: 80px;
+  left: 255px;
 }

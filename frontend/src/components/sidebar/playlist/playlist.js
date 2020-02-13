@@ -1,17 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import plusIcon from "../../../assets/images/plus-icon.png";
+
 class Playlist extends React.Component {
   render() {
     return (
       <div className="playlist-container">
-        {/* <Modal /> */}
         <h4>Playlist</h4>
         <div className="navBar-item">
-          <Link className="navBar-link" to="/playlist">
+          <div
+            className="navBar-link"
+            onClick={() => this.props.openModal("createPlaylist")}
+          >
             <img className="plus-icon" src={plusIcon} alt=""></img>
             Create Playlist
-          </Link>
+          </div>
         </div>
         <ul id="playlist">
           <li>HardRock ZzZzzzz</li>
