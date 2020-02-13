@@ -7,10 +7,6 @@ html, body, button, input, label, h1, form, ul, li {
     background: transparent;
 }
 
-body {
-    background: #181818;
-}
-
 button {
     cursor: pointer;
 }

@@ -101,6 +101,7 @@
 .login-form-container > .disclaimer {
     font-size: 10px;
     color: rgb(180, 180, 180);
+    padding-top: 20px;
 }
 
 .login.error-div {

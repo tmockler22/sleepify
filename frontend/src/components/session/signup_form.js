@@ -19,19 +19,25 @@ class SignupForm extends React.Component {
         password2: false,
         username: false,
         birthdate: false,
+      },
+      error_exists: {
+        email: false,
+        email2: false,
+        password: false,
+        password2: false,
+        username: false,
+        birthdate: false,
       }
 
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.changeOnBlur = this.changeOnBlur.bind(this);
-    this.changeBorder = this.changeBorder.bind(this);
     this.clearedErrors = false;
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      this.props.history.push('/home');
+      this.props.history.push('/open');
     }
 
     this.setState({errors: nextProps.errors})
@@ -39,7 +45,7 @@ class SignupForm extends React.Component {
 
   update(field) {
     return e => this.setState({
-      [field]: e.currentTarget.value
+      [field]: e.currentTarget.value, 
     });
   }
 
@@ -53,49 +59,77 @@ class SignupForm extends React.Component {
       password2: this.state.password2,
       birthdate: this.state.birthdate,
     };
+    this.resetErrorDisplay();
+    this.props.signup(user, this.props.history)
+  }
 
-    this.props.signup(user, this.props.history); 
+  resetErrorDisplay() {
+    this.setState({
+      error_touched: {
+        email: false,
+        email2: false,
+        password: false,
+        password2: false,
+        username: false,
+        birthdate: false,
+      },
+    })
   }
 
   handleOnFocus(field) {
     const touchField = this.state.error_touched;
     touchField[field] = true;
-    return () => this.setState({touchField})
+    return () => this.setState({
+      touchField
+    })
   }
 
-  changeBorder(value = "all") {
-    if (value === "all") {
-      let elements = document.querySelectorAll('.signup-border');
-      if (elements) {
-        Array.from(elements).forEach(elm => {
-          if(!elm.value) {
-            elm.classList.add('has-error')
-          }
-        });
-      }
+  renderError(field) {
+    if (!this.state.error_touched[field]) {
+      return (
+        <div id={`${field}-error`} className='signup error-div'>
+          {this.state.errors[field]}
+        </div>
+      )
     }
   }
-
-  changeOnBlur(value) {
-    let element = document.getElementById(value);
-    if (element) {
-      if(this.state[value]){
-        const errorId = value + "-error"
-        let error = document.getElementById(errorId)
-        error.classList.remove("hidden")
-        element.classList.add("has-error")
-      } else {
-        const errorId = value + "-error"
-        let error = document.getElementById(errorId)
-        error.classList.add("hidden")
-        element.classList.remove("has-error")
-      }
+  
+  renderInputField(field) {
+    let placeholder = field.charAt(0).toUpperCase() + field.substring(1);
+    if(field.includes('2')) {
+      placeholder = placeholder.substring(0, placeholder.length - 1) + ' Confirm'
+    }
+    let type;
+    if ((field.includes('email') || field === 'username')) {
+      type = 'text'
+    } else if (field.includes('password')) {
+      type = 'password'
+    } else {
+      type = 'Date'
+    }
+    if (!this.state.error_touched[field] && this.state.errors[field]) {
+      return (
+          <input id={field} 
+            type={type}
+            className="signup-border has-error"
+            value={this.state[field]}
+            onChange={this.update(field)}
+            placeholder={placeholder}
+            onFocus={() => this.handleOnFocus(field)}/>
+      )
+    } else {
+      return (
+          <input id={field}
+            type={type}
+            className="signup-border"
+            value={this.state[field]}
+            onChange={this.update(field)}
+            placeholder={placeholder}
+            onFocus={() => this.handleOnFocus(field)}/>
+      )
     }
   }
-
   render() {
-    // debugger;
-    this.changeBorder()
     return (
       <div className="signup-form-container">
         <div className="heading">
@@ -105,96 +139,36 @@ class SignupForm extends React.Component {
           <div className="signup-form">
             <br/>
               <div className="signup-input email">
-                <input id='email' 
-                  type="text"
-                  className="signup-border"
-                  value={this.state.email}
-                  onChange={this.update('email')}
-                  placeholder="Email"
-                  onFocus={() => this.handleOnFocus('email')}
-                  onBlur={() => this.changeOnBlur('email')}
-                />
-                <div id='email-error' className='signup error-div'>
-                  {this.state.errors.email}
-                </div>
+                {this.renderInputField('email')}
+                {this.renderError('email')}
               </div>
             <br/>
               <div className="signup-input email2">
-                <input id='email2'
-                  type="text"
-                  className="signup-border"
-                  value={this.state.email2}
-                  onChange={this.update('email2')}
-                  placeholder="Confirm Email"
-                  onFocus={() => this.handleOnFocus('email2')}
-                  onBlur={() => this.changeOnBlur('email2')}
-                />
-                <div  id='email2-error' className='signup error-div'>
-                  {this.state.errors.email2}
-                </div>
+                {this.renderInputField('email2')}
+                {this.renderError('email2')}
               </div>
             <br/>
               <div className="signup-input password">
-                <input id='password' 
-                  type="password"
-                  className="signup-border"
-                  value={this.state.password}
-                  onChange={this.update('password')}
-                  placeholder="Password"
-                  onFocus={() => this.handleOnFocus('password')}
-                  onBlur={() => this.changeOnBlur('password')}
-                />
-                <div id='password-error' className='signup error-div'>
-                  {this.state.errors.password}
-                </div>
+                {this.renderInputField('password')}
+                {this.renderError('password')}
               </div>
             <br/>
               <div className="signup-input password2">
-                <input id='password2'
-                  type="password"
-                  className="signup-border"
-                  value={this.state.password2}
-                  onChange={this.update('password2')}
-                  placeholder="Confirm Password"
-                  onFocus={() => this.handleOnFocus('password2')}
-                  onBlur={() => this.changeOnBlur('password2')}
-                />
-                <div id='password2-error' className='signup error-div'>
-                  {this.state.errors.password2}
-                </div>
+                {this.renderInputField('password2')}
+                {this.renderError('password2')}
               </div>
             <br/>
               <div className="signup-input username">
-                <input 
-                  id='username'
-                  type="text"
-                  className="signup-border"
-                  value={this.state.username}
-                  onChange={this.update('username')}
-                  placeholder="Username"
-                  onFocus={() => this.handleOnFocus('username')}
-                  onBlur={() => this.changeOnBlur('username')}
-                />
-                <div id='username-error' className='signup error-div'>
-                  {this.state.errors.username}
-                </div>
+                {this.renderInputField('username')}
+                {this.renderError('username')}
               </div>
             <br/>
               <div className="signup-input birthdate">
                 <label>
                   Date of Birth
                   <div className="birthdate">
-                    <input id='birthdate'
-                      type="Date"
-                      className="signup-border"
-                      value={this.state.birthdate}
-                      onChange={this.update('birthdate')}
-                      onFocus={() => this.handleOnFocus('birthdate')}
-                      onBlur={() => this.changeOnBlur('birthdate')}
-                    />
-                    <div id='birthdate-error' className='signup error-div'>
-                      {this.state.errors.birthdate}
-                    </div>
+                    {this.renderInputField('birthdate')}
+                    {this.renderError('birthdate')}
                   </div>
                 </label>
               </div>
