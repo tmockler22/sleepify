@@ -18,10 +18,10 @@ class ArtistsIndex extends React.Component {
     let artists = this.props.artists;
   
     liArtists = Object.values(artists).map(artist => <ArtistIndexItem key={artist.id} artist={artist} />);
-
+    const title = liArtists.length > 0 ? <h1 className="artists-list-title">Artists</h1> : <h1></h1>
     return (
       <div>
-        <h1 className="artists-list-title">Artists</h1>
+        {title}
         <div className="artists-list">
           {liArtists}
         </div>

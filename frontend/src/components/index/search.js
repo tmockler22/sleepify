@@ -1,6 +1,7 @@
 import React from 'react';
 import SongIndexContainer from './songs_container';
 import ArtistIndexContainer from './artist_container';
+import AlbumIndexContainer from './album_container';
 
 class Search extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Search extends React.Component {
         <div className="open-player-body">
           <SongIndexContainer search={this.state.search} />
           <ArtistIndexContainer search={this.state.search} />
+          <AlbumIndexContainer search={this.state.search} />
         </div>
         ) : <div></div>
   }
@@ -30,9 +32,10 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-bar">
+        <i className="fas fa-search search-glass"></i>
         <input
           className='search-input'
-          placeholder='Search for Artists or Songs'
+          placeholder='Search for Artists, Songs, or Albums'
           value={this.state.search}
           onChange ={(e) => this.update(e)}
           />

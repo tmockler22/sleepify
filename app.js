@@ -7,6 +7,7 @@ const passport = require("passport");
 const songs = require("./routes/api/songs");
 const users = require("./routes/api/users");
 const artists = require("./routes/api/artists");
+const albums = require("./routes/api/albums");
 const path = require("path");
 const playlists = require("./routes/api/playlists");
 
@@ -27,6 +28,7 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 app.use("/api/users", users);
 app.use("/api/songs", songs);
 app.use("/api/artists", artists);
+app.use("/api/albums", albums);
 app.use("/api/playlists", playlists);
 app.use("/static", express.static(path.join(__dirname, "assets")));
 
