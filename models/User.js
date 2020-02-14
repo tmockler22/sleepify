@@ -51,7 +51,7 @@ UserSchema.statics.addPlaylist = (playlistId, userId) => {
     });
   });
 };
-})
+
 
 
 module.exports = User = mongoose.model("User", UserSchema);
