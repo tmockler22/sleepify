@@ -36,6 +36,24 @@ const UserSchema = new Schema({
   ]                            
 });
 
+UserSchema.statics.toggleLike = (userId, songId) => {
+  const Song = mongoose.model("Song");
+  const User = mongoose.model("User");
+
+  return Song.findById(songId).then(song => {
+    return User.findById(userId).then(user => {
+      if (user.likedSongs.includes(songId)) {
+        // do this
+      } else {
+        
+      }
+    })
+  })
+
+}
+
+
+
 //stores playlist onto users table upon post request of a playlist
 UserSchema.statics.addPlaylist = (playlistId, userId) => {
   debugger;

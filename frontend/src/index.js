@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // TESTING START
-    // window.getState = store.getState;
+    window.getState = store.getState;
     // window.dispatch = store.dispatch;
     // window.logout
-    // window.store = store;
+    window.store = store;
     // TESTING END
 
     ReactDOM.render(<Root store={store} />, root)
