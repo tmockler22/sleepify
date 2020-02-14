@@ -5,7 +5,7 @@ const playlistReducer = (oldState = {}, action) => {
   switch (action.type) {
     case RECEIVE_PLAYLIST:
       return Object.assign({}, oldState, {
-        [action.playlist.id]: action.playlist
+        [action.playlist.data.playlist._id]: action.playlist.data.playlist
       });
     default:
       return oldState;

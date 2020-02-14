@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // db.songs.insertMany([
@@ -33,13 +33,7 @@ const SongSchema = new Schema({
   album: {
     type: Schema.Types.ObjectId,
     ref: "album"
-  },
-  playlists: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "playlists"
-    }
-  ],
+  }
 });
 
-module.exports = mongoose.model('songs', SongSchema);
+module.exports = mongoose.model("songs", SongSchema);
