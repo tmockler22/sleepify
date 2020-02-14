@@ -81,6 +81,14 @@ button {
   color: #13db1d !important;
 }
 
+.p-button-shuffle-shuffling {
+  color: #13db1d;
+}
+
+.p-button-shuffle-shuffling:hover {
+  color: #13db1d !important;
+}
+
 .pbtn:hover {
   color: white;
 }
@@ -249,6 +257,10 @@ button {
   animation: scrollText 10s infinite linear;
   padding-top: 1px;
   padding-left: 90%;
+}
+
+.pi-details-next:hover {
+  animation-play-state: paused;
 }
 
 @keyframes scrollText {

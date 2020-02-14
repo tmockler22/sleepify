@@ -6,6 +6,7 @@ import {
     playAllTracks,
     nextTrack,
     prevTrack,
+    shuffleTracks,
 
 } 
 from '../../actions/player_queue_actions';
@@ -25,6 +26,7 @@ const mapDispatchToProps = dispatch => ({
     playAllTracks: (tracks) => dispatch(playAllTracks(tracks)),
     nextTrack: () => dispatch(nextTrack()),
     prevTrack: () => dispatch(prevTrack()),
+    shuffleTracks: () => dispatch(shuffleTracks()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);
