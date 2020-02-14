@@ -31,9 +31,9 @@ const UserSchema = new Schema({
   likedSongs: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'songs'
+      ref: "songs"
     }
-  ]                            
+  ]
 });
 
 //stores playlist onto users table upon post request of a playlist
