@@ -46,6 +46,6 @@
   margin-left: 14px; 
 }
 
-.artist:hover .play-button {
+.artist:hover .play-button-album {
     display: block;
 }

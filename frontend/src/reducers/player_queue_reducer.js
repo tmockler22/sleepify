@@ -6,6 +6,7 @@ import {
     REMOVE_ALL_TRACKS,
     NEXT_TRACK,
     PREV_TRACK,
+    SHUFFLE_TRACKS,
 } from '../actions/player_queue_actions';
 
 const playerQueueReducer = (state=[], action) => {
@@ -29,9 +30,23 @@ const playerQueueReducer = (state=[], action) => {
         case PREV_TRACK:
             nextState.unshift(nextState.pop());
             return nextState;
+        case SHUFFLE_TRACKS:
+            return shuffleArray(nextState);
         default: 
             return state;
     }
+}
+
+const shuffleArray = arr => {
+    let temp;
+    let newPos;
+    for (let i=0; i < arr.length; i++) {
+        newPos = Math.floor(Math.random() * (i+1));
+        temp = arr[i];
+        arr[i] = arr[newPos];
+        arr[newPos] = temp;
+    }
+    return arr;
 }
 
 export default playerQueueReducer;

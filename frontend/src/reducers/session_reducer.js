@@ -3,6 +3,7 @@ import {
   RECEIVE_USER_LOGOUT,
   RECEIVE_USER_SIGN_IN
 } from "../actions/session_actions";
+import { CHANGE_LIKE } from "../actions/song_actions";
 
 const initialState = {
   isAuthenticated: false,
@@ -23,10 +24,20 @@ export default function(state = initialState, action) {
         user: undefined
       };
     case RECEIVE_USER_SIGN_IN:
+      debugger;
       return {
         ...state,
-        isSignedIn: true
+        isSignedIn: true,
       };
+      case CHANGE_LIKE: 
+      const newState = Object.assign({}, state);
+      if(newState.user.currentUser.likedSongs.includes(action.likeData.data.songId)) {
+          const index = newState.user.currentUser.likedSongs.indexOf(action.likeData.data.songId);
+          newState.user.currentUser.likedSongs.splice(index,1);
+      } else {
+          newState.user.currentUser.likedSongs.push(action.likeData.data.songId);
+      }
+      return newState;
     default:
       return state;
   }

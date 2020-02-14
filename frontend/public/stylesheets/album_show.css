@@ -1,0 +1,107 @@
+.album-show-photo {
+  width: 180px; 
+  height: 180px;  
+  margin-left: 14px; 
+}
+
+.album-artist-name {
+  color: white; 
+}
+
+.album-artist-name:hover {
+  text-decoration: underline; 
+}
+
+.album-year {
+  color: gray; 
+  margin-top: 14px; 
+  font-size: 12px; 
+  letter-spacing: 0.03em; 
+}
+
+
+.album-by {
+  font-size: 14px; 
+  margin-top: 14px; 
+  color: gray; 
+}
+
+.artist-show-header {
+  display: flex; 
+  margin-top: 60px; 
+  padding-bottom: 30px; 
+  border-bottom: 1px solid hsla(0,0%,100%,.1);
+  width: 80%;  
+  
+}
+
+.album-header-info {
+  padding-top: 10px; 
+  margin-left: 40px; 
+}
+
+.album-show-title {
+    font-size: 24px;
+    letter-spacing: -.005em;
+    font-weight: bold;
+    color: #fff; 
+}
+
+.album-show-songs {
+    margin-top: 70px;
+    width: 90%;
+}
+
+.album-background-photo {
+  width: 100%;
+  min-width: 830px; 
+  height: auto;  
+  filter: brightness(90%);
+}
+
+.album-show-interactive {
+  display: flex; 
+  margin-top: 28px; 
+  width: 240px; 
+  justify-content: space-between;
+}
+
+.like-album > .fa-heart {
+  margin-left: -5px; 
+  font-size: 26px; 
+  padding-top: 6px; 
+  color: gray;
+  font-weight: 200;  
+}
+
+.like-album > .fa-heart:hover {
+  font-size: 28px; 
+  color: gray;
+  font-weight: 200; 
+  cursor: pointer; 
+}
+
+.album-options  > .fa-ellipsis-h {
+  padding-top: 10px; 
+  color: gray;
+}
+
+.album-options  > .fa-ellipsis-h:hover {
+    cursor: pointer; 
+}
+
+.album-show-play {
+  color: white;
+  font-size: 10px; 
+  font-weight: 100; 
+  border-radius: 40px; 
+  background: #1db954; 
+  padding: 14px 48px; 
+  letter-spacing: 0.3em; 
+}
+
+.album-show-play:hover {
+  background: #1ed760; 
+}
+
+

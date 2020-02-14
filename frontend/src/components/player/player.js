@@ -1,4 +1,5 @@
 import React from 'react';
+import PlayerInfoContainer from './player_info_container';
 
 class Player extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class Player extends React.Component {
             duration: 0,
             mute: false,
             repeat: false,
+            shuffle: false,
         }
         this.audio = React.createRef();
         this.play = this.play.bind(this);
@@ -23,6 +25,8 @@ class Player extends React.Component {
         this.fetchy = this.fetchy.bind(this);
         this.nextTrack = this.nextTrack.bind(this);
         this.prevTrack = this.prevTrack.bind(this);
+        this.toggleShuffle = this.toggleShuffle.bind(this);
+        this.handleEnded = this.handleEnded.bind(this);
       
     }
 
@@ -34,6 +38,10 @@ class Player extends React.Component {
         if (prevProps.currentTrack !== this.props.currentTrack) {
             clearInterval(this.interval);
         }
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     fetchy(e) {
@@ -62,6 +70,17 @@ class Player extends React.Component {
         }, 500)   
     }
 
+    handleEnded() {
+        if (this.state.shuffle) {
+            this.props.shuffleTracks();
+        } else if (!this.props.nextTrack) {
+            this.setState({ play: false })
+            this.audio.pause();
+        } else {
+            this.props.nextTrack();
+        }
+    }
+
     pause(e) {
         e.preventDefault();
         this.setState({ play: false })
@@ -88,9 +107,15 @@ class Player extends React.Component {
     }
 
     toggleRepeat(e) {
+        e.preventDefault();
         this.setState({ repeat: !this.state.repeat }, () => {
             this.audio.loop = this.state.repeat;
         })
+    }
+
+    toggleShuffle(e) {
+        e.preventDefault();
+        this.setState({ shuffle: !this.state.shuffle });
     }
 
     toggleMute(e) {
@@ -148,10 +173,12 @@ class Player extends React.Component {
                 <i className="fas fa-pause"></i>
             </button>
         )
-
+        
+        const shuffling = this.state.shuffle ? "-shuffling" : null;
         const shuffle = (
             <button
-                className="p-button-shuffle pbtn">
+                onClick={this.toggleShuffle}
+                className={`p-button-shuffle${shuffling} pbtn`}>
                 <i className="fas fa-random"></i>
             </button>
         )
@@ -185,16 +212,18 @@ class Player extends React.Component {
         const { currentTrack } = this.props;
         return (
             <div className="p-container">
-                <div className="p-now-playing">
+                {/* <div className="p-now-playing">
                     <button onClick={this.fetchy}>Fetch Songs</button>
-                </div>
+                </div> */}
+
+                <PlayerInfoContainer shuffle={this.state.shuffle} />
 
                 <div className="p-audio-control">
                     <div className='p-buttons-container'>
                         <audio src={currentTrack ? currentTrack.songUrl : null}
                             ref={audio => this.audio = audio}
                             onPlay={this.handleonPlay}
-                            onEnded={this.nextTrack}
+                            onEnded={this.handleEnded}
                             autoPlay />
                         {shuffle}
                         {prevTrackBtn}
@@ -202,6 +231,7 @@ class Player extends React.Component {
                         {play && pauseBtn}
                         {nextTrackBtn}
                         {repeat}
+                        <button onClick={this.fetchy}>Fetch Songs</button>
                     </div>
 
                     <div className="p-timeline-container">
