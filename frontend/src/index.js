@@ -2,6 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Root from "./components/root"
 import configureStore from './store/store';
+import jwt_decode from 'jwt-decode';
+
+import { setAuthToken } from './util/session_api_util';
+import { logout } from './actions/session_actions';
 
 // import * as apiUtil from "./util/session_api_util.js"
 // used for testing
@@ -9,15 +13,20 @@ import configureStore from './store/store';
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root")
     let store;
-    if (window.currentUser) {
-        const preloadedState = {
-            entities: {
-                users: { [window.currentUser.id]: window.currentUser }
-            },
-            session: { id: window.currentUser.id }
-        }
+    if (localStorage.jwtToken) {
+        setAuthToken(localStorage.jwtToken);
+    
+        const decodedUser = jwt_decode(localStorage.jwtToken);
+        const preloadedState = { session: { isAuthenticated: true, user: decodedUser } };
+        
         store = configureStore(preloadedState);
-        delete window.currentUser;
+    
+        const currentTime = Date.now() / 1000;
+    
+        if (decodedUser.exp < currentTime) {
+          store.dispatch(logout());
+          window.location.href = '/login';
+        }
     } else {
         store = configureStore()
     }
