@@ -1,12 +1,15 @@
 import { connect } from "react-redux";
-import CreatePlaylist from "./create_playlist";
+import CreatePlaylistForm from "./create_playlist";
 import { openModal, closeModal } from "../../../actions/modal_actions";
-
-const mapStateToProps = state => ({});
+import { createPlaylist } from "../../../actions/playlist_actions";
+const mapStateToProps = state => ({
+  currentUser: state.session.user
+});
 
 const mapDispatchToProps = dispatch => ({
   openModal: modal => dispatch(openModal(modal)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  createPlaylist: playlist => dispatch(createPlaylist(playlist))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePlaylist);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePlaylistForm);

@@ -12,6 +12,7 @@ class LoginForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.demoLogin = this.demoLogin.bind(this);
   }
 
   componentDidUpdate() {
@@ -125,6 +126,16 @@ class LoginForm extends React.Component {
     }
   }
 
+  // demoLogin(e) {
+  //   e.preventDefault();
+  //   this.resetClasses();
+  //   let user = {
+  //     username: "don",
+  //     password: "123456"
+  //   }
+  //   this.props.login(user);
+  // }
+
   render() {
     this.changeBorder();
     return (
@@ -169,6 +180,7 @@ class LoginForm extends React.Component {
               </div>
             <br/>
             <div className='submit-button'>
+              {/* <button type="submit" onClick={this.demoLogin}>DEMO</button> */}
               <input type="submit" value="LOG IN" />
             </div>
           </div>

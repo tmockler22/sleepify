@@ -15,6 +15,16 @@ router.get('/search/:search', (req, res) => {
     .catch(err => res.status(404).json({ nosongsfound: 'No artists found' }));
 });
 
+router.get('/:id', (req, res) => {
+  Artist.findById(req.params.id)
+    .populate('songs')
+    .then(artist => {
+      res.json(artist)
+    })
+    .catch(err =>
+      res.status(404).json({ nosongfound: 'No artist found with that ID' })
+    );
+});
 
 router.get('/', (req, res) => {
   Artist.find()

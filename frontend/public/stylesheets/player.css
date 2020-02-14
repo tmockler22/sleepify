@@ -1,3 +1,19 @@
+
+/* body {
+  background: #181818;
+} */
+.mainview {
+  position: fixed;
+  top: 72px;
+  left: 230px;
+  background-color: #111;
+  z-index: -5;
+  width: 100%;
+  height: 100%;
+  min-height: 1050px;
+  z-index: -1;
+}
+
 html,
 body,
 button,
@@ -26,7 +42,7 @@ button {
   width: 100%;
   height: 90px;
   background: #282828;
-  border-top: 2px solid black;
+  border-top: 1px solid black;
   display: flex;
   justify-content: space-between;
   z-index: 1500;
@@ -35,7 +51,10 @@ button {
 .p-now-playing {
   width: 125px;
   height: 56px;
+  display: flex;
+  align-items: center;
 }
+
 
 /* Center */
 .p-audio-control {
@@ -83,6 +102,14 @@ button {
 }
 
 .p-button-repeat-active:hover {
+  color: #13db1d !important;
+}
+
+.p-button-shuffle-shuffling {
+  color: #13db1d;
+}
+
+.p-button-shuffle-shuffling:hover {
   color: #13db1d !important;
 }
 
@@ -190,6 +217,95 @@ button {
 
 .open-player-body {
   position: absolute;
+  left: 230px;
   top: 80px;
-  left: 255px;
+  margin-bottom: 200px;
+  width: 80%;
+  min-width: 600px; 
+  margin-left: 20px; 
+  margin-right: 20px;  
+}
+
+/* player info  */
+.pi-container {
+    width: 200px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.pi-image {
+  width: 60px;
+  height: 60px;
+}
+
+.pi-details {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  position: relative;
+}
+
+.pi-details-title, .pi-details-artist {
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  padding: 2px 0;
+}
+
+.pi-details-title:hover, .pi-details-artist:hover {
+  text-decoration: underline;
+}
+
+.pi-details-title {
+  color: white;
+  font-size: 14px;  
+}
+
+.pi-details-artist {
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.p-now-playing button {
+    color: white;
+    font-weight: bold;
+}
+
+.pi-details-next {
+  width: fit-content;
+  color: #b3b3b3;
+  font-size: 11px;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: scrollText 10s infinite linear;
+  padding-top: 1px;
+  padding-left: 90%;
+}
+
+.pi-details-next:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-110%, 0);
+  }
+}
+.fa-heart {
+  margin-left: 15px;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.fa-heart:hover {
+  color: white;
 }

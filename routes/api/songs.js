@@ -4,6 +4,7 @@ const passport = require('passport');
 const User = require('../../models/User');
 const Song = require('../../models/Song');
 const Artist = require('../../models/Artist');
+const Album = require('../../models/Album');
 const keys = require('../../config/keys');
 const validateSongInput = require('../../validation/song');
 
@@ -52,12 +53,42 @@ router.post('/new', (req, res) => {
       title: req.body.title,
       genre: req.body.genre,
       artist: req.body.artist,
+      album: req.body.album,
       imageUrl: req.body.imageUrl,
       songUrl: req.body.songUrl
     });
 
-    newSong.save().then(song => Artist.addSong(song.artist, song.id));
+    newSong.save()
+      .then(song => Artist.addSong(song.artist, song.id))
+      .then(song => Album.addSongToAlbum(song.album, song.id));
   }
 );
+
+router.patch('/like/:id', (req, res) => {
+  console.log(req.body)
+  likeData = {songId: req.params.id,
+              userId: req.body.userId
+            }
+  Song.findById(req.params.id)
+    .then(song => {
+      if (song) {
+        User.findById(req.body.userId)
+          .then(user => {
+            if (user) {
+              if (!user.likedSongs.includes(req.params.id)) {
+                user.likedSongs.push(req.params.id)
+                user.save();
+                return res.json(likeData)
+              } else {
+                const userIdx = user.likedSongs.indexOf(req.params.id);
+                user.likedSongs.splice(userIdx, 1);
+                user.save();
+                return res.json(likeData)
+              }
+            }
+          })
+      }
+    })
+})
 
 module.exports = router;

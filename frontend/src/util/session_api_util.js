@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// We've been using this method in previos steps
 //setAuthToken sets or deletes the common header dependent on whether the token is passed into the method.
 export const setAuthToken = token => {
   if (token) {
