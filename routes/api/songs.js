@@ -61,51 +61,28 @@ router.post('/new', (req, res) => {
 );
 
 router.patch('/like/:id', (req, res) => {
-  const { errors, isValid } = validateLikeInput(req.body);
-  if (!isValid) {
-      return res.status(400).json(errors);
-  }
-
+  console.log(req.body)
+  likeData = {songId: req.params.id,
+              userId: req.body.userId
+            }
   Song.findById(req.params.id)
     .then(song => {
       if (song) {
         User.findById(req.body.userId)
           .then(user => {
             if (user) {
-              song.usersLiked.push(req.body.userId)
-              user.likedSongs.push(req.params.id)
-            } else {
-              return res.status(404).json({ nouserfound: 'No user found with that ID' })
+              if (!user.likedSongs.includes(req.params.id)) {
+                user.likedSongs.push(req.params.id)
+                user.save();
+                return res.json(likeData)
+              } else {
+                const userIdx = user.likedSongs.indexOf(req.params.id);
+                user.likedSongs.splice(userIdx, 1);
+                user.save();
+                return res.json(likeData)
+              }
             }
           })
-      } else {
-        return res.status(404).json({ nosongfound: 'No song found with that ID' })
-      }
-    })
-})
-
-router.patch('/like/delete/:id', (req, res) => {
-  const { errors, isValid } = validateLikeInput(req.body);
-  if (!isValid) {
-      return res.status(400).json(errors);
-  } 
-
-  Song.findById(req.params.id)
-    .then(song => {
-      if (song) {
-        User.findById(req.body.userId)
-          .then(user => {
-            if (user) {
-              songIdx = song.usersLiked.indexOf(req.body.userId);
-              userIdx = user.likedSongs.indexOf(req.params.id);
-              song.usersLiked.splice(songIdx, 1);
-              user.likedSongs.splice(userIdx, 1);
-            } else {
-              return res.status(404).json({ nouserfound: 'No user found with that ID' })
-            }
-          })
-      } else {
-        return res.status(404).json({ nosongfound: 'No song found with that ID' })
       }
     })
 })

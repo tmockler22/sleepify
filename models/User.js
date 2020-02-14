@@ -28,7 +28,7 @@ const UserSchema = new Schema({
       ref: "playlists"
     }
   ],
-    likedSongs: [
+  likedSongs: [
     {
       type: Schema.Types.ObjectId,
       ref: 'songs'
@@ -51,7 +51,5 @@ UserSchema.statics.addPlaylist = (playlistId, userId) => {
     });
   });
 };
-
-
 
 module.exports = User = mongoose.model("User", UserSchema);
