@@ -1,4 +1,4 @@
-.artist {
+.album {
   position: relative;
   margin-left: 14px; 
   margin-top: 20px; 
@@ -7,11 +7,11 @@
   border-radius: 8px; 
 }
 
-.artist:hover {
+.album:hover {
   cursor: pointer; 
 }
 
-.artist-name {
+.album-name {
   margin-top: 16px; 
   font-family: sans-serif; 
   font-size: 14px;
@@ -20,7 +20,7 @@
   color: white; 
 }
 
-.artist-description {
+.album-description {
   margin-top: 10px; 
   font-family: sans-serif; 
   font-size: 10px;
@@ -29,23 +29,45 @@
   color: white; 
 }
 
-.artist-photo {
+.album-photo {
   width: 150px;
   height: 150px;
-  border-radius: 100%;  
 }
 
-.artists-list {
+.albums-list {
   display: flex;  
 }
 
-.artists-list-title {
+.album-artist {
+  margin-top: 4px;
+  font-family: sans-serif;
+  font-size: 10px;
+  font-weight: 100;
+  text-align: left;
+  color: white;
+}
+
+.album-artist:hover {
+  text-decoration: underline;
+}
+
+.albums-list-title {
   color: white; 
   font-size: 24px; 
   margin-top: 18px; 
   margin-left: 14px; 
 }
 
-.artist:hover .play-button-album {
+.album:hover .play-button-album {
     display: block;
+}
+
+.play-button-album {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: none;
+  color: green;
+  font-size: 36px;
+  cursor: pointer;
 }

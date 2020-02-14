@@ -4,6 +4,7 @@ const passport = require('passport');
 const User = require('../../models/User');
 const Song = require('../../models/Song');
 const Artist = require('../../models/Artist');
+const Album = require('../../models/Album');
 const keys = require('../../config/keys');
 const validateSongInput = require('../../validation/song');
 
@@ -52,11 +53,14 @@ router.post('/new', (req, res) => {
       title: req.body.title,
       genre: req.body.genre,
       artist: req.body.artist,
+      album: req.body.album,
       imageUrl: req.body.imageUrl,
       songUrl: req.body.songUrl
     });
 
-    newSong.save().then(song => Artist.addSong(song.artist, song.id));
+    newSong.save()
+      .then(song => Artist.addSong(song.artist, song.id))
+      .then(song => Album.addSongToAlbum(song.album, song.id));
   }
 );
 
