@@ -23,9 +23,10 @@ class CreatePlaylist extends React.Component {
     e.preventDefault();
     let playlist = {
       title: this.state.title,
-      userId: 1
+      user: this.props.currentUser
     };
-    this.props.createPlaylist(playlist, this.props.history);
+    this.props.createPlaylist(playlist);
+    this.props.closeModal();
   }
 
   handleClick(e) {
@@ -72,7 +73,10 @@ class CreatePlaylist extends React.Component {
             </button>
           </div>
           <div id="create-button-container">
-            <button className="create-button" onClick={this.handleSubmit}>
+            <button
+              className="create-button"
+              onClick={e => this.handleSubmit(e)}
+            >
               create
             </button>
           </div>
