@@ -26,6 +26,7 @@ class Player extends React.Component {
         this.nextTrack = this.nextTrack.bind(this);
         this.prevTrack = this.prevTrack.bind(this);
         this.toggleShuffle = this.toggleShuffle.bind(this);
+        this.handleEnded = this.handleEnded.bind(this);
       
     }
 
@@ -67,6 +68,17 @@ class Player extends React.Component {
                 duration: this.audio.duration
             })
         }, 500)   
+    }
+
+    handleEnded() {
+        if (this.state.shuffle) {
+            this.props.shuffleTracks();
+        } else if (!this.props.nextTrack) {
+            this.setState({ play: false })
+            this.audio.pause();
+        } else {
+            this.props.nextTrack();
+        }
     }
 
     pause(e) {
@@ -204,14 +216,14 @@ class Player extends React.Component {
                     <button onClick={this.fetchy}>Fetch Songs</button>
                 </div> */}
 
-                <PlayerInfoContainer />
+                <PlayerInfoContainer shuffle={this.state.shuffle} />
 
                 <div className="p-audio-control">
                     <div className='p-buttons-container'>
                         <audio src={currentTrack ? currentTrack.songUrl : null}
                             ref={audio => this.audio = audio}
                             onPlay={this.handleonPlay}
-                            onEnded={this.nextTrack}
+                            onEnded={this.handleEnded}
                             autoPlay />
                         {shuffle}
                         {prevTrackBtn}

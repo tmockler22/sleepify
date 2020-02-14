@@ -10,7 +10,7 @@ class PlayerInfo extends React.Component {
         
         const { currentTrack, nextTrack } = this.props
         if (!currentTrack) return <div className="pi-container"></div>;
-        
+        let msg = this.props.shuffle ? "Currently shuffling..." : `Coming up next: ${nextTrack.title} By ${nextTrack.artist.name}`
         return (
             <div className="pi-container">
                 <img className="pi-image" src={currentTrack.imageUrl} />
@@ -25,7 +25,7 @@ class PlayerInfo extends React.Component {
                             {currentTrack.artist.name}
                         </div>
                     </Link>
-                    {nextTrack ? <span className="pi-details-next">Coming up next: {nextTrack.title} By {nextTrack.artist.name}</span> : null }
+                    {nextTrack ? <div className="pi-details-next">{msg}</div> : null }
                 </div>
                 <i className="far fa-heart"></i>
             </div>
