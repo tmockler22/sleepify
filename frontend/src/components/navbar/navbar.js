@@ -17,14 +17,12 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <greeting>
-            <h2 className="header-name">
-              Hi, {this.props.currentUser.username}!
-            </h2>
-            <Link className="nav-link" onClick={this.logoutUser}>
-              Logout
-            </Link>
-          </greeting>
+          <h2 className="header-name">
+            Hi, {this.props.currentUser.username}!
+          </h2>
+          <Link className="nav-link" onClick={this.logoutUser}>
+            Logout
+          </Link>
         </div>
       );
     } else {
