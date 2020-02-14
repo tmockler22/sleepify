@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { browserHistory } from "react-router";
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -16,10 +16,8 @@ class NavBar extends React.Component {
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div>
-          <h2 className="header-name">
-            Hi, {this.props.currentUser.username}!
-          </h2>
+        <div className="greeting-container">
+          <h2 className="header-name">Hi {this.props.currentUser.username}</h2>
           <Link className="nav-link" onClick={this.logoutUser}>
             Logout
           </Link>

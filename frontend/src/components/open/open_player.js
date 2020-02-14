@@ -9,6 +9,9 @@ import { Switch, Route } from "react-router-dom";
 import Mainview from "./mainview";
 
 class Open extends React.Component {
+  componentDidMount = () => {
+    this.props.history.replace("/open");
+  };
   render() {
     return (
       <div className="open-player">
