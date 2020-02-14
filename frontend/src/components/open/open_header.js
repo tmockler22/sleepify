@@ -1,10 +1,12 @@
 import React from "react";
-import NavBar from "../navbar/navbar";
+import NavBarContainer from "../navbar/navbar_container";
+import NavigationArrows from "../navbar/navigation_arrows";
 class OpenHeader extends React.Component {
   render() {
     return (
       <div id="open-header-container">
-        <NavBar />
+        <NavigationArrows />
+        <NavBarContainer />
       </div>
     );
   }

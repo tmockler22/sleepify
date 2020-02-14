@@ -3,7 +3,7 @@ import Player from "../player/player_container";
 import SideBar from "../sidebar/sidebar";
 import Search from "../index/search_container";
 import ArtistShow from "../show/artist_show_container";
-import OpenHeader from "../header/open_header";
+import OpenHeader from "./open_header";
 // import { AuthRoute, ProtectedRoute } from "../../util/route_util";
 import { Switch, Route } from "react-router-dom";
 import Mainview from "./mainview";
