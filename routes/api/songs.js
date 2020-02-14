@@ -61,6 +61,7 @@ router.post('/new', (req, res) => {
 );
 
 router.patch('/like/:id', (req, res) => {
+  console.log(req.body)
   likeData = {songId: req.params.id,
               userId: req.body.userId
             }
@@ -72,13 +73,13 @@ router.patch('/like/:id', (req, res) => {
             if (user) {
               if (!user.likedSongs.includes(req.params.id)) {
                 user.likedSongs.push(req.params.id)
-                // return res.status(200).json({liked: 'Song successfully liked'})
+                user.save();
                 return res.json(likeData)
               } else {
-                userIdx = user.likedSongs.indexOf(req.params.id);
+                const userIdx = user.likedSongs.indexOf(req.params.id);
                 user.likedSongs.splice(userIdx, 1);
+                user.save();
                 return res.json(likeData)
-                // return res.status(200).json({likedRemoved: 'Song successfully unliked'})
               }
             }
           })
