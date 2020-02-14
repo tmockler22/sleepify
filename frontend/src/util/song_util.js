@@ -11,3 +11,11 @@ export const fetchSong = id => {
 export const searchSongs = search => {
   return axios.get(`/api/songs/search/${search}`);
 };
+
+export const likeSong = (likeData) => {
+  return axios.patch(`/api/songs/like/${likeData.songId}`, likeData)
+};
+
+export const unlikeSong = (likeData) => {
+  return axios.patch(`/api/songs/like/delete/${likeData.songId}`, likeData)
+};

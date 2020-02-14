@@ -1,0 +1,31 @@
+import React from 'react';
+import SongIndexItem from '../index/song_index_item';
+
+class ArtistShow extends React.Component {
+  componentDidMount() {
+    this.props.fetchArtist(this.props.match.params.id);
+  }
+
+  render() {
+    let liSongs;
+    if (!this.props.artist) return null;
+    let artist = this.props.artist;
+    let songs = artist.songs;
+    if (songs) {
+    liSongs = songs.map(song => <SongIndexItem key={song.id} song={song} playTrack={this.props.playTrack}/>); 
+    }
+    return (
+      <div className="artist-page">
+        <img className="artist-show-photo" src={artist.imageUrl} />
+        <div className="open-player-body"> 
+          <h1 className="artist-show-title">{artist.name}</h1>
+          <div className="artist-show-songs">
+            {liSongs}
+          </div>
+        </div>  
+      </div>
+    )
+  };
+};
+
+export default ArtistShow; 

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // db.songs.insertMany([
@@ -40,6 +40,12 @@ const SongSchema = new Schema({
       ref: "playlists"
     }
   ],
+  usersLiked: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ]
 });
 
-module.exports = mongoose.model('songs', SongSchema);
+module.exports = mongoose.model("songs", SongSchema);

@@ -1,6 +1,7 @@
 import React from "react";
 import SideBarNav from "./navbar/navbar";
 import Playlist from "./playlist/playlist_container";
+
 class SideBar extends React.Component {
   render() {
     return (
