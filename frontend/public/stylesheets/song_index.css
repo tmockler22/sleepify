@@ -3,7 +3,8 @@
   display: flex;
   margin-top: 2px;
   background: black;
-  margin-left: 14px;
+  width: calc(100% - 20px);
+  margin-left: 14px; 
 }
 
 .song-item-info {
@@ -36,16 +37,16 @@
 .song:hover {
   cursor: pointer;
   transition: 0.5s ease;
-  background: #323232;
+  background: hsla(0,0%,100%,.1);;
 }
 
 .play-button {
   position: absolute;
-  right: 18px;
-  top: 28px;
+  left: 18px;
+  top: 22px;
   display: none;
   color: green;
-  font-size: 30px;
+  font-size: 38px;
   cursor: pointer;
 }
 
@@ -87,6 +88,22 @@
   width: 90%;
   min-width: 600px; 
   margin-top: 14px;
+}
+
+.options-song {
+  color: gray; 
+  position: absolute;
+  right: 16px;
+  top: 30px;
+  display: none; 
+}
+
+.song:hover .options-song {
+  display: block; 
+}
+
+.options-song:hover {
+  cursor: pointer; 
 }
 
 .songs-list-title {

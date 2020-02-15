@@ -7,6 +7,12 @@ export const createPlaylist = playlist => dispatch => {
   );
 };
 
+export const addSongToPlaylist = (songId, playlistId) => dispatch => {
+  return PlaylistUtil.addSongToPlaylist(songId, playlistId).then(playlist =>
+    dispatch(receivePlaylist(playlist))
+  );
+};
+
 const receivePlaylist = playlist => {
   return {
     type: RECEIVE_PLAYLIST,

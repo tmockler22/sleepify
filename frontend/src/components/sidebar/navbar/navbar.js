@@ -6,6 +6,7 @@ import magGlassIcon from "../../../assets/images/magnifying-glass-icon.png";
 import libraryIcon from "../../../assets/images/library-icon.png";
 class SideBarNav extends React.Component {
   render() {
+    const search = "";
     return (
       <nav id="navBar">
         <Link className="navBar-link" to="/open">
