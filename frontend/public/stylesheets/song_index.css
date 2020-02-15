@@ -3,12 +3,22 @@
   display: flex;
   margin-top: 2px;
   background: black;
-  margin-left: 30px;
+  margin-left: 14px;
 }
 
 .song-item-info {
   align-self: center;
   margin-left: 14px;
+}
+
+.search-glass {
+  color: gray; 
+  position: fixed;
+  top: 27px;
+  left: 372px;
+  font-size: 22px;
+  z-index: 1500;
+  z-index: 2500; 
 }
 
 .search-input {
@@ -19,7 +29,7 @@
   font-size: 14px;
   position: fixed;
   top: 15px;
-  left: 255px;
+  left: 355px;
   z-index: 1500;
 }
 
@@ -74,7 +84,9 @@
 .songs-list {
   display: flex;
   flex-direction: column;
-  width: 600px;
+  width: 90%;
+  min-width: 600px; 
+  margin-top: 14px;
 }
 
 .songs-list-title {

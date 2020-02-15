@@ -28,12 +28,12 @@ const UserSchema = new Schema({
       ref: "playlists"
     }
   ],
-    likedSongs: [
+  likedSongs: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'songs'
+      ref: "songs"
     }
-  ]                            
+  ]
 });
 
 //stores playlist onto users table upon post request of a playlist
@@ -51,7 +51,5 @@ UserSchema.statics.addPlaylist = (playlistId, userId) => {
     });
   });
 };
-
-
 
 module.exports = User = mongoose.model("User", UserSchema);

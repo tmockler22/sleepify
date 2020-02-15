@@ -232,6 +232,7 @@ button {
   top: 80px;
   margin-bottom: 200px;
   width: calc(100% - 230px);
+  min-width: 600px; 
 }
 
 /* player info  */
