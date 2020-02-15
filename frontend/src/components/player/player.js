@@ -1,5 +1,6 @@
 import React from 'react';
 import PlayerInfoContainer from './player_info_container';
+import { Link } from 'react-router-dom';
 
 class Player extends React.Component {
     constructor(props) {
@@ -207,7 +208,7 @@ class Player extends React.Component {
                 <i className="fas fa-step-forward"></i>
             </button>
         )
-
+     
         const { play, time, duration } = this.state;
         const { currentTrack } = this.props;
         return (
@@ -253,6 +254,9 @@ class Player extends React.Component {
                 </div>
 
                 <div className="p-volume-container">
+                    <Link to="/open/queue"><div className="p-queue-list">
+                        <i className="fas fa-indent"></i>
+                    </div></Link>
                     {this.volumeBtn()}
                     <input
                         className="p-volume"
