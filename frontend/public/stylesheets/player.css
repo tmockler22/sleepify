@@ -13,6 +13,16 @@
   min-height: 1050px;
 }
 
+.open-player-body {
+  position: absolute;
+  left: 230px;
+  top: 80px;
+  width: calc(100% - 230px);
+  min-width: 600px; 
+  overflow: auto;
+  max-height: calc(100% - 180px);
+}
+
 html,
 body,
 button,
@@ -226,14 +236,6 @@ button {
   left: 210px;
 }
 
-.open-player-body {
-  position: absolute;
-  left: 230px;
-  top: 80px;
-  margin-bottom: 200px;
-  width: calc(100% - 230px);
-  min-width: 600px; 
-}
 
 /* player info  */
 .pi-container {

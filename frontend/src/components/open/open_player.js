@@ -18,7 +18,7 @@ class Open extends React.Component {
   };
   render() {
     return (
-      <div className="open-player">
+      <div className="open-player" onContextMenu={e => e.preventDefault()}>
         <Mainview />
         <OpenHeader />
         <SideBar />

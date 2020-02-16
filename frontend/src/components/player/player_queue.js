@@ -3,6 +3,9 @@ import React from 'react';
 class PlayerQueue  extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            
+        }
         this.comingUp = this.comingUp.bind(this);
     }
 
