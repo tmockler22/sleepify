@@ -14,7 +14,6 @@ router.post("/create", (req, res) => {
     title: req.body.title,
     user: req.body.user.id
   });
-  console.log(newPlaylist);
   newPlaylist
     .save()
     .then(playlist => User.addPlaylist(playlist._id, playlist.user));
@@ -24,4 +23,5 @@ router.post("/create", (req, res) => {
     playlist: newPlaylist
   });
 });
+
 module.exports = router;

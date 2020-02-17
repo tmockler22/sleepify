@@ -1,4 +1,7 @@
-import { RECEIVE_PLAYLIST } from "../actions/playlist_actions";
+import {
+  RECEIVE_PLAYLIST,
+  RECEIVE_USER_PLAYLISTS
+} from "../actions/playlist_actions";
 
 const playlistReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -7,6 +10,8 @@ const playlistReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, {
         [action.playlist.data.playlist._id]: action.playlist.data.playlist
       });
+    case RECEIVE_USER_PLAYLISTS:
+      return action.playlists.data;
     default:
       return oldState;
   }
