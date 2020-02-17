@@ -31,20 +31,22 @@ const playerQueueReducer = (state=[], action) => {
             nextState.unshift(nextState.pop());
             return nextState;
         case SHUFFLE_TRACKS:
-            return shuffleArray(nextState);
+            return shuffleArray(nextState, state[0]);
         default: 
             return state;
     }
 }
 
-const shuffleArray = arr => {
+const shuffleArray = (arr, first) => {
     let temp;
     let newPos;
-    for (let i=0; i < arr.length; i++) {
-        newPos = Math.floor(Math.random() * (i+1));
-        temp = arr[i];
-        arr[i] = arr[newPos];
-        arr[newPos] = temp;
+    while (arr[0] === first) {
+        for (let i=0; i < arr.length; i++) {
+            newPos = Math.floor(Math.random() * (i+1));
+            temp = arr[i];
+            arr[i] = arr[newPos];
+            arr[newPos] = temp;
+        }
     }
     return arr;
 }
