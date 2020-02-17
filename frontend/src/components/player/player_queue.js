@@ -10,6 +10,7 @@ class PlayerQueue  extends React.Component {
         this.closeTrack = this.closeTrack.bind(this); 
         this.moveUp = this.moveUp.bind(this);
         this.moveDown = this.moveDown.bind(this);
+        this.clearTracks = this.clearTracks.bind(this);
     }
 
     comingUp() {
@@ -69,6 +70,11 @@ class PlayerQueue  extends React.Component {
         }
     }
 
+    clearTracks(e) {
+        e.stopPropagation();
+        this.props.removeAll();
+    }
+
     render() {
         const { currentTrack } = this.props;
         if (!currentTrack) return (
@@ -83,7 +89,7 @@ class PlayerQueue  extends React.Component {
             <div className="open-player-body">
                 <div className="pq-container">
                     <h1>Play Queue</h1>
-                    <h2>Now Playing</h2>
+                    <h2>Now Playing </h2>
                     <div onClick={e => this.state.active !== currentTrack._id ? this.setState({ active: currentTrack._id }) : this.setState({ active: "" })}
                         id={this.state.active === currentTrack._id ? "active" : null}
                         className={`pq-track-container ${currentTrack._id}`}>
@@ -108,7 +114,7 @@ class PlayerQueue  extends React.Component {
                             </li>
                         </ul>
                     </div>
-                    <h2>Next Up</h2>
+                    <h2>Next Up {this.props.nextTrack ? <div id="pq-options-clear" onClick={this.clearTracks}>Clear All</div> : null }</h2>
                     {this.comingUp()}
                 </div>
             </div>

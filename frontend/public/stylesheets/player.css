@@ -430,3 +430,16 @@ button {
   display: flex;
   color: #43e5f7;
 }
+
+#pq-options-clear {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  color: #848282;
+  margin-left: 5px;
+}
+
+#pq-options-clear:hover {
+  color: #9b9999;
+  text-decoration: underline;
+}

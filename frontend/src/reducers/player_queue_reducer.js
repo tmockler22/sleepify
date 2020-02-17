@@ -25,7 +25,7 @@ const playerQueueReducer = (state=[], action) => {
         case REMOVE_TRACK:
             return nextState.filter(track => track._id !== action.trackId);
         case REMOVE_ALL_TRACKS:
-            return [];
+            return [nextState[0]];
         case NEXT_TRACK:
             nextState.push(nextState.shift());
             return nextState;
