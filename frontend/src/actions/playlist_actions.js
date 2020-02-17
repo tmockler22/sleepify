@@ -28,7 +28,6 @@ export const fetchUserPlaylists = userId => dispatch => {
 };
 
 const receivePlaylists = playlists => {
-  debugger;
   return {
     type: RECEIVE_USER_PLAYLISTS,
     playlists

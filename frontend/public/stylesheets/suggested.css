@@ -1,0 +1,65 @@
+.genre-title {
+  font-size: 24px;
+  color: white; 
+  margin: 30px 0px 20px 20px; 
+}
+
+.suggested-genres {
+  display: flex; 
+}
+
+.genre-1 {
+  display: flex; 
+  font-size: 30px; 
+  padding: 20px 20px; 
+  min-width: 280px; 
+  height: 200px; 
+  background: linear-gradient(180deg,transparent,rgb(65, 0, 245));
+  color: white; 
+  border-radius: 8px; 
+  margin-left: 20px; 
+}
+
+.genre-1:hover {
+  cursor: pointer; 
+}
+
+.genre-2:hover {
+  cursor: pointer; 
+}
+
+.genre-3:hover {
+  cursor: pointer; 
+}
+
+.genre-2 {
+  display: flex; 
+  font-size: 30px; 
+  padding: 20px 20px; 
+  min-width: 280px; 
+  height: 200px; 
+  background: linear-gradient(180deg,transparent,rgb(235, 30, 50));
+  color: white; 
+  border-radius: 8px; 
+  margin-left: 20px; 
+}
+
+.genre-3 {
+  display: flex; 
+  font-size: 30px; 
+  padding: 20px 20px; 
+  min-width: 280px; 
+  height: 200px; 
+  background: linear-gradient(180deg,transparent,rgb(100, 300, 45)); 
+  color: white; 
+  border-radius: 8px; 
+  margin-left: 20px; 
+}
+
+.genre-img {
+  height: 120px; 
+  align-self: flex-end; 
+  margin-bottom: -14px; 
+  padding-left: 114px;   
+  opacity: .8; 
+}

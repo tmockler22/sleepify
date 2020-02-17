@@ -28,10 +28,10 @@
 
 .artist-show-header {
   display: flex; 
-  margin-top: 60px; 
   padding-bottom: 30px; 
   border-bottom: 1px solid hsla(0,0%,100%,.1);
-  width: 80%;  
+  width: 90%; 
+  margin: 60px auto;   
   
 }
 
@@ -48,8 +48,8 @@
 }
 
 .album-show-songs {
-    margin-top: 70px;
-    width: 90%;
+    margin: 70px auto;
+    width: calc(100% - 300px);
 }
 
 .album-background-photo {

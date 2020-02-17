@@ -22,6 +22,29 @@ router.get('/search/:search', async (req, res) => {
   res.json(songObj)
 });
 
+router.get('/genre/:genre', async (req, res) => {
+  let genre = req.params.genre;
+  let serachGenre;  
+  if (genre === "softrock"){
+    searchGenre = "Soft Rock";
+  } else if (genre === "classicrock") {
+    searchGenre = "Classic Rock";
+  } else if (genre === "altrock") {
+    searchGenre = "Alternative Rock";
+  }
+  const songObj = {};
+  const songs = await Song.find({ genre: searchGenre })
+    .limit(20)
+    .populate('artist')
+    .catch(err => res.status(404).json({ nosongsfound: 'No songs found' }));
+  for (let index = songs.length - 1; index > -1; index--) {
+    const song = songs[index].toJSON();
+    songObj[song._id] = song
+  }
+  res.json(songObj)
+});
+
+
 router.get('/', (req, res) => {
   Song.find()
     .populate('artist')

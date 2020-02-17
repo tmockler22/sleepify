@@ -14,7 +14,7 @@ class ChoosePlaylist extends React.Component {
   }
 
   render() {
-    debugger; 
+  
     return (
       <div className="create-playlist-modal">
         <button className="btn-transparent" onClick={this.handleClick}>

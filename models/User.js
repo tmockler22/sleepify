@@ -38,7 +38,6 @@ const UserSchema = new Schema({
 
 //stores playlist onto users table upon post request of a playlist
 UserSchema.statics.addPlaylist = (playlistId, userId) => {
-  debugger;
   const Playlist = mongoose.model("playlists");
   const User = mongoose.model("User");
 
