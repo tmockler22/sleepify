@@ -153,7 +153,6 @@ router.post("/login", (req, res) => {
   });
 
   router.get("/:id/playlists", async (req, res) => {
-    console.log(req.params.id);
     const playlistsObj = {};
     const user = await User.findById(req.params.id)
       .populate("playlists")

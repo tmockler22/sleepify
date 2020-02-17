@@ -1,7 +1,3 @@
-
-/* body {
-  background: #181818;
-} */
 .mainview {
   position: fixed;
   top: 72px;
@@ -54,7 +50,6 @@ button {
   display: flex;
   align-items: center;
 }
-
 
 /* Center */
 .p-audio-control {
@@ -226,11 +221,11 @@ button {
 
 /* player info  */
 .pi-container {
-    width: 200px;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    padding-left: 15px;
+  width: 200px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
 }
 
 .pi-image {
@@ -246,7 +241,8 @@ button {
   position: relative;
 }
 
-.pi-details-title, .pi-details-artist {
+.pi-details-title,
+.pi-details-artist {
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
@@ -255,13 +251,14 @@ button {
   padding: 2px 0;
 }
 
-.pi-details-title:hover, .pi-details-artist:hover {
+.pi-details-title:hover,
+.pi-details-artist:hover {
   text-decoration: underline;
 }
 
 .pi-details-title {
   color: white;
-  font-size: 14px;  
+  font-size: 14px;
 }
 
 .pi-details-artist {
@@ -270,8 +267,8 @@ button {
 }
 
 .p-now-playing button {
-    color: white;
-    font-weight: bold;
+  color: white;
+  font-weight: bold;
 }
 
 .pi-details-next {

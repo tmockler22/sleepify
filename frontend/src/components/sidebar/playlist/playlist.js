@@ -16,12 +16,16 @@ class Playlist extends React.Component {
   renderPlaylists() {
     if (this.props.playlists) {
       return (
-        <ul id="playlists">
+        <ul id="playlists-items-container">
           {Object.values(this.props.playlists).map((playlist, i) => (
             <div draggable="true" className="playlists-item-container">
-              <li className="playlist" key={`playlist-${i}`}>
+              <a
+                href={`/playlist/${playlist.id}`}
+                className="playlist"
+                key={`playlist-${i}`}
+              >
                 {playlist.title}
-              </li>
+              </a>
             </div>
           ))}
         </ul>

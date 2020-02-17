@@ -1,10 +1,11 @@
 #open-header-container {
   display: flex;
   justify-content: space-between;
+  position: fixed;
 }
 
 #navigation-arrows-container {
-  margin-left: 19%;
+  margin-left: calc(100% - 890px);
   color: #fff;
 }
 .navigation-arrow-circle:first-child {

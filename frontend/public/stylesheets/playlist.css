@@ -1,9 +1,6 @@
 .playlist-container {
-  color: #b3b3b3;
   display: flex;
   flex-direction: column;
-  /* position: fixed;
-  top: 187px; */
 }
 
 .playlist-container h4 {
@@ -22,21 +19,30 @@
 }
 
 .divider {
-  margin: 8px var(--left-sidebar-padding-right) 8px
-    var(--left-sidebar-padding-left);
+  margin: 8px;
   border-color: #282828;
 }
+
+#playlists-items-container {
+  overflow: auto;
+  height: calc(100% - 375px);
+}
+
 .playlists-item-container {
-  margin: 0;
-  padding: 0;
+  text-indent: 0px;
+  padding-right: 30px;
   display: block;
-  overflow: hidden;
   text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap;
+  margin: 8px 0px 8px 35px;
 }
 
 .playlist {
-  margin: 15px 0px 15px 35px;
+  text-decoration: none;
+  color: #b3b3b3;
+  font-size: 14px;
+  width: 16px;
 }
 
 .playlist:hover {
