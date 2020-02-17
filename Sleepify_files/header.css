@@ -16,7 +16,6 @@
   position: fixed;
   right: 0;
   left: 230px;
-  z-index: 10;
   background-color: rgba(0, 0, 0, 0.85);
   max-width: 1808px;
   max-height: 80px;
