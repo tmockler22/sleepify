@@ -1,6 +1,7 @@
 import React from "react";
 import { openModal, closeModal } from "../../../actions/modal_actions";
 import CreatePlaylistContainer from "./create_playlist_container";
+import ChoosePlaylistContainer from "./choose_playlist_container";
 import { connect } from "react-redux";
 
 function Modal({ modal, closeModal }) {
@@ -11,6 +12,9 @@ function Modal({ modal, closeModal }) {
   switch (modal) {
     case "createPlaylist":
       component = <CreatePlaylistContainer />;
+      break;
+    case "choosePlaylist":
+      component = <ChoosePlaylistContainer />;
       break;
     default:
       return null;
