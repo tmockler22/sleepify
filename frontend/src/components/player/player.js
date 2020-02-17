@@ -39,6 +39,12 @@ class Player extends React.Component {
         if (prevProps.currentTrack !== this.props.currentTrack) {
             clearInterval(this.interval);
         }
+
+        if (prevProps.currentTrack !== this.props.currentTrack && this.props.currentTrack === undefined) {
+            this.setState({ pause: true });
+            this.audio.pause();
+            clearInterval(this.interval);
+        }
     }
 
     componentWillUnmount() {

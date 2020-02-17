@@ -328,6 +328,7 @@ button {
  padding: 0 30px;
  display: flex;
  flex-direction: column;
+ height: 100%;
 }
 
 .pq-container h1 {
@@ -353,7 +354,7 @@ button {
   position: relative;
 }
 
-.pq-track-container:hover, .pq-next-container:hover {
+.pq-track-container:hover {
   background: #2a2a2a;
 }
 
@@ -402,16 +403,30 @@ button {
   color: #575756;
 }
 
-.pq-close {
-  display: none;
-}
-
-.pq-next-container:hover .pq-close, .pq-track-container:hover .pq-close {
-  display: block;
+.pq-options, .pq-options-active {
   cursor: pointer;
   position: absolute;
   right: 20px;
-  color: #43e5f7;
+  color: #8482823b;
   font-size: 18px;
   top: 20px;
+  width: 100px;
+  justify-content: space-evenly;
+}
+
+.pq-options {
+  display: none;
+}
+
+.pq-next-container:hover .pq-options, .pq-track-container:hover .pq-options {
+  display: flex;
+}
+
+#active {
+  background: #2a2a2a;
+}
+
+.pq-options-active {
+  display: flex;
+  color: #43e5f7;
 }

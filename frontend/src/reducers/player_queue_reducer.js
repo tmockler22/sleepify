@@ -7,6 +7,8 @@ import {
     NEXT_TRACK,
     PREV_TRACK,
     SHUFFLE_TRACKS,
+    MOVE_UP,
+    MOVE_DOWN,
 } from '../actions/player_queue_actions';
 
 const playerQueueReducer = (state=[], action) => {
@@ -32,6 +34,10 @@ const playerQueueReducer = (state=[], action) => {
             return nextState;
         case SHUFFLE_TRACKS:
             return shuffleArray(nextState, state[0]);
+        case MOVE_UP: 
+            return moveUp(nextState, action.track);
+        case MOVE_DOWN: 
+            return moveDown(nextState, action.track);
         default: 
             return state;
     }
@@ -49,6 +55,29 @@ const shuffleArray = (arr, first) => {
         }
     }
     return arr;
+}
+
+const moveUp = (arr, track) => {
+    let idx = arr.indexOf(track);
+    if (idx !== 0) {
+        arr[idx] = arr[idx-1]
+        arr[idx-1] = track;
+        return arr;
+    } else {
+        return arr;
+    }
+
+}
+
+const moveDown = (arr, track) => {
+    let idx = arr.indexOf(track);
+    if (idx !== arr.length-1) {
+        arr[idx] = arr[idx+1]
+        arr[idx+1] = track;
+        return arr;
+    } else {
+        return arr;
+    }
 }
 
 export default playerQueueReducer;

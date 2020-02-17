@@ -4,16 +4,23 @@ class PlayerQueue  extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+            active: ""
         }
         this.comingUp = this.comingUp.bind(this);
-        this.closeTrack = this.closeTrack.bind(this);    }
+        this.closeTrack = this.closeTrack.bind(this); 
+        this.moveUp = this.moveUp.bind(this);
+        this.moveDown = this.moveDown.bind(this);
+    }
 
     comingUp() {
         let nextUp;
         if (this.props.nextTrack) {
            nextUp = this.props.tracks.slice(1).map((track, i) => (
-                <div key={i} className="pq-next-container">
+                <div 
+                    onClick={e => this.state.active !== track._id ? this.setState({active: track._id}) : this.setState({active: ""})} 
+                    key={i} 
+                    id={this.state.active === track._id ? "active" : null}
+                    className={`pq-next-container ${track._id}`}>
                      <i className="fas fa-bed"></i>
                      <div className="pq-details">
                          <span className="pq-title">
@@ -22,31 +29,64 @@ class PlayerQueue  extends React.Component {
                          <span className="pq-artist">
                              {track.artist.name}
                          </span>
-                       <span className="pq-close" onClick={this.closeTrack(track)}><i className="fas fa-times"></i></span>
-
                     </div>
+                    <ul className={this.state.active === track._id ? "pq-options-active" : "pq-options"}>
+                        <li>
+                            <i onClick={this.moveUp(track)} className="fas fa-arrow-up"></i>
+                        </li>
+                        <li>
+                            <i onClick={this.moveDown(track)} className="fas fa-arrow-down"></i>
+                        </li>
+                        <li className="pq-close" onClick={this.closeTrack(track)}>
+                            <i className="fas fa-times"></i>
+                        </li>
+                    </ul>
                  </div>
             ))
         }
        return nextUp;
     }
 
+
+    moveUp(track) {
+        return e => {
+            e.stopPropagation();
+            this.props.moveUp(track);
+        }
+    }
+
+    moveDown(track) {
+        return e => {
+            e.stopPropagation();
+            this.props.moveDown(track);
+        }
+    }
+
     closeTrack(track) {
         return e => {
+            e.stopPropagation();
             this.props.removeTrack(track._id);
         }
     }
 
     render() {
         const { currentTrack } = this.props;
-        if (!currentTrack) return null;
+        if (!currentTrack) return (
+            <div className="open-player-body">
+                <div className="pq-container">
+                    <h1>Play Queue (Empty)</h1>
+                </div>
+            </div>
+        );
         
         return (
             <div className="open-player-body">
                 <div className="pq-container">
                     <h1>Play Queue</h1>
                     <h2>Now Playing</h2>
-                    <div className="pq-track-container">
+                    <div onClick={e => this.state.active !== currentTrack._id ? this.setState({ active: currentTrack._id }) : this.setState({ active: "" })}
+                        id={this.state.active === currentTrack._id ? "active" : null}
+                        className={`pq-track-container ${currentTrack._id}`}>
                         <i className="fas fa-bed"></i>
                         <div className="pq-details">
                             <span className="pq-title">
@@ -56,7 +96,17 @@ class PlayerQueue  extends React.Component {
                                 {this.props.currentTrack.artist.name}
                             </span>
                         </div>
-                        <span className="pq-close" onClick={this.closeTrack(currentTrack)}><i className="fas fa-times"></i></span>
+                       <ul className={this.state.active === currentTrack._id ? "pq-options-active" : "pq-options"}>
+                            <li>
+                                <i onClick={this.moveUp(currentTrack)} className="fas fa-arrow-up"></i>
+                            </li>
+                            <li>
+                                <i onClick={this.moveDown(currentTrack)} className="fas fa-arrow-down"></i>
+                            </li>
+                            <li className="pq-close" onClick={this.closeTrack(currentTrack)}>
+                                <i className="fas fa-times"></i>
+                            </li>
+                        </ul>
                     </div>
                     <h2>Next Up</h2>
                     {this.comingUp()}
