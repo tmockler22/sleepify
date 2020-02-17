@@ -14,10 +14,13 @@ class NavBar extends React.Component {
   }
 
   getLinks() {
+    debugger;
     if (this.props.loggedIn) {
       return (
         <div className="greeting-container">
-          <h2 className="header-name">Hi {this.props.currentUser.username}</h2>
+          <h2 className="header-name">
+            Hello, {this.props.currentUser.username}
+          </h2>
           <Link className="nav-link" onClick={this.logoutUser} to="">
             Logout
           </Link>

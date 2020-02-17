@@ -1,6 +1,7 @@
 .playlist-container {
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 .playlist-container h4 {
