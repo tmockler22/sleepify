@@ -21,7 +21,7 @@ const playerQueueReducer = (state=[], action) => {
             nextState.push(action.track);
             return nextState;
         case REMOVE_TRACK:
-            //to be added
+            return nextState.filter(track => track._id !== action.trackId);
         case REMOVE_ALL_TRACKS:
             return [];
         case NEXT_TRACK:

@@ -7,13 +7,13 @@ class PlayerQueue  extends React.Component {
             
         }
         this.comingUp = this.comingUp.bind(this);
-    }
+        this.closeTrack = this.closeTrack.bind(this);    }
 
     comingUp() {
         let nextUp;
         if (this.props.nextTrack) {
-           nextUp = this.props.tracks.slice(1).map(track => (
-                <div className="pq-next-container">
+           nextUp = this.props.tracks.slice(1).map((track, i) => (
+                <div key={i} className="pq-next-container">
                      <i className="fas fa-bed"></i>
                      <div className="pq-details">
                          <span className="pq-title">
@@ -22,11 +22,19 @@ class PlayerQueue  extends React.Component {
                          <span className="pq-artist">
                              {track.artist.name}
                          </span>
+                       <span className="pq-close" onClick={this.closeTrack(track)}><i className="fas fa-times"></i></span>
+
                     </div>
                  </div>
             ))
         }
        return nextUp;
+    }
+
+    closeTrack(track) {
+        return e => {
+            this.props.removeTrack(track._id);
+        }
     }
 
     render() {
@@ -48,6 +56,7 @@ class PlayerQueue  extends React.Component {
                                 {this.props.currentTrack.artist.name}
                             </span>
                         </div>
+                        <span className="pq-close" onClick={this.closeTrack(currentTrack)}><i className="fas fa-times"></i></span>
                     </div>
                     <h2>Next Up</h2>
                     {this.comingUp()}
