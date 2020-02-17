@@ -14,7 +14,7 @@ class AlbumShow extends React.Component {
     let album = this.props.album[this.props.match.params.id];
     let songs = album.songs;
     if (album) {
-      liSongs = songs.map(song => <AlbumSongIndexItem key={song.id} song={song} playTrack={this.props.playTrack} />);
+      liSongs = songs.map(song => <AlbumSongIndexItem key={song.id} song={song} playTrack={this.props.playTrack} addSongToPlaylist={this.props.addSongToPlaylist} openModal={this.props.openModal} closeModal={this.props.closeModal} />);
     }
     return (
         <div className="album-page"> 

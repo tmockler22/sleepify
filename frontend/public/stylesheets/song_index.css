@@ -37,7 +37,7 @@
 .song:hover {
   cursor: pointer;
   transition: 0.5s ease;
-  background: hsla(0,0%,100%,.1);;
+  background: #282828;
 }
 
 .play-button {

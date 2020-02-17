@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import plusIcon from "../../../assets/images/plus-icon.png";
-import ContextMenu from "react-context-menu";
+// import ContextMenu from "react-context-menu";
 
 class Playlist extends React.Component {
   constructor(props) {
