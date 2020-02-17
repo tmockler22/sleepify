@@ -363,6 +363,7 @@ button {
   flex-direction: column;
 }
 
+
 .fa-bed {
   padding: 0 14px 0 0;
   margin-bottom: 10px;
@@ -385,10 +386,17 @@ button {
   font-size: 14px;
   font-weight: 100;
   margin-top: 2px;
+  cursor: pointer;
 }
+
 
 .pq-track-container .pq-artist {
   color: #838282;
+}
+
+.pq-track-container .pq-artist:hover {
+  color: #b6b5b5;
+  text-decoration: underline;
 }
 
 .pq-next-container > .fa-bed {
@@ -401,6 +409,11 @@ button {
 
 .pq-next-container .pq-artist {
   color: #575756;
+}
+
+.pq-next-container .pq-artist:hover {
+  text-decoration: underline;
+  color: #717171;
 }
 
 .pq-options, .pq-options-active {

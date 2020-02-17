@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 class PlayerQueue  extends React.Component {
     constructor(props) {
@@ -27,9 +28,9 @@ class PlayerQueue  extends React.Component {
                          <span className="pq-title">
                              {track.title}
                          </span>
-                         <span className="pq-artist">
-                             {track.artist.name}
-                         </span>
+                       <Link to={`/open/artist/${track.artist._id}`}><span className="pq-artist">
+                            {track.artist.name}
+                         </span></Link>
                     </div>
                     <ul className={this.state.active === track._id ? "pq-options-active" : "pq-options"}>
                         <li>
@@ -98,9 +99,9 @@ class PlayerQueue  extends React.Component {
                             <span className="pq-title">
                                 {this.props.currentTrack.title}
                             </span>
-                            <span className="pq-artist">
+                            <Link to={`/open/artist/${currentTrack.artist._id}`}><span className="pq-artist">
                                 {this.props.currentTrack.artist.name}
-                            </span>
+                            </span></Link>
                         </div>
                        <ul className={this.state.active === currentTrack._id ? "pq-options-active" : "pq-options"}>
                             <li>
