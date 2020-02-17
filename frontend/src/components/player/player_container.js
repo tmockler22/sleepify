@@ -10,6 +10,7 @@ import {
 
 } 
 from '../../actions/player_queue_actions';
+import { withRouter } from 'react-router-dom';
 
 
 const mapStateToProps = state => ({
@@ -30,4 +31,4 @@ const mapDispatchToProps = dispatch => ({
     shuffleTracks: () => dispatch(shuffleTracks()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Player);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Player));

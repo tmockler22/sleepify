@@ -3,8 +3,10 @@ import Player from "../player/player_container";
 import SideBar from "../sidebar/sidebar";
 import Search from "../index/search_container";
 import ArtistShow from "../show/artist_show_container";
+import PlayerQueueContainer from "../player/player_queue_container";
 import OpenHeader from "./open_header";
 import AlbumShow from "../show/album_show_container";
+
 
 // import { AuthRoute, ProtectedRoute } from "../../util/route_util";
 import { Switch, Route } from "react-router-dom";
@@ -24,6 +26,7 @@ class Open extends React.Component {
         <Player />
         <Switch>
           <Route path="/open/search" component={Search} />
+          <Route path='/open/queue' component={PlayerQueueContainer} />
           <Route
             path="/open/artist/:id"
             component={ArtistShow}

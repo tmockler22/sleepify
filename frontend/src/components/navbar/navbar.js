@@ -18,7 +18,7 @@ class NavBar extends React.Component {
       return (
         <div className="greeting-container">
           <h2 className="header-name">Hi {this.props.currentUser.username}</h2>
-          <Link className="nav-link" onClick={this.logoutUser}>
+          <Link className="nav-link" onClick={this.logoutUser} to="">
             Logout
           </Link>
         </div>

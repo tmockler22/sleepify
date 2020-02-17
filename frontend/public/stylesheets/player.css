@@ -11,7 +11,6 @@
   width: 100%;
   height: 100%;
   min-height: 1050px;
-  z-index: -1;
 }
 
 html,
@@ -152,8 +151,20 @@ button {
 .p-volume-container {
   display: flex;
   align-items: center;
-  width: 110px;
+  justify-content: flex-end;
+  width: 215px;
   padding-right: 15px;
+}
+
+.p-queue-list {
+  cursor: pointer;
+  color: #b3b3b3;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.p-queue-list:hover {
+  color: white;
 }
 
 .p-volume-btn {
@@ -231,6 +242,7 @@ button {
     display: flex;
     align-items: center;
     padding-left: 15px;
+    overflow-x: hidden;
 }
 
 .pi-image {
@@ -306,4 +318,83 @@ button {
 
 .fa-heart:hover {
   color: white;
+}
+
+/* playerqueue */
+
+.pq-container {
+ padding: 0 30px;
+ display: flex;
+ flex-direction: column;
+}
+
+.pq-container h1 {
+  font-size: 34px;
+  margin: 22px 0;
+  color: white;
+  font-weight: bold;
+}
+
+.pq-container h2 {
+  font-size: 18px;
+  margin: 24px 0;
+  color: white;
+  font-weight: 200;
+}
+
+.pq-track-container, .pq-next-container {
+  display: flex;
+  height: 63px;
+  align-items: center;
+  padding: 0 15px;
+  transition: ease 0.4s;
+}
+
+.pq-track-container:hover {
+  background: #2a2a2a;
+}
+
+.pq-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-bed {
+  padding: 0 14px 0 0;
+  margin-bottom: 10px;
+  }
+
+.pq-track-container > .fa-bed { 
+  color: #43e5f7;
+}
+
+.pq-title {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.pq-track-container .pq-title {
+  color: #43e5f7;
+}
+
+.pq-artist {
+  font-size: 14px;
+  font-weight: 100;
+  margin-top: 2px;
+}
+
+.pq-track-container .pq-artist {
+  color: #838282;
+}
+
+.pq-next-container > .fa-bed {
+  color: #686867;
+}
+
+.pq-next-container .pq-title {
+  color: #838282;
+}
+
+.pq-next-container .pq-artist {
+  color: #575756;
 }

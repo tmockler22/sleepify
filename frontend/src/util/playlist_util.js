@@ -9,4 +9,8 @@ export const addSongToPlaylist = (songId, playlistId) => {
   return axios.patch(`/api/playlists/addto/${playlistId}`, data)
 };
 
+export const fetchUserPlaylists = userId => {
+  return axios.get(`/api/users/${userId}/playlists`);
+};
+//to routes
 
