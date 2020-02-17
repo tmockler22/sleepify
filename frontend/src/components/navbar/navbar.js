@@ -7,9 +7,7 @@ class NavBar extends React.Component {
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
   }
-  componentDidMount () {
-    this.props.fetchUser(this.props.currentUserId);
-  }
+
 
   logoutUser(e) {
     e.preventDefault();
@@ -17,7 +15,6 @@ class NavBar extends React.Component {
   }
 
   getLinks() {
-    debugger;
     if (this.props.loggedIn) {
       return (
         <div className="greeting-container">
