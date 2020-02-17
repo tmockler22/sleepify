@@ -1,9 +1,10 @@
 .song {
   position: relative;
   display: flex;
-  margin-top: 2px;
+  margin-top: 8px;
   background: black;
-  margin-left: 14px;
+  width: calc(100% - 20px);
+  margin-left: 14px; 
 }
 
 .song-item-info {
@@ -36,16 +37,16 @@
 .song:hover {
   cursor: pointer;
   transition: 0.5s ease;
-  background: #323232;
+  background: hsla(0,0%,100%,.1);;
 }
 
 .play-button {
   position: absolute;
-  right: 18px;
-  top: 28px;
+  left: 18px;
+  top: 22px;
   display: none;
   color: green;
-  font-size: 30px;
+  font-size: 38px;
   cursor: pointer;
 }
 
@@ -87,6 +88,73 @@
   width: 90%;
   min-width: 600px; 
   margin-top: 14px;
+}
+
+.options-song {
+  color: gray; 
+  position: absolute;
+  right: 16px;
+  top: 26px;
+  display: none; 
+  padding: 6px; 
+}
+
+.options-song:hover {
+  background: black; 
+  border: 1px solid transparent; 
+  border-radius: 100%; 
+}
+
+.options-popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.options-popup {
+  display: flex; 
+}
+
+.options-popup .optionstext {
+  visibility: hidden;
+  color: gray;
+  padding: 4px;
+  position: absolute;
+  left: -1400%;
+  top: -5px;
+  background-color: #282828;
+  border-radius: 0px; 
+  border: 1px solid black; 
+  width: 220px; 
+}
+
+.option-choice {
+  padding: 10px 10px; 
+}
+.option-choice:hover {
+  color: white;
+  background: #333; 
+}
+
+
+.options-popup .show {
+  visibility: visible;
+  z-index: 15; 
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+  text-align: left; 
+}
+
+.song:hover .options-song {
+  display: block; 
+}
+
+.options-song:hover {
+  cursor: pointer; 
 }
 
 .songs-list-title {

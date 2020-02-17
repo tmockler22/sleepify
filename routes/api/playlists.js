@@ -24,4 +24,12 @@ router.post("/create", (req, res) => {
   });
 });
 
+
+router.patch('/addto/:id', (req, res) => {
+    let playlistId = req.params.id;
+    let songId = req.body.songId; 
+  Playlist.addSongToPlaylist(playlistId, songId)
+    .then(playlist => playlist)
+})
+
 module.exports = router;

@@ -33,13 +33,7 @@ const SongSchema = new Schema({
   album: {
     type: Schema.Types.ObjectId,
     ref: "album"
-  },
-  playlists: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "playlists"
-    }
-  ],
+  }
   // usersLiked: [
   //   {
   //     type: Schema.Types.ObjectId,
