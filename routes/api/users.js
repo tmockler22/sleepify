@@ -158,6 +158,5 @@ router.get("/:id/playlists", async (req, res) => {
     }
     res.json(playlistsObj);
   });
-});
-
+  
 module.exports = router;
