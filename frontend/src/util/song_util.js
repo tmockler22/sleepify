@@ -13,5 +13,9 @@ export const searchSongs = search => {
 };
 
 export const toggleLike = (likeData) => {
-  return axios.patch(`/api/songs/like/${likeData.songId}`, likeData)
+  return axios.patch(`/api/songs/like/${likeData.songId}`, likeData);
 };
+
+// export const toggleMultipleLikes = (likeData) => {
+//   return axios.patch('api/songs/like', likeData);
+// }

@@ -2,14 +2,23 @@
 
 import { connect } from "react-redux";
 import { logout } from "../../actions/session_actions";
+import {fetchUser} from "../../actions/user_actions"
 
 import NavBar from "./navbar";
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.session.user,
+    currentUserId: state.session.user.id,
+    currentUser: state.entities.users[state.session.user.id],
     loggedIn: state.session.isAuthenticated
   };
 };
 
-export default connect(mapStateToProps, { logout })(NavBar);
+const mdp = dispatch => {
+  return {
+    logout, 
+    fetchUser: (id) => dispatch(fetchUser(id))
+  }
+}
+
+export default connect(mapStateToProps, mdp)(NavBar);

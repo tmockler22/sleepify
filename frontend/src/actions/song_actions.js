@@ -2,8 +2,8 @@ import * as SongApiUtil from "../util/song_util";
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
 
-export const CHANGE_LIKE = "CHANGE_LIKE";
-// export const DELETE_LIKE = "DELETE_LIKE"
+export const TOGGLE_SONG_LIKE = "TOGGLE_SONG_LIKE";
+export const CHANGE_MULTIPLE_SONG_LIKES = "CHANGE_MULTIPLE_SONG_LIKES"
 
 const receiveSong = (song) => {
   return {
@@ -21,14 +21,14 @@ const receiveSongs = (songs) => {
 
 const changeLike = (likeData) => {
   return ({
-    type: CHANGE_LIKE,
+    type: TOGGLE_SONG_LIKE,
     likeData
   })
 }
 
-// const deleteLike = (likeData) => {
+// const changeMultipleLikes = (likeData) => {
 //   return ({
-//     type: DELETE_LIKE,
+//     type: CHANGE_MULTIPLE_SONG_LIKES,
 //     likeData
 //   })
 // }
@@ -52,6 +52,6 @@ export const toggleLike = likeData => dispatch => {
   return SongApiUtil.toggleLike(likeData).then((likeData) => { dispatch(changeLike(likeData))});
 }
 
-// export const unlikeSong = likeData => dispatch => {
-//   return SongApiUtil.unlikeSong(likeData).then(data => dispatch(deleteLike(data)));
+// export const toggleMultipleLikes = likeData => dispatch => {
+//   return SongApiUtil.toggleMultipleLikes(likeData).then((likeData) => {dispatch(changeMultipleLikes(likeData))})
 // }

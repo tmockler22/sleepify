@@ -5,19 +5,37 @@ class PlayerInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            songLiked: this.props.currentSongLiked
+            songLiked: null,
         }
         this.toggleLike = this.toggleLike.bind(this);
+        this.renderLike = this.renderLike.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchUser(this.props.currentUserId);
     }
 
     toggleLike() {
         const likeData = {
             songId: this.props.currentTrack._id,
-            userId: this.props.currentUser.id,
+            userId: this.props.currentUserId,
         }
         this.props.toggleLike(likeData)
-        const likeStatus = !this.state.songLiked
-        this.setState({songLiked: likeStatus} )
+        this.setState({
+            songLiked: this.props.currentUser.likedSongs.includes(this.props.currentTrack._id)
+        })
+    }
+
+    renderLike() {
+        if(this.props.currentUser && this.state.songLiked) {
+            return (
+                <i className="fas fa-heart"></i>
+            )
+        } else {
+            return (
+                <i className="far fa-heart"></i>
+            )
+        }
     }
 
     render() {
@@ -51,7 +69,7 @@ class PlayerInfo extends React.Component {
                     {nextTrack ? <div className="pi-details-next">{msg}</div> : null }
                 </div>
                 <div onClick={this.toggleLike}>
-                    <i className="far fa-heart"></i>
+                    {this.renderLike()};
                 </div>
             </div>
         )

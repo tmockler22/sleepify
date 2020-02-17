@@ -11,3 +11,7 @@ export const fetchAlbum = id => {
 export const searchAlbums = search => {
   return axios.get(`/api/albums/search/${search}`);
 };
+
+export const toggleAlbumLike = likeData => {
+  return axios.patch(`api/albums/like/${likeData.albumId}`, likeData);
+}

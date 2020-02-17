@@ -17,6 +17,8 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
       date: req.user.date,
       birthdate: req.user.birthdate,
       likedSongs: req.user.likedSongs,
+      playlists: user.playlists,
+      likedAlbums: user.likedAlbums,
     });
   })
 
@@ -65,6 +67,7 @@ router.post('/register', (req, res) => {
         })
       }
     })
+    .catch(err => res.status(400).json({email: "A user has already registered with this address"}))
   })
 
 
@@ -93,14 +96,7 @@ router.post('/register', (req, res) => {
             bcrypt.compare(password, user.password)
             .then(isMatch => {
                 if (isMatch) {
-                const payload = {id: user.id, currentUser: {
-                  id: user.id,
-                  username: user.username,
-                  email: user.email,
-                  birthdate: user.birthdate,
-                  likedSongs: user.likedSongs,
-                  date: user.date
-                }};
+                const payload = {id: user.id, username: user.username };
     
                 jwt.sign(
                     payload,
@@ -123,7 +119,7 @@ router.post('/register', (req, res) => {
         bcrypt.compare(password, user.password)
         .then(isMatch => {
             if (isMatch) {
-            const payload = {id: user.id, name: user.name};
+            const payload = {id: user.id, username: user.username};
 
             jwt.sign(
                 payload,
@@ -135,13 +131,19 @@ router.post('/register', (req, res) => {
                     success: true,
                     token: 'Bearer ' + token
                 });
-              });
+              }); 
             } else {
                 return res.status(400).json({login: 'Incorrect username or password'});
             }
         }) 
   
       })
+  })
+
+  router.get('/:id', (req, res) => {
+    User.findById(req.params.id)
+      .then(user => {res.json(user)})
+      .catch(err => res.status(404).json({ nouserfound: 'No user found with that ID' }));
   })
 
 module.exports = router;

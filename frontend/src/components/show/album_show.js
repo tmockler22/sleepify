@@ -3,12 +3,46 @@ import AlbumSongIndexItem from '../index/album_song_index_item';
 import { Link } from 'react-router-dom';
 
 class AlbumShow extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      albumLiked: null,
+    }
+    
+    this.toggleAlbumLike = this.toggleAlbumLike.bind(this);
+    this.renderAlbumLike = this.renderAlbumLike.bind(this);
+  }
   componentDidMount() {
     this.props.fetchAlbum(this.props.match.params.id);
+    this.props.fetchUser(this.props.currentUserId);
+    // this.setState();
+  }
+
+  renderAlbumLike() {
+    if(this.props.currentUser && this.state.albumLiked) {
+      return (
+        <i className="fas fa-heart"></i>
+        )
+      } else {
+        return (
+          <i className="far fa-heart"></i>
+          )
+        }
+      }
+      
+  toggleAlbumLike() {
+    const likeData = {
+      userId: this.props.currentUser._id,
+      albumId: this.props.match.params.id,
+    }
+    this.props.toggleAlbumLike(likeData)
+    this.setState({
+      albumLiked: this.props.currentUser.likedAlbums.includes(this.props.match.params.id)
+    });
   }
 
   render() {
-
     let liSongs;
     if (!this.props.album[this.props.match.params.id]) return null;
     let album = this.props.album[this.props.match.params.id];
@@ -28,7 +62,7 @@ class AlbumShow extends React.Component {
             <p className="album-year">{album.year}  •  {songs.length} SONGS</p>
             <div className="album-show-interactive">
                 <button className="album-show-play">PLAY</button>
-                <p className="like-album"><i class="far fa-heart" aria-hidden="true"></i></p>
+                <div className="like-album" onClick={this.toggleAlbumLike}>{this.renderAlbumLike()}</div>
                 <p className="album-options"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></p>
             </div>
             </div>
