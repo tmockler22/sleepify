@@ -13,9 +13,6 @@
 }
 
 #open-header-container {
-  position: fixed;
-  right: 0;
-  left: 230px;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.85);
   width: 100%;
@@ -39,6 +36,9 @@
   margin: 15px;
 }
 
+.navbar-container {
+  z-index: 20;
+}
 .navbar-container div {
   color: white;
   width: 40%;

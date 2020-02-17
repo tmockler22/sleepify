@@ -146,4 +146,18 @@ router.post('/register', (req, res) => {
       .catch(err => res.status(404).json({ nouserfound: 'No user found with that ID' }));
   })
 
+router.get("/:id/playlists", async (req, res) => {
+    const playlistsObj = {};
+    const user = await User.findById(req.params.id)
+      .populate("playlists")
+      .catch(err => res.status(404).json({ nouserfound: "No user found" }));
+    const playlists = user.playlists;
+    for (let index = playlists.length - 1; index > -1; index--) {
+      const playlist = playlists[index].toJSON();
+      playlistsObj[playlist._id] = playlist;
+    }
+    res.json(playlistsObj);
+  });
+});
+
 module.exports = router;

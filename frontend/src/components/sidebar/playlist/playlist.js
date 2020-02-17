@@ -1,12 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import plusIcon from "../../../assets/images/plus-icon.png";
+// import ContextMenu from "react-context-menu";
 
 class Playlist extends React.Component {
+  constructor(props) {
+    super(props);
+    this.renderPlaylists = this.renderPlaylists.bind(this);
+  }
+
+  componentDidMount() {
+    if(this.props.currentUser) {
+    this.props.fetchUserPlaylists(this.props.currentUser.id);
+    }
+  }
+
+  renderPlaylists() {
+    if (this.props.playlists) {
+      return (
+        <ul id="playlists-items-container">
+          {Object.values(this.props.playlists).map((playlist, i) => (
+            <div draggable="true" className="playlists-item-container">
+              <a
+                href={`/playlist/${playlist.id}`}
+                className="playlist"
+                key={`playlist-${i}`}
+              >
+                {playlist.title}
+              </a>
+            </div>
+          ))}
+        </ul>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="playlist-container">
-        <h4>Playlist</h4>
+        <h4>Playlists</h4>
         <div className="navBar-item">
           <div
             className="navBar-link"
@@ -16,11 +48,8 @@ class Playlist extends React.Component {
             Create Playlist
           </div>
         </div>
-        <ul id="playlist">
-          {/* <li>HardRock ZzZzzzz</li>
-          <li>Softrock ZzZzzzz</li>
-          <li>Smooth Jazz ZzZzzzz</li> */}
-        </ul>
+        <hr className="divider"></hr>
+        {this.renderPlaylists()}
       </div>
     );
   }

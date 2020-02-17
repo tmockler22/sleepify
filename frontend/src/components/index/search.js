@@ -2,7 +2,7 @@ import React from 'react';
 import SongIndexContainer from './songs_container';
 import ArtistIndexContainer from './artist_container';
 import AlbumIndexContainer from './album_container';
-
+import Suggested from '../open/suggested';
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +26,7 @@ class Search extends React.Component {
           <ArtistIndexContainer search={this.state.search} />
           <AlbumIndexContainer search={this.state.search} />
         </div>
-        ) : <div></div>
+        ) : <div><Suggested /></div>
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PlayerInfoContainer from './player_info_container';
+import { Link } from 'react-router-dom';
 
 class Player extends React.Component {
     constructor(props) {
@@ -38,6 +39,12 @@ class Player extends React.Component {
         if (prevProps.currentTrack !== this.props.currentTrack) {
             clearInterval(this.interval);
         }
+
+        if (prevProps.currentTrack !== this.props.currentTrack && this.props.currentTrack === undefined) {
+            this.setState({ pause: true });
+            this.audio.pause();
+            clearInterval(this.interval);
+        }
     }
 
     componentWillUnmount() {
@@ -63,10 +70,12 @@ class Player extends React.Component {
         this.setState({ play: true })
         this.audio.volume = this.props.volume;
         this.interval = setInterval(() => {
-            this.setState({
-                time: this.audio.currentTime,
-                duration: this.audio.duration
-            })
+            if (this.audio) {
+                this.setState({
+                    time: this.audio.currentTime,
+                    duration: this.audio.duration
+                })
+            }
         }, 500)   
     }
 
@@ -207,7 +216,7 @@ class Player extends React.Component {
                 <i className="fas fa-step-forward"></i>
             </button>
         )
-
+     
         const { play, time, duration } = this.state;
         const { currentTrack } = this.props;
         return (
@@ -253,6 +262,9 @@ class Player extends React.Component {
                 </div>
 
                 <div className="p-volume-container">
+                    <Link to="/open/queue"><div className="p-queue-list">
+                        <i className="fas fa-indent"></i>
+                    </div></Link>
                     {this.volumeBtn()}
                     <input
                         className="p-volume"

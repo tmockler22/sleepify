@@ -7,6 +7,8 @@ import {
     NEXT_TRACK,
     PREV_TRACK,
     SHUFFLE_TRACKS,
+    MOVE_UP,
+    MOVE_DOWN,
 } from '../actions/player_queue_actions';
 
 const playerQueueReducer = (state=[], action) => {
@@ -21,9 +23,9 @@ const playerQueueReducer = (state=[], action) => {
             nextState.push(action.track);
             return nextState;
         case REMOVE_TRACK:
-            //to be added
+            return nextState.filter(track => track._id !== action.trackId);
         case REMOVE_ALL_TRACKS:
-            return [];
+            return [nextState[0]];
         case NEXT_TRACK:
             nextState.push(nextState.shift());
             return nextState;
@@ -31,22 +33,51 @@ const playerQueueReducer = (state=[], action) => {
             nextState.unshift(nextState.pop());
             return nextState;
         case SHUFFLE_TRACKS:
-            return shuffleArray(nextState);
+            return shuffleArray(nextState, state[0]);
+        case MOVE_UP: 
+            return moveUp(nextState, action.track);
+        case MOVE_DOWN: 
+            return moveDown(nextState, action.track);
         default: 
             return state;
     }
 }
 
-const shuffleArray = arr => {
+const shuffleArray = (arr, first) => {
     let temp;
     let newPos;
-    for (let i=0; i < arr.length; i++) {
-        newPos = Math.floor(Math.random() * (i+1));
-        temp = arr[i];
-        arr[i] = arr[newPos];
-        arr[newPos] = temp;
+    while (arr[0] === first) {
+        for (let i=0; i < arr.length; i++) {
+            newPos = Math.floor(Math.random() * (i+1));
+            temp = arr[i];
+            arr[i] = arr[newPos];
+            arr[newPos] = temp;
+        }
     }
     return arr;
+}
+
+const moveUp = (arr, track) => {
+    let idx = arr.indexOf(track);
+    if (idx !== 0) {
+        arr[idx] = arr[idx-1]
+        arr[idx-1] = track;
+        return arr;
+    } else {
+        return arr;
+    }
+
+}
+
+const moveDown = (arr, track) => {
+    let idx = arr.indexOf(track);
+    if (idx !== arr.length-1) {
+        arr[idx] = arr[idx+1]
+        arr[idx+1] = track;
+        return arr;
+    } else {
+        return arr;
+    }
 }
 
 export default playerQueueReducer;

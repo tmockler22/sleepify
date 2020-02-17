@@ -1,9 +1,11 @@
 #open-header-container {
   display: flex;
   justify-content: space-between;
+  position: fixed;
 }
 
 #navigation-arrows-container {
+  margin-left: 235px;
   color: #fff;
 }
 .navigation-arrow-circle:first-child {

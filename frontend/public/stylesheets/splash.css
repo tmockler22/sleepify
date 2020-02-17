@@ -2,6 +2,7 @@
   height: 100vh;
   margin: 0;
   background: rgba(248, 195, 73);
+  overflow: auto;
 }
 
 #colorsplash {
@@ -84,7 +85,6 @@
   margin: 1;
   padding: 16px 48px 18px;
 }
-
 
 .launch-web-player-bttn:hover {
   background: #1ed760;
