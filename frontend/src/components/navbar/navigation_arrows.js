@@ -29,12 +29,10 @@ class NavigationArrows extends React.Component {
   };
 
   goBackward = () => {
-    this.backCounter = this.backCounter - 2;
     this.props.history.goBack();
   };
 
   render() {
-    console.log(this.backCounter);
     return (
       <div id="navigation-arrows-container">
         <button
