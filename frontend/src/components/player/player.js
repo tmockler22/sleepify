@@ -39,6 +39,12 @@ class Player extends React.Component {
         if (prevProps.currentTrack !== this.props.currentTrack) {
             clearInterval(this.interval);
         }
+
+        if (prevProps.currentTrack !== this.props.currentTrack && this.props.currentTrack === undefined) {
+            this.setState({ pause: true });
+            this.audio.pause();
+            clearInterval(this.interval);
+        }
     }
 
     componentWillUnmount() {
@@ -64,10 +70,12 @@ class Player extends React.Component {
         this.setState({ play: true })
         this.audio.volume = this.props.volume;
         this.interval = setInterval(() => {
-            this.setState({
-                time: this.audio.currentTime,
-                duration: this.audio.duration
-            })
+            if (this.audio) {
+                this.setState({
+                    time: this.audio.currentTime,
+                    duration: this.audio.duration
+                })
+            }
         }, 500)   
     }
 

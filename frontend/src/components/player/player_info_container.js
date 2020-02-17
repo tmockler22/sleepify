@@ -7,7 +7,6 @@ const mapStateToProps = state => ({
     tracks: state.queue,
     nextTrack: state.queue[1],
     currentUser: state.session.user.currentUser,
-    currentSongLiked: state.session.user.currentUser.likedSongs.includes(state.queue[0])
 })
 
 const mapDispatchToProps = dispatch => ({

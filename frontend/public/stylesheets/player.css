@@ -13,6 +13,16 @@
   min-height: 1050px;
 }
 
+.open-player-body {
+  position: absolute;
+  left: 230px;
+  top: 80px;
+  width: calc(100% - 230px);
+  min-width: 600px; 
+  overflow: auto;
+  max-height: calc(100% - 180px);
+}
+
 html,
 body,
 button,
@@ -226,14 +236,6 @@ button {
   left: 210px;
 }
 
-.open-player-body {
-  position: absolute;
-  left: 230px;
-  top: 80px;
-  margin-bottom: 200px;
-  width: calc(100% - 230px);
-  min-width: 600px; 
-}
 
 /* player info  */
 .pi-container {
@@ -326,6 +328,7 @@ button {
  padding: 0 30px;
  display: flex;
  flex-direction: column;
+ height: 100%;
 }
 
 .pq-container h1 {
@@ -347,7 +350,8 @@ button {
   height: 63px;
   align-items: center;
   padding: 0 15px;
-  transition: ease 0.4s;
+  transition: ease 0.3s;
+  position: relative;
 }
 
 .pq-track-container:hover {
@@ -358,6 +362,7 @@ button {
   display: flex;
   flex-direction: column;
 }
+
 
 .fa-bed {
   padding: 0 14px 0 0;
@@ -381,10 +386,17 @@ button {
   font-size: 14px;
   font-weight: 100;
   margin-top: 2px;
+  cursor: pointer;
 }
+
 
 .pq-track-container .pq-artist {
   color: #838282;
+}
+
+.pq-track-container .pq-artist:hover {
+  color: #b6b5b5;
+  text-decoration: underline;
 }
 
 .pq-next-container > .fa-bed {
@@ -397,4 +409,50 @@ button {
 
 .pq-next-container .pq-artist {
   color: #575756;
+}
+
+.pq-next-container .pq-artist:hover {
+  text-decoration: underline;
+  color: #717171;
+}
+
+.pq-options, .pq-options-active {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  color: #8482823b;
+  font-size: 18px;
+  top: 20px;
+  width: 100px;
+  justify-content: space-evenly;
+}
+
+.pq-options {
+  display: none;
+}
+
+.pq-next-container:hover .pq-options, .pq-track-container:hover .pq-options {
+  display: flex;
+}
+
+#active {
+  background: #2a2a2a;
+}
+
+.pq-options-active {
+  display: flex;
+  color: #43e5f7;
+}
+
+#pq-options-clear {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  color: #848282;
+  margin-left: 5px;
+}
+
+#pq-options-clear:hover {
+  color: #9b9999;
+  text-decoration: underline;
 }

@@ -38,12 +38,12 @@ class PlayerInfo extends React.Component {
             <div className="pi-container">
                 <img className="pi-image" src={currentTrack.imageUrl} />
                 <div className="pi-details">
-                    <Link>
+                    <Link to={`/open/artist/${currentTrack.artist._id}`}>
                         <div className="pi-details-title">
                             { currentTrack.title }
                         </div>
                     </Link>
-                    <Link>
+                    <Link to={`/open/artist/${currentTrack.artist._id}`}>
                         <div className="pi-details-artist">
                             {currentTrack.artist.name}
                         </div>
