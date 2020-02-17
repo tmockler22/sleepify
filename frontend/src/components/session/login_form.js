@@ -92,7 +92,6 @@ class LoginForm extends React.Component {
       let element = document.getElementById(values);
       const errorId = values + "-error"
       let error = document.getElementById(errorId)
-      // debugger;
       if(element && error) {
         element.classList.remove("has-error")
         error.classList.add("hidden")

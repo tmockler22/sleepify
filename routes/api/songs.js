@@ -89,7 +89,7 @@ router.post('/new', (req, res) => {
 
 router.patch('/like/:id', (req, res) => {
   console.log(req.body)
-  likeData = {songId: req.params.id,
+  const likeData = {songId: req.params.id,
               userId: req.body.userId
             }
   Song.findById(req.params.id)
@@ -103,15 +103,42 @@ router.patch('/like/:id', (req, res) => {
                 user.save();
                 return res.json(likeData)
               } else {
-                const userIdx = user.likedSongs.indexOf(req.params.id);
-                user.likedSongs.splice(userIdx, 1);
+                const songIdx = user.likedSongs.indexOf(req.params.id);
+                user.likedSongs.splice(songIdx, 1);
                 user.save();
                 return res.json(likeData)
               }
             }
           })
       }
-    })
-})
+    });
+});
+
+// router.patch('/like', (req,res) => {
+//   const likeData = {userId: req.body.userId,
+//               songs: req.body.songs
+//             }
+//   User.findById(req.body.userId)
+//       .then(user => {
+//         if(user) {
+//             if(likeData.songs.every((song) => user.likedSongs.includes(song))) {
+//               likeData.songs.forEach(song => {
+//                 let songIdx = user.likedSongs.indexOf(song);
+//                 user.likedSongs.splice(songIdx, 1);
+//               })
+//               user.save();
+//               return res.json(likeData)
+//             } else {
+//               likeData.songs.forEach(song => {
+//                 if (!user.likedSongs.includes(song)) {
+//                   user.likedSongs.push(song)
+//                 }
+//               })
+//               user.save();
+//               return res.json(likeData)
+//             }
+//         }
+//       });
+// });
 
 module.exports = router;

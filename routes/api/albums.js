@@ -51,7 +51,28 @@ router.post('/new', (req, res) => {
   });
 
   newAlbum.save().then(album => Artist.addAlbum(album.artist, album.id));
-}
-);
+});
+
+router.patch('/like/:id', (req, res) => {
+  const likeData = {
+    albumId: req.params.id,
+    userId: req.body.userId,
+  }
+  User.findById(req.body.userId)
+    .then(user => {
+      if(user) {
+        if (!user.likedAlbums.includes(req.params.id)) {
+          user.likedAlbums.push(req.params.id)
+          user.save();
+          return res.json(likeData)
+        } else {
+          const songIdx = user.likedAlbums.indexOf(req.params.id);
+          user.likedAlbums.splice(songIdx, 1);
+          user.save();
+          return res.json(likeData)
+        }
+      }
+    });
+});
 
 module.exports = router;

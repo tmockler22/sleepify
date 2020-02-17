@@ -3,7 +3,7 @@ import CreatePlaylistForm from "./create_playlist";
 import { openModal, closeModal } from "../../../actions/modal_actions";
 import { createPlaylist } from "../../../actions/playlist_actions";
 const mapStateToProps = state => ({
-  currentUser: state.session.user
+  currentUser: state.entities.user.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
