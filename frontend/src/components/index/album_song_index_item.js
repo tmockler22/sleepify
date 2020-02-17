@@ -21,7 +21,7 @@ class AlbumSongIndexItem extends React.Component {
     const song = this.props.song;
     return (
       <div className="song" onClick={(e) => this.props.playTrack(song)}>
-        <li><img className="song-photo" src={song.imageUrl} /></li>
+        <li><img className="song-photo" src="static/images/musicsymbol.png" /></li>
         <li className="song-item-info">
           <p className="song-title">{song.title}</p>
           <Link to={`/open/artist/${song.artist._id}`} id={song.artist._id}>

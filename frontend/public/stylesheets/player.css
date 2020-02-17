@@ -18,9 +18,9 @@
   left: 230px;
   top: 80px;
   width: calc(100% - 230px);
-  min-width: 600px; 
+  min-width: 600px;  
   overflow: auto;
-  max-height: calc(100% - 180px);
+  height: calc(100% - 167px);
 }
 
 html,
