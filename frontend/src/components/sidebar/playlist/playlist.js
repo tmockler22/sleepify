@@ -32,6 +32,8 @@ class Playlist extends React.Component {
 
   renderPlaylists() {
     if (this.props.playlists) {
+      let playlists = Object.assign({}, this.props.playlists);
+      if (playlists['current']) delete playlists['current'];
       return (
         <div id="playlists-items-container">
           {this.state.showDropDown && <div className="playlist-options-popup" style={{ left: this.state.mouseCoordsLeft, top: this.state.mouseCoordsTop }}>
@@ -40,7 +42,7 @@ class Playlist extends React.Component {
             <p className="option-choice">Delete Playlist</p>
           </div>}
           {
-            Object.values(this.props.playlists).map((playlist, i) => (
+            Object.values(playlists).map((playlist, i) => (
               <Link
                 to={`/open/playlist/${playlist._id}`}
                 className="playlists-item-container"
