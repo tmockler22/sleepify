@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { browserHistory } from "react-router";
-class NavBar extends React.Component {
+class Greeting extends React.Component {
   constructor(props) {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
@@ -46,4 +46,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default Greeting;
