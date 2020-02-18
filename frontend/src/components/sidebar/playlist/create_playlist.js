@@ -2,6 +2,7 @@ import React from "react";
 
 class CreatePlaylist extends React.Component {
   constructor(props) {
+    debugger;
     super(props);
 
     this.state = {
@@ -23,7 +24,7 @@ class CreatePlaylist extends React.Component {
     e.preventDefault();
     let playlist = {
       title: this.state.title,
-      user: this.props.currentUser
+      user: this.props.currentUserId
     };
     this.props.createPlaylist(playlist);
     this.props.closeModal();
