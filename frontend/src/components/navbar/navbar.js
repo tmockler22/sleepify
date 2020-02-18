@@ -8,6 +8,7 @@ class NavBar extends React.Component {
     this.getLinks = this.getLinks.bind(this);
   }
 
+
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
@@ -21,6 +22,7 @@ class NavBar extends React.Component {
             Hello, {this.props.currentUser.username}
           </h2>
           <Link className="nav-link" onClick={this.logoutUser} to="">
+
             Logout
           </Link>
         </div>
