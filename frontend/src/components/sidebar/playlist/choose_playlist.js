@@ -13,6 +13,7 @@ class ChoosePlaylist extends React.Component {
     e.preventDefault();
     this.props.addSongToPlaylist(this.props.songId, playlist);
     this.props.closeModal();
+    this.props.fetchUserPlaylists(this.props.currentUser.id); 
   }
 
   handleClick(e) {

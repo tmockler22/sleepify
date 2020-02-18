@@ -12,7 +12,7 @@ class ArtistShow extends React.Component {
     let artist = this.props.artist;
     let songs = artist.songs;
     if (songs) {
-    liSongs = songs.map(song => <SongIndexItem key={song.id} song={song} playTrack={this.props.playTrack}/>); 
+      liSongs = songs.map(song => <SongIndexItem key={song.id} song={song} playTrack={this.props.playTrack} addSongToPlaylist={this.props.addSongToPlaylist} openModal={this.props.openModal} closeModal={this.props.closeModal}/>); 
     }
     return (
       <div className="artist-page">

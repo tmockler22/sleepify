@@ -2,6 +2,8 @@ import ArtistShow from "./artist_show";
 import { connect } from 'react-redux';
 import { fetchArtist } from '../../actions/artist_actions';
 import { playTrack } from '../../actions/player_queue_actions';
+import { addSongToPlaylist } from '../../actions/playlist_actions';
+import { openModal, closeModal } from "../../actions/modal_actions";
 
 const msp = (state) => {
   return { artist: state.entities.artists };
@@ -10,7 +12,11 @@ const msp = (state) => {
 const mdp = () => dispatch => {
   return {
     fetchArtist: (id) => dispatch(fetchArtist(id)),
-    playTrack: (song) => dispatch(playTrack(song))
+    playTrack: (song) => dispatch(playTrack(song)),
+    addSongToPlaylist: (songId, playlistId) => dispatch(addSongToPlaylist(songId, playlistId)),
+    closeModal: () => dispatch(closeModal()),
+    openModal: (modal, songId) => dispatch(openModal(modal, songId))
+
   };
 };
 
