@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom';
 class PlaylistIndexItem extends React.Component {
   constructor(props) {
     super(props)
+    this.playSongs = this.playSongs.bind(this);
   };
+
+  playSongs(e) {
+    e.preventDefault();
+    this.props.playAllTracks(this.props.playlist.songs);
+  }
+
   render() {
     const playlist = this.props.playlist;
     return (

@@ -49,7 +49,7 @@ class AlbumShow extends React.Component {
     let album = this.props.album[this.props.match.params.id];
     let songs = album.songs;
     if (album) {
-      liSongs = songs.map(song => <AlbumSongIndexItem key={song.id} song={song} playTrack={this.props.playTrack} addSongToPlaylist={this.props.addSongToPlaylist} openModal={this.props.openModal} closeModal={this.props.closeModal} />);
+      liSongs = songs.map(song => <AlbumSongIndexItem key={song.id} song={song} addTrack={this.props.addTrack} addSongToPlaylist={this.props.addSongToPlaylist} openModal={this.props.openModal} closeModal={this.props.closeModal} />);
     }
     return (
         <div className="album-page"> 
@@ -62,9 +62,9 @@ class AlbumShow extends React.Component {
             <div className="album-by">By <Link className="album-artist-name" to={`/open/artist/${album.artist._id}`} id={album.artist._id}>{album.artist.name}</Link></div>
             <p className="album-year">{album.year}  •  {songs.length} SONGS</p>
             <div className="album-show-interactive">
-                <button className="album-show-play">PLAY</button>
+                <button className="album-show-play" onClick={(e) => this.props.playAllTracks(songs)}>PLAY</button>
                 <div className="like-album" onClick={this.toggleAlbumLike}>{this.renderAlbumLike()}</div>
-                <p className="album-options"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></p>
+                <p className="album-options"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></p>
             </div>
             </div>
           </div>
