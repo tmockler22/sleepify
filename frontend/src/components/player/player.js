@@ -23,7 +23,6 @@ class Player extends React.Component {
         this.volumeBtn = this.volumeBtn.bind(this);
         this.toggleMute = this.toggleMute.bind(this);
         this.toggleRepeat = this.toggleRepeat.bind(this);
-        this.fetchy = this.fetchy.bind(this);
         this.nextTrack = this.nextTrack.bind(this);
         this.prevTrack = this.prevTrack.bind(this);
         this.toggleShuffle = this.toggleShuffle.bind(this);
@@ -49,14 +48,6 @@ class Player extends React.Component {
 
     componentWillUnmount() {
         clearInterval(this.interval);
-    }
-
-    fetchy(e) {
-        e.preventDefault();
-        this.props.fetchSongs()
-            .then(() => {
-                this.props.playAllTracks(this.props.songs)
-            })
     }
 
     play(e) {
@@ -129,7 +120,7 @@ class Player extends React.Component {
 
     toggleMute(e) {
         this.setState({ mute: !this.state.mute }, () => {
-            if (this.props.volume > 0) this.prevVolume = this.props.volume;
+            if (this.props.volume) this.prevVolume = this.props.volume;
             if (this.state.mute) {
                 this.props.changeVolume(0);
                 this.audio.volume = 0;
@@ -221,10 +212,6 @@ class Player extends React.Component {
         const { currentTrack } = this.props;
         return (
             <div className="p-container">
-                {/* <div className="p-now-playing">
-                    <button onClick={this.fetchy}>Fetch Songs</button>
-                </div> */}
-
                 <PlayerInfoContainer shuffle={this.state.shuffle} />
 
                 <div className="p-audio-control">
@@ -240,7 +227,6 @@ class Player extends React.Component {
                         {play && pauseBtn}
                         {nextTrackBtn}
                         {repeat}
-                        <button onClick={this.fetchy}>Fetch Songs</button>
                     </div>
 
                     <div className="p-timeline-container">
@@ -274,7 +260,7 @@ class Player extends React.Component {
                         max="100"
                         style={{
                             backgroundImage: '-webkit-gradient(linear, left top, right top, '
-                                + 'color-stop(' + this.props.volume + ', #13db1d), '
+                                + 'color-stop(' + this.props.volume + ', #43e5f7), '
                                 + 'color-stop(' + this.props.volume + ', #666666)'
                                 + ')'
                         }}>

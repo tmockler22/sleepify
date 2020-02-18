@@ -14,7 +14,7 @@ const playlistReducer = (oldState = {}, action) => {
     case RECEIVE_USER_PLAYLISTS:
       return action.playlists.data;
     case SHOW_PLAYLIST: 
-      return Object.assign({}, oldState, { [action.playlist.data._id]: action.playlist.data })
+      return Object.assign({}, oldState, { current: action.playlist.data })
     default:
       return oldState;
   }
