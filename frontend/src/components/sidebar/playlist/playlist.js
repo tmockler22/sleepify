@@ -10,8 +10,8 @@ class Playlist extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.currentUser) {
-      this.props.fetchUserPlaylists(this.props.currentUser.id);
+    if (this.props.currentUserId) {
+      this.props.fetchUserPlaylists(this.props.currentUserId);
     }
   }
 

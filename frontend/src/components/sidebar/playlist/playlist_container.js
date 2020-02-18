@@ -5,7 +5,7 @@ import { fetchUserPlaylists } from "../../../actions/playlist_actions";
 
 const mapStateToProps = state => ({
   playlists: state.entities.playlist,
-  currentUser: state.session.user.currentUser
+  currentUserId: state.session.user.id
 });
 
 const mapDispatchToProps = dispatch => ({
