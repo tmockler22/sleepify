@@ -1,0 +1,31 @@
+.choose-playlist {
+  padding: 8px 10px; 
+  background: #444; 
+  width: 120px; 
+  margin: 8px; 
+  border: 1px solid white; 
+  border-radius: 4px; 
+  text-align: center;
+  height: 20px; 
+}
+
+.choose-playlist:hover {
+  cursor: pointer; 
+  transition: .5s ease; 
+  color: green; 
+}
+
+.choose-playlist-name {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: 4px auto;
+    
+}
+
+#choose-playlist-input-container {
+  width: 100%;
+  margin: 10px auto;  
+  background-color: #282828;
+  height: 250px; 
+}

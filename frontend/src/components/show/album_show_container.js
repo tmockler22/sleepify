@@ -2,7 +2,6 @@ import AlbumShow from "./album_show";
 import { connect } from 'react-redux';
 import { fetchAlbum } from '../../actions/album_actions';
 import { playTrack } from '../../actions/player_queue_actions';
-import { addSongToPlaylist } from '../../actions/playlist_actions';
 import { openModal, closeModal } from "../../actions/modal_actions";
 
 const msp = (state) => {
@@ -13,8 +12,7 @@ const mdp = () => dispatch => {
   return {
     fetchAlbum: (id) => dispatch(fetchAlbum(id)),
     playTrack: (song) => dispatch(playTrack(song)),
-    addSongToPlaylist: (songId, playlistId) => dispatch(addSongToPlaylist(songId, playlistId)),
-    openModal: modal => dispatch(openModal(modal)),
+    openModal: (modal, songId) => dispatch(openModal(modal, songId)),
     closeModal: () => dispatch(closeModal())
   };
 };

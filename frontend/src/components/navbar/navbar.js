@@ -14,7 +14,6 @@ class NavBar extends React.Component {
   }
 
   getLinks() {
-    debugger;
     if (this.props.loggedIn) {
       return (
         <div className="greeting-container">

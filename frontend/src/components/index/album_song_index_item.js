@@ -6,7 +6,16 @@ class AlbumSongIndexItem extends React.Component {
     constructor(props) {
     super(props)
     this.handleToggle = this.handleToggle.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.state = { 
+      songId: this.props.song._id
+    }
   };
+
+  handleAdd = (e) => {
+    e.preventDefault(); 
+    this.props.openModal("choosePlaylist", this.state.songId);
+  }
 
   handleToggle = (e, songId) => {
     e.preventDefault();
@@ -19,8 +28,9 @@ class AlbumSongIndexItem extends React.Component {
   }
   render() {
     const song = this.props.song;
+
     return (
-      <div className="song" onClick={(e) => this.props.playTrack(song)}>
+      <div className="song">
         <li><img className="song-photo" src="static/images/musicsymbol.png" /></li>
         <li className="song-item-info">
           <p className="song-title">{song.title}</p>
@@ -28,10 +38,10 @@ class AlbumSongIndexItem extends React.Component {
             <p className="song-artist">{song.artist.name}</p>
           </Link>
           </li>
-          <div className="play-button"><i class="fas fa-play-circle"></i></div>
+        <div className="play-button" onClick={(e) => this.props.playTrack(song)}><i class="fas fa-play-circle"></i></div>
           <div className="options-song" onClick={(e) => this.handleToggle(e, song._id)}><i class="fa fa-ellipsis-h" aria-hidden="true"></i>
             <div className="options-popup"><div className="optionstext" id={song._id}>
-              <p className="option-choice" onClick={(e) => this.props.openModal("choosePlaylist")}>Add To Playlist</p>
+              <p className="option-choice" onClick={(e) => this.handleAdd(e)}>Add To Playlist</p>
               <p className="option-choice">Add To Liked Songs</p>
               <p className="option-choice">Play Song</p>
             </div>
