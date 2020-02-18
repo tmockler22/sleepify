@@ -8,6 +8,7 @@ import OpenHeader from "./open_header";
 import AlbumShow from "../show/album_show_container";
 import PlaylistShow from "../show/playlist_show_container";
 import Suggested from "./suggested.js";
+import PlaylistIndexContainer from "../index/playlist_index_container";
 
 // import { AuthRoute, ProtectedRoute } from "../../util/route_util";
 import { Switch, Route } from "react-router-dom";
@@ -34,6 +35,8 @@ class Open extends React.Component {
           <Route path="/open/artist/:id" component={ArtistShow} id={this.props.id} />
           <Route path="/open/album/:id" component={AlbumShow} id={this.props.id} />
           <Route path="/open/playlist/:id" component={PlaylistShow} id={this.props.id} />
+          <Route path="/open/library" component={PlaylistIndexContainer} />
+
         </Switch>
       </div>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import PlaylistIndexContainer from '../index/playlist_index_container';
 
 class Suggested extends React.Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class Suggested extends React.Component {
 
     return (
       <div className="open-player-body">
+        <div>
         <h1 className="genre-title">Sleepy Genres</h1>
             <div className="suggested-genres">
               <Link to="/open/genre/altrock"><div className="genre-1">
@@ -31,6 +32,8 @@ class Suggested extends React.Component {
               </div>
               </Link>
             </div>
+            <PlaylistIndexContainer/>
+          </div>
       </div>
     )
   };
