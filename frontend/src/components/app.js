@@ -10,7 +10,7 @@ const App = () => (
   <div>
     <Modal />
     <Switch>
-      <Route exact path="/" component={Splash} />
+      <AuthRoute exact path="/" component={Splash} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/open" component={OpenPlayer} />
