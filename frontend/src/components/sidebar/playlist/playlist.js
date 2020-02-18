@@ -22,7 +22,7 @@ class Playlist extends React.Component {
           {Object.values(this.props.playlists).map((playlist, i) => (
             <div draggable="true" className="playlists-item-container">
               <Link
-                to={`/playlist/${playlist._id}`}
+                to={`/open/playlist/${playlist._id}`}
                 className="playlist"
                 key={`playlist-${i}`}
               >

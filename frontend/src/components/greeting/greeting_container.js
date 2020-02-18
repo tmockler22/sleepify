@@ -2,9 +2,8 @@
 
 import { connect } from "react-redux";
 import { logout } from "../../actions/session_actions";
-import {fetchUser} from "../../actions/user_actions"
 
-import NavBar from "./navbar";
+import Greeting from "./greeting";
 
 const mapStateToProps = state => {
   return {
@@ -14,4 +13,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, { logout })(NavBar);
+export default connect(mapStateToProps, { logout })(Greeting);
