@@ -2,10 +2,17 @@ import * as PlaylistUtil from "../util/playlist_util";
 export const RECEIVE_PLAYLIST = "RECEIVE_PLAYLIST";
 export const RECEIVE_USER_PLAYLISTS = "RECEIVE_USER_PLAYLISTS";
 export const SHOW_PLAYLIST = "SHOW_PLAYLIST";
+export const DELETE_PLAYLIST = "DELETE_PLAYLIST"
 
 export const createPlaylist = playlist => dispatch => {
   return PlaylistUtil.createPlaylist(playlist).then(playlist =>
     dispatch(receivePlaylist(playlist))
+  );
+};
+
+export const removePlaylist = playlistData => dispatch => {
+  return PlaylistUtil.deletePlaylist(playlistData).then(playlist =>
+    dispatch(deletePlaylist(playlist))
   );
 };
 
@@ -18,6 +25,13 @@ export const addSongToPlaylist = (songId, playlistId) => dispatch => {
 const receivePlaylist = playlist => {
   return {
     type: RECEIVE_PLAYLIST,
+    playlist
+  };
+};
+
+const deletePlaylist = playlist => {
+  return {
+    type: DELETE_PLAYLIST,
     playlist
   };
 };

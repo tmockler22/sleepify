@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import plusIcon from "../../../assets/images/plus-icon.png";
-// import ContextMenu from "react-context-menu";
 
 class Playlist extends React.Component {
   constructor(props) {
     super(props);
     this.renderPlaylists = this.renderPlaylists.bind(this);
     this.renderOptions = this.renderOptions.bind(this)
+    this.Playlaylist = this.renamePlaylist.bind(this)
+    this.renamePlaylist = this.renamePlaylist.bind(this)
+    this.deletePlaylist = this.deletePlaylist.bind(this)
     this.state = {
       showDropDown: false,
-      mouseCoordsleft: 0
+      mouseCoordsleft: 0,
+      currentTargetPlaylistId: null
     }
   }
 
@@ -22,36 +25,67 @@ class Playlist extends React.Component {
 
 
   renderOptions(e) {
+    let show
+    if (e.target.dataset.playlistid) {
+      show = true
+    }
+
     this.setState({
-      showDropDown: !this.state.showDropDown,
+      showDropDown: show,
       mouseCoordsLeft: e.pageX,
-      mouseCoordsTop: e.pageY
+      mouseCoordsTop: e.pageY,
+      currentTargetPlaylistId: e.target.dataset.playlistid
     })
   }
+
+  playPlaylist(playlist) {
+    console.log("playlist has been added to the queue")
+  }
+
+  renamePlaylist() {
+    console.log("playlist has been renamed")
+  }
+
+  deletePlaylist(playlistId) {
+    const data = {
+      playlistId: playlistId,
+      userId: this.props.currentUserId
+    }
+    return () => {
+      this.props.removePlaylist(data)
+      this.setState({
+        showDropDown: !this.state.showDropDown
+      })
+    }
+  }
+
 
 
   renderPlaylists() {
     if (this.props.playlists) {
       return (
-        <div id="playlists-items-container">
-          {this.state.showDropDown && <div className="playlist-options-popup" style={{ left: this.state.mouseCoordsLeft, top: this.state.mouseCoordsTop }}>
-            <p className="option-choice">Play Playlist</p>
-            <p className="option-choice">Rename Playlist </p>
-            <p className="option-choice">Delete Playlist</p>
-          </div>}
+        <div id="playlists-items-container" onContextMenu={this.renderOptions} >
+          {
+            this.state.showDropDown && <div className="playlist-options-popup" style={{ left: this.state.mouseCoordsLeft, top: this.state.mouseCoordsTop }}>
+              <p className="option-choice" onClick={this.playPlaylist}>Play Playlist</p>
+              <p className="option-choice" onClick={this.renamePlaylist}>Rename Playlist </p>
+              <p className="option-choice" onClick={this.deletePlaylist(this.state.currentTargetPlaylistId)}>Delete Playlist</p>
+            </div>
+          }
           {
             Object.values(this.props.playlists).map((playlist, i) => (
               <Link
                 to={`/open/playlist/${playlist._id}`}
                 className="playlists-item-container"
-                key={`playlist-${i}`}
+                key={playlist._id}
+                data-playlistId={playlist._id}
                 onContextMenu={this.renderOptions}
               >
                 {playlist.title}
               </Link>
             ))
           }
-        </div >
+        </ div >
       );
     }
   }

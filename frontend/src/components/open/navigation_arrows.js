@@ -29,6 +29,7 @@ class NavigationArrows extends React.Component {
   };
 
   goBackward = () => {
+    this.backCounter = this.backCounter - 2;
     this.props.history.goBack();
   };
 
@@ -38,8 +39,8 @@ class NavigationArrows extends React.Component {
         <button
           className={`navigation-arrow-circle ${
             this.state.backEnabled ? "" : "disabled"
-          }`}
-          title="Go forward"
+            }`}
+          title="Go Forward"
           onClick={this.goBackward}
           disabled={!this.state.backEnabled}
         >
@@ -54,7 +55,7 @@ class NavigationArrows extends React.Component {
         <button
           className={`navigation-arrow-circle ${
             this.backCounter > 0 ? "" : "disabled"
-          }`}
+            }`}
           title="Go Backward"
           onClick={this.goForward}
         >
