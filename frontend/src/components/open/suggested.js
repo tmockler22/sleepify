@@ -14,7 +14,7 @@ class Suggested extends React.Component {
         <div>
         <h1 className="genre-title">Sleepy Genres</h1>
         <div className="suggested-genres">
-          <Link to="/open/genre/altrock"><div className="genre-1">
+          <Link to="/open/genre/softrock"><div className="genre-1">
             Soft Rock
                 <img className="genre-img" src="static/images/softrock.png" alt="" />
           </div>

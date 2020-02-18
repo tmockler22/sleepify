@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom';
 
 class ArtistIndexItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.playSongs = this.playSongs.bind(this);
   };
+
+  playSongs(e) {
+    e.preventDefault();
+    this.props.playAllTracks(this.props.artist.songs);
+  }
   render() {
     const artist = this.props.artist;
     return (
@@ -14,7 +20,7 @@ class ArtistIndexItem extends React.Component {
         <li><img className="artist-photo" src={artist.imageUrl} /></li>
         <li className="artist-name">{artist.name}</li>
         <li className="artist-description">Artist</li>
-        <li><div className="play-button-album"><i class="fas fa-play-circle"></i></div></li>
+            <li><div className="play-button-album" onClick={(e) => this.playSongs(e)}><i class="fas fa-play-circle"></i></div></li>
       </div>
         </Link>
       </div>
