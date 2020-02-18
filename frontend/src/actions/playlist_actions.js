@@ -1,6 +1,7 @@
 import * as PlaylistUtil from "../util/playlist_util";
-export const RECEIVE_PLAYLIST = "CREATE_PLAYLIST";
+export const RECEIVE_PLAYLIST = "RECEIVE_PLAYLIST";
 export const RECEIVE_USER_PLAYLISTS = "RECEIVE_USER_PLAYLISTS";
+export const SHOW_PLAYLIST = "SHOW_PLAYLIST";
 
 export const createPlaylist = playlist => dispatch => {
   return PlaylistUtil.createPlaylist(playlist).then(playlist =>
@@ -33,3 +34,16 @@ const receivePlaylists = playlists => {
     playlists
   };
 };
+
+const showPlaylist = playlist => {
+  return {
+    type: SHOW_PLAYLIST,
+    playlist
+  }
+}
+
+export const fetchPlaylist = playlistId => dispatch => {
+  return PlaylistUtil.fetchPlaylist(playlistId)
+    .then(playlist => dispatch(showPlaylist(playlist)));
+};
+

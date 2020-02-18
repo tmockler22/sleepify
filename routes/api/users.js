@@ -148,7 +148,6 @@ router.get("/:id/playlists", async (req, res) => {
     const playlistsObj = {};
     const user = await User.findById(req.params.id)
       .populate("playlists")
-      .populate("songs")
       .catch(err => res.status(404).json({ nouserfound: "No user found" }));
     const playlists = user.playlists;
     for (let index = playlists.length - 1; index > -1; index--) {
