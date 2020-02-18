@@ -7,6 +7,7 @@ class PlaylistShow extends React.Component {
     super(props);
     this.showSongs = this.showSongs.bind(this);
     this.playAll = this.playAll.bind(this);
+    this.playTrack = this.playTrack.bind(this);
   }
 
 
@@ -26,6 +27,13 @@ class PlaylistShow extends React.Component {
     this.props.playAllTracks(this.props.playlist.songs);
   }
 
+  playTrack(track) {
+    return e => {
+      e.stopPropagation();
+      this.props.playTrack(track);
+    }
+  }
+
   showSongs() {
     if (!this.props.playlist) return null;
     const songs = Object.values(this.props.playlist.songs);
@@ -35,7 +43,7 @@ class PlaylistShow extends React.Component {
         <div
           key={i}
           className={`pq-track-container`}>
-          <i className="fas fa-bed"></i>
+          <i onClick={this.playTrack(song)} className="fas fa-bed"></i>
           <div className="pq-details">
             <span className="pq-title">
               {song.title}

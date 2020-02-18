@@ -108,3 +108,7 @@ color: white;
   height: 250px;
   width: 250px;
 }
+
+.ps-container .fa-bed {
+  cursor: pointer;
+}
