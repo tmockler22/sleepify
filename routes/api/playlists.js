@@ -12,7 +12,7 @@ router.post("/create", (req, res) => {
 
   const newPlaylist = new Playlist({
     title: req.body.title,
-    user: req.body.user.id
+    user: req.body.user
   });
   newPlaylist
     .save()

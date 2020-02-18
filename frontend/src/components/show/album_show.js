@@ -20,7 +20,7 @@ class AlbumShow extends React.Component {
   }
 
   renderAlbumLike() {
-    debugger
+  
     if (this.props.currentUser && this.props.currentUser.likedAlbums.includes(this.props.match.params.id)) {
       return (
         <i className="fas fa-heart"></i>

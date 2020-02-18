@@ -2,7 +2,6 @@ import React from "react";
 
 class CreatePlaylist extends React.Component {
   constructor(props) {
-    debugger;
     super(props);
 
     this.state = {

@@ -10,7 +10,6 @@ class ChoosePlaylist extends React.Component {
   }
 
   addSong(e, playlist) {
-    debugger; 
     e.preventDefault();
     this.props.addSongToPlaylist(this.props.songId, playlist);
     this.props.closeModal();
