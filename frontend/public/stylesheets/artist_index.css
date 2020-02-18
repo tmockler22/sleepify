@@ -39,6 +39,12 @@
   display: flex;  
 }
 
+.playlists-list {
+  width: 100%;
+  display: flex;  
+  flex-wrap: wrap; 
+}
+
 .artists-list-title {
   color: white; 
   font-size: 24px; 

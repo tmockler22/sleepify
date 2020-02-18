@@ -36,7 +36,7 @@ class SideBarNav extends React.Component {
             </li>
             <li>
               <div className="navBar-item">
-                <Link className="navBar-link" to="/library">
+                <Link className="navBar-link" to="/open/library">
                   <img className="library-icon" src={libraryIcon} alt=""></img>
                   Your Library
                 </Link>
