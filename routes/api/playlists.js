@@ -27,7 +27,10 @@ router.post("/create", (req, res) => {
 
 router.get('/:id', (req, res) => {
   Playlist.findById(req.params.id)
-    .populate('songs')
+    .populate({
+      path: 'songs',
+      populate: { path: 'artist' }
+    })
     .then(playlist => {
       res.json(playlist)
     })

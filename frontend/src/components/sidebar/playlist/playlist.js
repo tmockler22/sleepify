@@ -63,6 +63,8 @@ class Playlist extends React.Component {
 
   renderPlaylists() {
     if (this.props.playlists) {
+      let playlists = Object.assign({}, this.props.playlists);
+      if (playlists['current']) delete playlists['current'];
       return (
         <div id="playlists-items-container" onContextMenu={this.renderOptions} >
           {
@@ -73,7 +75,7 @@ class Playlist extends React.Component {
             </div>
           }
           {
-            Object.values(this.props.playlists).map((playlist, i) => (
+            Object.values(playlists).map((playlist, i) => (
               <Link
                 to={`/open/playlist/${playlist._id}`}
                 className="playlists-item-container"

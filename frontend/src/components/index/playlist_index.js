@@ -17,6 +17,7 @@ class PlaylistIndex extends React.Component {
     let playlists = this.props.playlists;
 
     liPlaylists = Object.values(playlists).map(playlist => <PlaylistIndexItem key={playlist.id} playlist={playlist} playAllTracks={this.props.playAllTracks}/>);
+    
     const title = liPlaylists.length > 0 ? <h1 className="artists-list-title">Playlists</h1> : <h1></h1>
     return (
       <div className={divClass}>

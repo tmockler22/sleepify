@@ -144,6 +144,15 @@ router.get('/:id', (req, res) => {
     .catch(err => res.status(404).json({ nouserfound: 'No user found with that ID' }));
 })
 
+router.get("/:id/likedsongs", (req, res) => {
+  User.findById(req.params.id)
+    .populate("likedSongs")
+    .then(user => {
+      res.json(user.likedSongs)
+    })
+    .catch(err => res.status(404).json({ nouserfound: "No user found" }));
+});
+
 router.get("/:id/playlists", async (req, res) => {
   const playlistsObj = {};
   const user = await User.findById(req.params.id)

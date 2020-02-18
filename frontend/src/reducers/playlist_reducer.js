@@ -20,6 +20,7 @@ const playlistReducer = (oldState = {}, action) => {
       const newState = Object.assign({}, oldState)
       delete newState[action.playlist.data._id]
       return newState
+
     default:
       return oldState;
   }

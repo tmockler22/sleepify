@@ -107,19 +107,19 @@ button {
 }
 
 .p-button-repeat-active {
-  color: #13db1d;
+  color: #43e5f7;
 }
 
 .p-button-repeat-active:hover {
-  color: #13db1d !important;
+  color: #43e5f7 !important;
 }
 
 .p-button-shuffle-shuffling {
-  color: #13db1d;
+  color: #43e5f7;
 }
 
 .p-button-shuffle-shuffling:hover {
-  color: #13db1d !important;
+  color: #43e5f7 !important;
 }
 
 .pbtn:hover {
