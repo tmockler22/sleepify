@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import PlaylistShow from "./playlist_show";
-import { playTrack } from "../../actions/player_queue_actions";
+import { fetchSongs } from '../../actions/'
 
 const mapStateToProp = state => {
+  debugger
   return { songs: state.entities.playlist };
 };
 
