@@ -1,6 +1,6 @@
 import React from "react";
-import NavBarContainer from "../navbar/navbar_container";
-import NavigationArrows from "../navbar/navigation_arrows";
+import GreetingContainer from "../greeting/greeting_container";
+import NavigationArrows from "./navigation_arrows";
 import { withRouter } from "react-router-dom";
 class OpenHeader extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class OpenHeader extends React.Component {
     return (
       <div id="open-header-container">
         <NavigationArrows />
-        <NavBarContainer />
+        <GreetingContainer />
       </div>
     );
   }

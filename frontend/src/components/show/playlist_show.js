@@ -4,7 +4,9 @@ class PlaylistShow extends React.Component {
 
   render() {
     return (
-      <div className="playlist-page">I am the playlist-page</div>
+      <div className="open-player-body">
+        <div className="playlist-page">I am the playlist-page</div>
+      </div>
     );
   }
 }
