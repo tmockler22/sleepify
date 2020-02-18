@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   color: white;
+    height: 850px;
 }
 
 .playlist-container h4 {
@@ -12,8 +13,25 @@
   text-transform: uppercase;
   line-height: 20px;
   letter-spacing: 0.16em;
+
 }
 
+.playlist-options-popup {
+  background: #282828;
+  width: 140px;
+  height: 110px;
+  position: absolute;
+}
+
+
+.playlist-options-popup p {
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+.playlist-options-popup p:hover {
+  background: #333;
+}
 .plus-icon {
   height: 18px;
   width: 20px;
@@ -30,8 +48,12 @@
 }
 
 .playlists-item-container {
+  text-decoration: none;
+  color: #b3b3b3;
+  font-size: 14px;
   text-indent: 0px;
   padding-right: 30px;
+  padding-bottom: 5px;
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -39,13 +61,6 @@
   margin: 8px 0px 8px 35px;
 }
 
-.playlist {
-  text-decoration: none;
-  color: #b3b3b3;
-  font-size: 14px;
-  width: 16px;
-}
-
-.playlist:hover {
-  color: white;
+.playlists-item-container:hover {
+color: white;
 }

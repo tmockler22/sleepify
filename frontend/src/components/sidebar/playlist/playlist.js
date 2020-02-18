@@ -7,6 +7,11 @@ class Playlist extends React.Component {
   constructor(props) {
     super(props);
     this.renderPlaylists = this.renderPlaylists.bind(this);
+    this.renderOptions = this.renderOptions.bind(this)
+    this.state = {
+      showDropDown: false,
+      mouseCoordsleft: 0
+    }
   }
 
   componentDidMount() {
@@ -15,22 +20,38 @@ class Playlist extends React.Component {
     }
   }
 
+
+  renderOptions(e) {
+    this.setState({
+      showDropDown: !this.state.showDropDown,
+      mouseCoordsLeft: e.pageX,
+      mouseCoordsTop: e.pageY
+    })
+  }
+
+
   renderPlaylists() {
     if (this.props.playlists) {
       return (
-        <ul id="playlists-items-container">
-          {Object.values(this.props.playlists).map((playlist, i) => (
-            <div draggable="true" className="playlists-item-container">
+        <div id="playlists-items-container">
+          {this.state.showDropDown && <div className="playlist-options-popup" style={{ left: this.state.mouseCoordsLeft, top: this.state.mouseCoordsTop }}>
+            <p className="option-choice">Play Playlist</p>
+            <p className="option-choice">Rename Playlist </p>
+            <p className="option-choice">Delete Playlist</p>
+          </div>}
+          {
+            Object.values(this.props.playlists).map((playlist, i) => (
               <Link
                 to={`/open/playlist/${playlist._id}`}
-                className="playlist"
+                className="playlists-item-container"
                 key={`playlist-${i}`}
+                onContextMenu={this.renderOptions}
               >
                 {playlist.title}
               </Link>
-            </div>
-          ))}
-        </ul>
+            ))
+          }
+        </div >
       );
     }
   }
