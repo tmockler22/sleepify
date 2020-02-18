@@ -53,7 +53,6 @@ ArtistSchema.statics.addAlbum = (artistId, albumId) => {
 module.exports = mongoose.model("artists", ArtistSchema);
 
 // db.artists.insertMany([
-//   { name: "The National", imageUrl: "https://sleepify-dev.s3.us-east-2.amazonaws.com/artists/the_national.jpg" },
-//   { name: "John Mayer", imageUrl: "https://sleepify-dev.s3.us-east-2.amazonaws.com/artists/jack_johnson.jpg" },
-//   { name: "Cat Stevens", imageUrl: "https://sleepify-dev.s3.us-east-2.amazonaws.com/artists/cat_stevens.jpg" }
-// ]);
+//   { name: "Radiohead", imageUrl: "https://sleepify-dev.s3.us-east-2.amazonaws.com/artists/radiohead.jpg" },
+//   { name: "The Verve", imageUrl: "https://sleepify-dev.s3.us-east-2.amazonaws.com/artists/the_verve.jpeg" }
+//  ]);

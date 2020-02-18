@@ -14,7 +14,7 @@ const mdp = () => dispatch => {
     fetchSongsByGenre: (genre) => dispatch(fetchSongsByGenre(genre)),
     playTrack: (song) => dispatch(playTrack(song)),
     addSongToPlaylist: (songId, playlistId) => dispatch(addSongToPlaylist(songId, playlistId)),
-    openModal: modal => dispatch(openModal(modal)),
+    openModal: (modal,songId) => dispatch(openModal(modal, songId)),
     closeModal: () => dispatch(closeModal())
   };
 };

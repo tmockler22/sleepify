@@ -22,7 +22,6 @@ const mdp = () => dispatch => {
     toggleAlbumLike: (likeData) => dispatch(toggleAlbumLike(likeData)),
     fetchUser: (id) => dispatch(fetchUser(id)),
     addSongToPlaylist: (songId, playlistId) => dispatch(addSongToPlaylist(songId, playlistId)),
-    openModal: modal => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal())
   };
 };
