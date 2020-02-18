@@ -25,6 +25,17 @@ router.post("/create", (req, res) => {
 });
 
 
+router.get('/:id', (req, res) => {
+  Playlist.findById(req.params.id)
+    .populate('songs')
+    .then(playlist => {
+      res.json(playlist)
+    })
+    .catch(err =>
+      res.status(404).json({ nosongfound: 'No playlist found with that ID' })
+    );
+});
+
 router.patch('/addto/:id', (req, res) => {
     let playlistId = req.params.id;
     let songId = req.body.songId; 
