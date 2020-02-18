@@ -54,14 +54,17 @@
 }
 
 .nav-link:hover {
-  color: #1ed760;
+  color: #2cc7ff;
 }
 
 .greeting-container {
   display: flex;
   justify-content: center;
 }
+
 .greeting-container h2 {
-  color: green;
+  color: #2cc7ff;
   align-self: center;
+  white-space: nowrap;
+  font-weight: 700;
 }

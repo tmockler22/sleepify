@@ -19,10 +19,10 @@ class Open extends React.Component {
   componentDidMount = () => {
     this.props.history.replace("/open");
   };
-
+  // onContextMenu={e => e.preventDefault()}
   render() {
     return (
-      <div className="open-player" onContextMenu={e => e.preventDefault()}>
+      <div className="open-player" >
         <Mainview />
         <OpenHeader />
         <SideBar />

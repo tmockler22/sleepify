@@ -8,7 +8,6 @@ class Greeting extends React.Component {
     this.getLinks = this.getLinks.bind(this);
   }
 
-
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
