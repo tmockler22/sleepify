@@ -10,8 +10,8 @@ class Playlist extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.currentUser) {
-    this.props.fetchUserPlaylists(this.props.currentUser.id);
+    if (this.props.currentUser) {
+      this.props.fetchUserPlaylists(this.props.currentUser.id);
     }
   }
 
@@ -21,13 +21,13 @@ class Playlist extends React.Component {
         <ul id="playlists-items-container">
           {Object.values(this.props.playlists).map((playlist, i) => (
             <div draggable="true" className="playlists-item-container">
-              <a
-                href={`/playlist/${playlist.id}`}
+              <Link
+                to={`/playlist/${playlist.id}`}
                 className="playlist"
                 key={`playlist-${i}`}
               >
                 {playlist.title}
-              </a>
+              </Link>
             </div>
           ))}
         </ul>

@@ -6,6 +6,7 @@ import ArtistShow from "../show/artist_show_container";
 import PlayerQueueContainer from "../player/player_queue_container";
 import OpenHeader from "./open_header";
 import AlbumShow from "../show/album_show_container";
+import PlaylistShow from "../show/playlist_show_container";
 import Suggested from "./suggested.js";
 
 // import { AuthRoute, ProtectedRoute } from "../../util/route_util";
@@ -29,9 +30,21 @@ class Open extends React.Component {
           <Route exact path="/open" component={Suggested} />
           <Route path="/open/search" component={Search} />
           <Route path="/open/genre/:genre" component={GenreShow} />
-          <Route path='/open/queue' component={PlayerQueueContainer} />
-          <Route path="/open/artist/:id" component={ArtistShow} id={this.props.id}/>
-          <Route path="/open/album/:id" component={AlbumShow} id={this.props.id}
+          <Route path="/open/queue" component={PlayerQueueContainer} />
+          <Route
+            path="/open/artist/:id"
+            component={ArtistShow}
+            id={this.props.id}
+          />
+          <Route
+            path="/open/album/:id"
+            component={AlbumShow}
+            id={this.props.id}
+          />
+          <Route
+            path="/open/playlist/:id"
+            component={PlaylistShow}
+            id={this.props.id}
           />
         </Switch>
       </div>
