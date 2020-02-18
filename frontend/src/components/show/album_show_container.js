@@ -18,6 +18,7 @@ const mdp = () => dispatch => {
   return {
     fetchAlbum: (id) => dispatch(fetchAlbum(id)),
     playTrack: (song) => dispatch(playTrack(song)),
+    openModal: (modal, songId) => dispatch(openModal(modal, songId)),
     toggleAlbumLike: (likeData) => dispatch(toggleAlbumLike(likeData)),
     fetchUser: (id) => dispatch(fetchUser(id)),
     addSongToPlaylist: (songId, playlistId) => dispatch(addSongToPlaylist(songId, playlistId)),

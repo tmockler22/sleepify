@@ -6,6 +6,14 @@ class ChoosePlaylist extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.closeModal = this.props.closeModal.bind(this);
+    this.addSong = this.addSong.bind(this);
+  }
+
+  addSong(e, playlist) {
+    debugger; 
+    e.preventDefault();
+    this.props.addSongToPlaylist(this.props.songId, playlist);
+    this.props.closeModal();
   }
 
   handleClick(e) {
@@ -13,8 +21,12 @@ class ChoosePlaylist extends React.Component {
     this.props.closeModal();
   }
 
-  render() {
-  
+  render() { 
+    let liPlaylists; 
+    if (this.props.playlists) {
+      liPlaylists = Object.values(this.props.playlists).map(playlist =>  
+        <div className="choose-playlist" onClick={(e) => this.addSong(e, playlist._id)}>{playlist.title}</div>)
+      }
     return (
       <div className="create-playlist-modal">
         <button className="btn-transparent" onClick={this.handleClick}>
@@ -33,13 +45,11 @@ class ChoosePlaylist extends React.Component {
           </svg>
         </button>
         <h1 className="transparant-header">Add to Playlist</h1>
-        <div id="create-playlist-input-container">
-          <div id="create-playlist-input-box">
-            <div id="playlist-name-spacing">
-             
+        <div id="choose-playlist-input-container">
+          <div className="choose-playlist-name">
+              {liPlaylists}
             </div>
           </div>
-        </div>
         <div id="form-buttons-container">
           <div id="cancel-button-container">
             <button className="cancel-button" onClick={this.handleClick}>

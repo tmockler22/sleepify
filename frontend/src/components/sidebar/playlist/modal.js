@@ -9,12 +9,12 @@ function Modal({ modal, closeModal }) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.modal) {
     case "createPlaylist":
       component = <CreatePlaylistContainer />;
       break;
     case "choosePlaylist":
-      component = <ChoosePlaylistContainer />;
+      component = <ChoosePlaylistContainer songId={modal.songId} />;
       break;
     default:
       return null;
