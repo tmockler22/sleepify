@@ -43,22 +43,37 @@
 
 .submit-button {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .submit-button > input {
-    background-color: #1db954;
+    background-color: #52dcff;
     color: white;
     font-weight: bold;
-    width: 55%;
+    width: 45%;
     height: 45px;
     border-radius: 20px;
     padding-right: 0;
     border: none;
 }
 
+.login-form > .submit-button > .demo-login {
+    background-color: #52dcff;
+    color: white;
+    font-weight: bold;
+    width: 45%;
+    height: 45px;
+    border-radius: 20px;
+    padding-right: 0;
+    border: none;
+}
+
+.login-form > .submit-button > .demo-login:hover {
+    background-color: #2cc7ff;
+}
+
 .submit-button > input:hover {
-    background-color: #1ED760;
+    background-color: #2cc7ff;
 }
 
 .login-form-container > .render-signup {
