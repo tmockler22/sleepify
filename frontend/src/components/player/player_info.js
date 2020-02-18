@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 class PlayerInfo extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            songLiked: null,
-        }
         this.toggleLike = this.toggleLike.bind(this);
         this.renderLike = this.renderLike.bind(this);
     }
@@ -21,13 +18,10 @@ class PlayerInfo extends React.Component {
             userId: this.props.currentUserId,
         }
         this.props.toggleLike(likeData)
-        this.setState({
-            songLiked: this.props.currentUser.likedSongs.includes(this.props.currentTrack._id)
-        })
     }
 
     renderLike() {
-        if(this.props.currentUser && this.state.songLiked) {
+        if (this.props.currentUser && this.props.currentUser.likedSongs.includes(this.props.currentTrack._id)) {
             return (
                 <i className="fas fa-heart"></i>
             )
@@ -69,7 +63,7 @@ class PlayerInfo extends React.Component {
                     {nextTrack ? <div className="pi-details-next">{msg}</div> : null }
                 </div>
                 <div onClick={this.toggleLike}>
-                    {this.renderLike()};
+                    {this.renderLike()}
                 </div>
             </div>
         )

@@ -1,6 +1,7 @@
 import { RECEIVE_USER } from "../actions/user_actions";
 import { TOGGLE_ALBUM_LIKE } from "../actions/album_actions";
 import { CHANGE_MULTIPLE_SONG_LIKES, TOGGLE_SONG_LIKE } from "../actions/song_actions";
+import { merge } from 'lodash';
 
 export default function(state = {}, action) {
     let newState;
@@ -10,10 +11,10 @@ export default function(state = {}, action) {
             const user = {};
             user[action.user.data._id] = action.user.data;
             delete user[action.user.data._id].password
-            return Object.assign({}, user, state);
+            return merge({}, user, state);
         case TOGGLE_SONG_LIKE: 
             currentUserId = action.likeData.data.userId;
-            newState = Object.assign({}, state);
+            newState = merge({}, state);
             if(newState[currentUserId].likedSongs.includes(action.likeData.data.songId)) {
                 const index = newState[currentUserId].likedSongs.indexOf(action.likeData.data.songId);
                 newState[currentUserId].likedSongs.splice(index,1);
@@ -22,7 +23,7 @@ export default function(state = {}, action) {
             }
             return newState;
         case TOGGLE_ALBUM_LIKE:
-            newState = Object.assign({}, state);
+            newState = merge({}, state);
             currentUserId = action.likeData.data.userId;
             if(newState[currentUserId].likedAlbums.includes(action.likeData.data.albumId)) {
               const albumIdx = newState[currentUserId].likedAlbums.indexOf(action.likeData.data.albumId);
@@ -32,7 +33,7 @@ export default function(state = {}, action) {
             }
             return newState;
         case CHANGE_MULTIPLE_SONG_LIKES:
-            newState = Object.assign({}, state);
+            newState = merge({}, state);
               if(action.likeData.data.songs.every((song) => newState.currentUser.likedSongs.includes(song))) {
                 action.likeData.data.songs.forEach(song => {
                   let songIdx = newState.currentUser.likedSongs.indexOf(song);

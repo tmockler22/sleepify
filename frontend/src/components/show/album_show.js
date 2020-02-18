@@ -20,7 +20,8 @@ class AlbumShow extends React.Component {
   }
 
   renderAlbumLike() {
-    if(this.props.currentUser && this.state.albumLiked) {
+    debugger
+    if (this.props.currentUser && this.props.currentUser.likedAlbums.includes(this.props.match.params.id)) {
       return (
         <i className="fas fa-heart"></i>
         )
@@ -38,7 +39,7 @@ class AlbumShow extends React.Component {
     }
     this.props.toggleAlbumLike(likeData)
     this.setState({
-      albumLiked: this.props.currentUser.likedAlbums.includes(this.props.match.params.id)
+      albumLiked: this.props.currentUser.likedAlbums.includes(this.props.album._id)
     });
   }
 
