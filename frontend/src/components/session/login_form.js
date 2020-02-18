@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.demoLogin = this.demoLogin.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   componentDidUpdate() {
@@ -125,14 +125,49 @@ class LoginForm extends React.Component {
     }
   }
 
+  demoLogin(e) {
+    e.preventDefault();
+    return this.typeWriter('demouser@demouser.com', 'demouser');
+  }       
+
+  typeWriter(email, password) {
+      let i = 0;
+      let j = 0;
+      let speed = 50; 
+      let emailInput = document.getElementById("email")
+      let pwInput = document.getElementById("password");
+      emailInput.value = "";
+      pwInput.value = "";
+      const login = () => {
+          if (i < email.length) {
+              emailInput.value += email.charAt(i);
+              i++;
+              setTimeout(login, speed);
+          } else if (j < password.length) {
+              pwInput.value += password.charAt(j);
+              j++;
+              setTimeout(login, speed)
+          } else {
+              this.resetClasses();
+              this.setState({email: email, password: password});
+              this.props.login(this.state);
+          }
+
+      }
+      return login()
+  }
+
   // demoLogin(e) {
   //   e.preventDefault();
-  //   this.resetClasses();
+    
   //   let user = {
-  //     username: "don",
-  //     password: "123456"
+  //     email: "demouser@demouser.com",
+  //     password: "demouser"
   //   }
-  //   this.props.login(user);
+  //   this.setState(user, () => this.props.login(user));
+
+  //   // this.props.login(user);
+    
   // }
 
   render() {
@@ -179,7 +214,7 @@ class LoginForm extends React.Component {
               </div>
             <br/>
             <div className='submit-button'>
-              {/* <button type="submit" onClick={this.demoLogin}>DEMO</button> */}
+              <button className='demo-login' onClick={this.demoLogin}>DEMO</button>
               <input type="submit" value="LOG IN" />
             </div>
           </div>

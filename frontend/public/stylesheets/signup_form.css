@@ -51,7 +51,7 @@
 
 
 .signup-button > input {
-    background-color: #1db954;
+    background-color: #52dcff;
     color: white;
     font-weight: bold;
     width: 70%;
@@ -62,7 +62,7 @@
 }
 
 .signup-button > input:hover {
-    background-color: #1ED760;
+    background-color: #2cc7ff;
 }
 
 .login-instead {
@@ -71,12 +71,12 @@
 }
 
 .login-instead a {
-    color: #1db954;
+    color: #52dcff;
     text-decoration: none;
 }
 
 .login-instead a:hover {
-    color: #1ED760;
+    color: #2cc7ff;
 }
 
 .signup.error-div {
