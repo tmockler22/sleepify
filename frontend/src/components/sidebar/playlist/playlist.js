@@ -60,8 +60,8 @@ class Playlist extends React.Component {
       userId: this.props.currentUserId
     }
     return () => {
-      console.log("playlist will be deleted soon...")
-      // this.props.removePlaylist(data) commented for safety and later refactoring (do not delete)
+      this.props.removePlaylist(data)
+      //check 1
       this.setState({
         showDropDown: !this.state.showDropDown
       })
@@ -85,7 +85,7 @@ class Playlist extends React.Component {
                 to={`/open/playlist/${playlist._id}`}
                 className="playlists-item-container"
                 key={playlist._id}
-                data-playlistId={playlist._id}
+                data-playlistid={playlist._id}
                 onContextMenu={this.renderOptions}
               >
                 {playlist.title}

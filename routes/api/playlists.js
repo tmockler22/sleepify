@@ -35,13 +35,29 @@ router.get('/:id', (req, res) => {
       res.json(playlist)
     })
     .catch(err =>
-      res.status(404).json({ nosongfound: 'No playlist found with that ID' })
+      res.status(404).json({ noplaylistfound: 'No playlist found with that ID' })
     );
 });
 
+router.delete('/delete/:id', (req, res) => {
+  Playlist.findByIdAndDelete(req.params.id)
+    .then(playlist => {
+      User.findByIdAndUpdate(playlist.user, { $pull: { playlists: req.params.id } })
+        .then(user => {
+          return res.json(playlist)
+        })
+        .catch(err =>
+          res.status(404).json({ nouserfound: 'No user found with that ID' }))
+    })
+
+    .catch(err => {
+      res.status(404).json({ noplaylistfound: 'No playlist found with that ID' })
+    })
+})
+
 router.patch('/addto/:id', (req, res) => {
-    let playlistId = req.params.id;
-    let songId = req.body.songId; 
+  let playlistId = req.params.id;
+  let songId = req.body.songId;
   Playlist.addSongToPlaylist(playlistId, songId)
     .then(playlist => playlist)
 })
