@@ -110,6 +110,7 @@ class Playlist extends React.Component {
             onChange={this.update("title")}
             placeholder="New Playlist Name"
             style={{ left: this.state.renameCoordsLeft, top: this.state.renameCoordsTop }}
+            onContextMenu={this.state.showRename = false}
           ></input>}
         </div >
       );
