@@ -45,14 +45,13 @@ class Playlist extends React.Component {
       showDropDown: show,
       mouseCoordsLeft: e.clientX,
       mouseCoordsTop: e.clientY,
-      currentTargetPlaylistId: e.target.dataset.playlistid,
+      currentTargetPlaylistId: e.target.dataset.playlistid
     })
   }
 
 
   renamePlaylist(playlistId) {
     return (e) => {
-      debugger
       let currentTargetRect = this.state.targetedPlaylistContainer.getBoundingClientRect();
       const e_offsetX = currentTargetRect.x,
         e_offsetY = currentTargetRect.y - 5;
@@ -72,7 +71,6 @@ class Playlist extends React.Component {
     }
     return () => {
       this.props.removePlaylist(data)
-      //check 1
       this.setState({
         showRename: false,
         showDropDown: !this.state.showDropDown

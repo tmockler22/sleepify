@@ -18,7 +18,7 @@ const playlistReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, { current: action.playlist.data })
     case DELETE_PLAYLIST:
       const newState = Object.assign({}, oldState)
-      delete newState[action.playlist.data._id]
+      delete newState[action.playlist._id]
       return newState
     default:
       return oldState;
