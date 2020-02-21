@@ -26,11 +26,20 @@
 
 .playlist-options-popup p {
   color: #b3b3b3;
-  cursor: pointer;
 }
 
 .playlist-options-popup p:hover {
   background: #333;
+}
+
+.playlist-rename-input-field{
+  position: absolute;
+  background: white;
+  height: 25px;
+  width: 140px;
+z-index: 3;
+  color: black;
+  cursor: pointer;
 }
 .plus-icon {
   height: 18px;
@@ -64,9 +73,6 @@
 .playlists-item-container:hover {
 color: white;
 }
-
-
-/* PlaylistShow */
 
 .ps-container {
   display: flex;

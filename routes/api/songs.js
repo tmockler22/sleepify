@@ -11,21 +11,21 @@ const validateSongInput = require('../../validation/song');
 router.get('/search/:search', async (req, res) => {
   const songRegex = new RegExp(req.params.search, 'i');
   const songObj = {};
-  const songs = await Song.find({ title: { $regex: req.params.search + '.*', $options: 'i'  }})
+  const songs = await Song.find({ title: { $regex: req.params.search + '.*', $options: 'i' } })
     .limit(4)
     .populate('artist')
     .catch(err => res.status(404).json({ nosongsfound: 'No songs found' }));
   for (let index = songs.length - 1; index > -1; index--) {
     const song = songs[index].toJSON();
     songObj[song._id] = song
-  } 
+  }
   res.json(songObj)
 });
 
 router.get('/genre/:genre', async (req, res) => {
   let genre = req.params.genre;
-  let serachGenre;  
-  if (genre === "softrock"){
+  let serachGenre;
+  if (genre === "softrock") {
     searchGenre = "Soft Rock";
   } else if (genre === "classicrock") {
     searchGenre = "Classic Rock";
@@ -56,8 +56,8 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   Song.findById(req.params.id)
     .then(song => {
-          res.json(song)
-        })
+      res.json(song)
+    })
     .catch(err =>
       res.status(404).json({ nosongfound: 'No song found with that ID' })
     );
@@ -72,26 +72,27 @@ router.post('/new', (req, res) => {
   //     return res.status(400).json(errors);
   //   }
 
-    const newSong = new Song({
-      title: req.body.title,
-      genre: req.body.genre,
-      artist: req.body.artist,
-      album: req.body.album,
-      imageUrl: req.body.imageUrl,
-      songUrl: req.body.songUrl
-    });
+  const newSong = new Song({
+    title: req.body.title,
+    genre: req.body.genre,
+    artist: req.body.artist,
+    album: req.body.album,
+    imageUrl: req.body.imageUrl,
+    songUrl: req.body.songUrl
+  });
 
-    newSong.save()
-      .then(song => Artist.addSong(song.artist, song.id))
-      .then(song => Album.addSongToAlbum(song.album, song.id));
-  }
+  newSong.save()
+    .then(song => Artist.addSong(song.artist, song.id))
+    .then(song => Album.addSongToAlbum(song.album, song.id));
+}
 );
 
 router.patch('/like/:id', (req, res) => {
   console.log(req.body)
-  const likeData = {songId: req.params.id,
-              userId: req.body.userId
-            }
+  const likeData = {
+    songId: req.params.id,
+    userId: req.body.userId
+  }
   Song.findById(req.params.id)
     .then(song => {
       if (song) {

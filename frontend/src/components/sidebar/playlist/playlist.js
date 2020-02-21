@@ -7,15 +7,18 @@ class Playlist extends React.Component {
     super(props);
     this.renderPlaylists = this.renderPlaylists.bind(this);
     this.renderOptions = this.renderOptions.bind(this)
-    this.playPlaylist = this.playPlaylist.bind(this)
     this.renamePlaylist = this.renamePlaylist.bind(this)
     this.deletePlaylist = this.deletePlaylist.bind(this)
 
     this.state = {
+      title: "",
       showDropDown: false,
+      showRename: false,
       mouseCoordsleft: 0,
       mouseCoordsTop: 0,
-      currentTargetPlaylistId: null
+      renameCoordsLeft: 0,
+      renameCoordsTop: 0,
+      currentTargetPlaylistId: null,
     }
   }
 
@@ -27,33 +30,41 @@ class Playlist extends React.Component {
 
 
   renderOptions(e) {
+    debugger
     e.preventDefault()
     let show
+
     if (e.target.dataset.playlistid) {
       show = true
     }
 
+
     this.setState({
+      targetedPlaylistContainer: e.target,
+      showRename: false,
       showDropDown: show,
-      mouseCoordsLeft: e.pageX,
-      mouseCoordsTop: e.pageY,
-      currentTargetPlaylistId: e.target.dataset.playlistid
+      mouseCoordsLeft: e.clientX,
+      mouseCoordsTop: e.clientY,
+      currentTargetPlaylistId: e.target.dataset.playlistid,
     })
   }
 
-  playPlaylist(playlist) {
-    console.log("playlist will be added to the queue soon...")
-    this.setState({
-      showDropDown: !this.state.showDropDown
-    })
+
+  renamePlaylist(playlistId) {
+    return (e) => {
+      debugger
+      let currentTargetRect = this.state.targetedPlaylistContainer.getBoundingClientRect();
+      const e_offsetX = currentTargetRect.x,
+        e_offsetY = currentTargetRect.y - 5;
+      this.setState({
+        showRename: !this.state.showRename,
+        showDropDown: false,
+        renameCoordsLeft: e_offsetX,
+        renameCoordsTop: e_offsetY,
+      })
+    }
   }
 
-  renamePlaylist(playlist) {
-    console.log("playlist will be renamed soon...")
-    this.setState({
-      showDropDown: !this.state.showDropDown
-    })
-  }
   deletePlaylist(playlistId) {
     const data = {
       playlistId: playlistId,
@@ -63,6 +74,7 @@ class Playlist extends React.Component {
       this.props.removePlaylist(data)
       //check 1
       this.setState({
+        showRename: false,
         showDropDown: !this.state.showDropDown
       })
     }
@@ -75,8 +87,7 @@ class Playlist extends React.Component {
       return (
         <div id="playlists-items-container" onContextMenu={this.renderOptions}>
           {this.state.showDropDown && <div className="playlist-options-popup" style={{ left: this.state.mouseCoordsLeft, top: this.state.mouseCoordsTop }}>
-            <p className="option-choice" onClick={this.playPlaylist}>Play Playlist</p>
-            <p className="option-choice" onClick={this.renamePlaylist}>Rename Playlist </p>
+            <p className="option-choice" onClick={this.renamePlaylist(this.state.currentTargetPlaylistId)}>Rename Playlist </p>
             <p className="option-choice" onClick={this.deletePlaylist(this.state.currentTargetPlaylistId)}>Delete Playlist</p>
           </div>}
           {
@@ -92,9 +103,24 @@ class Playlist extends React.Component {
               </Link>
             ))
           }
+          {this.state.showRename && <input
+            className="playlist-rename-input-field"
+            type="text"
+            name="playlist-name"
+            onChange={this.update("title")}
+            placeholder="New Playlist Name"
+            style={{ left: this.state.renameCoordsLeft, top: this.state.renameCoordsTop }}
+          ></input>}
         </div >
       );
     }
+  }
+
+  update(field) {
+    return e =>
+      this.setState({
+        [field]: e.currentTarget.value
+      });
   }
 
   render() {
