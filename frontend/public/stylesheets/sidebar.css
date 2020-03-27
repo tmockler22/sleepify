@@ -1,5 +1,5 @@
 .root-navBar {
-  min-height: 1050px;
+  height: 100%;
   width: 230px !important;
   display: flex;
   flex-direction: column;
@@ -9,10 +9,14 @@
   left: 0;
 }
 
+.open-player {
+  height: 100%;
+}
+
 .sidebar-container {
   width: 230px;
   height: 100%;
-  min-height: 1400px;
+  /* min-height: 1400px; */
   display: flex;
   flex-direction: column;
   background-color: rgb(4, 4, 4);
