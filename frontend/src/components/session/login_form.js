@@ -214,14 +214,14 @@ class LoginForm extends React.Component {
               </div>
             <br/>
             <div className='submit-button'>
-              <button className='demo-login' onClick={this.demoLogin}>DEMO</button>
               <input type="submit" value="LOG IN" />
+              <button className='demo-login' onClick={this.demoLogin}>DEMO</button>
             </div>
           </div>
         </form>
         {this.renderSignUp()}
         <div className='disclaimer'>
-          <p>By Signing in, you agree to Sleepify's strict Terms &amp; Conditions and Privacy Policy</p>
+          <p>By Signing in, you agree to Sleepify's Terms &amp; Conditions and Privacy Policy</p>
         </div>
       </div>
     );
