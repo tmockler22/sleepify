@@ -10,73 +10,52 @@ class Header extends React.Component {
           </div>
           <div id="footer-nav-links">
             <ul>
-              <h4>COMPANY</h4>
-              <li>About</li>
-              <li>Jobs</li>
-              <li>For the Record</li>
+              <h4>Sam <br></br>Gutierrez</h4>
+              <li><a href="https://www.samgutierrez.com" class="social-icon"><span
+                class="label">Portfolio</span></a></li>
+              <li><a href="https://www.linkedin.com/in/sammy-gutierrez/" class="social-icon"><span
+                class="label">LinkedIn</span></a></li>
+              <li><a href="https://angel.co/u/sammy-gutierrez/" class="social-icon"><span
+                class="label">AngelList</span></a></li>
+              <li><a href="mailto:sammygutierrez335@gmail.com" class="icon solid alt fa-envelope"><span
+                class="label">Email</span></a></li>
             </ul>
             <ul>
-              <h4>COMMUNITIES</h4>
-              <li>For Artist</li>
-              <li>Developers</li>
-              <li>Brands</li>
-              <li>Investors</li>
-              <li>Vendors</li>
+              <h4>Kevin <br></br>Lu</h4>
+                <li><a href="" class="social-icon"><span
+                  class="label">Portfolio</span></a></li>
+                <li><a href="https://www.linkedin.com/in/kevin-lu-96b294191/" class="social-icon"><span
+                  class="label">LinkedIn</span></a></li>
+                <li><a href="" class="social-icon"><span
+                  class="label">AngelList</span></a></li>
+                <li><a href="mailto:[emailgoeshere]" class="icon solid alt fa-envelope"><span
+                  class="label">Email</span></a></li>
+              </ul>
+            <ul>
+            <h4>Tristan<br></br>Mockler</h4>
+            <li><a href="" class="social-icon"><span
+              class="label">Portfolio</span></a></li>
+            <li><a href="https://www.linkedin.com/in/tristan-mockler-bb2360173/" class="social-icon"><span
+              class="label">LinkedIn</span></a></li>
+            <li><a href="" class="social-icon"><span
+              class="label">AngelList</span></a></li>
+            <li><a href="mailto:[emailgoeshere]" class="icon solid alt fa-envelope"><span
+              class="label">Email</span></a></li>
             </ul>
             <ul>
-              <h4>USEFUL LINKS</h4>
-              <li>Help</li>
-              <li>Web Player</li>
-              <li>Free Mobile App</li>
+              <h4>Don <br></br>Sondapperumaarachchi</h4>
+              <li><a href="" class="social-icon"><span
+                class="label">Portfolio</span></a></li>
+              <li><a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/" class="social-icon"><span
+                class="label">LinkedIn</span></a></li>
+              <li><a href="" class="social-icon"><span
+                class="label">AngelList</span></a></li>
+              <li><a href="mailto:[emailgoeshere]" class="icon solid alt fa-envelope"><span
+                class="label">Email</span></a></li>
             </ul>
-          </div>
-          <div id="social-network-icons">
-            <ul>
-              <li>
-                <a href="https://www.instagram.com/">
-                  <img
-                    className="social-icon"
-                    src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-1/1024/instagram-512.png"
-                    alt=""
-                  ></img>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.twitter.com/">
-                  <img
-                    className="social-icon"
-                    src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-1/1024/twitter-512.png"
-                    alt=""
-                  ></img>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.facebook.com/">
-                  <img
-                    className="social-icon"
-                    src="https://cdn3.iconfinder.com/data/icons/social-media-black-white-1/1024/facebook-512.png"
-                    alt=""
-                  ></img>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div id="country">
-            <p>USA</p>
-            <img
-              src="https://icons.iconarchive.com/icons/wikipedia/flags/1024/US-United-States-Flag-icon.png"
-              alt=""
-            ></img>
           </div>
           <div id="bottom-links">
-            <ul>
-              <li>Legal</li>
-              <li>Privacy Center</li>
-              <li> Privacy Policy</li>
-              <li>Cookies</li>
-              <li>About Ads</li>
-              <li>Additional CA Privacy Disclosure</li>
-            </ul>
+            <span></span>
             <span>2020 Sleepify</span>
           </div>
         </nav>
