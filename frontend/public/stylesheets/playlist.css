@@ -17,6 +17,7 @@
 }
 
 .playlist-options-popup {
+  cursor: pointer;
   background: #282828;
   width: 140px;
   height: 110px;
