@@ -11,6 +11,7 @@ class Header extends React.Component {
           <div id="footer-nav-links">
             <ul>
               <h4>Sam <br></br>Gutierrez</h4>
+              <i class="fab fa-linkedin-in"></i>
               <li><a href="https://www.samgutierrez.com" className="social-icon"><span
                 className="label">fa</span></a>Portfolio</li>
               <li><a href="https://www.linkedin.com/in/sammy-gutierrez/" className="social-icon"><span
