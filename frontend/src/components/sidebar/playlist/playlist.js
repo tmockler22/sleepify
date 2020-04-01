@@ -30,7 +30,6 @@ class Playlist extends React.Component {
 
 
   renderOptions(e) {
-    debugger
     e.preventDefault()
     let show
 
