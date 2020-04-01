@@ -118,3 +118,6 @@
 #bottom-links span {
   padding-right: 40px;
 }
+.footer-nav-links a {
+  text-decoration: none;
+}
