@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import PlaylistIndexContainer from '../index/playlist_index_container';
 import LikedSongs from '../index/liked_index';
 class Suggested extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
 
     return (

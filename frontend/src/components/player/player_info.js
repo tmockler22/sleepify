@@ -48,7 +48,7 @@ class PlayerInfo extends React.Component {
         
         return (
             <div className="pi-container">
-                <img className="pi-image" src={currentTrack.imageUrl} />
+                <img className="pi-image" src={currentTrack.imageUrl} alt=""/>
                 <div className="pi-details">
                     <Link to={`/open/artist/${currentTrack.artist._id}`}>
                         <div className="pi-details-title">

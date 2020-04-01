@@ -6,7 +6,7 @@ import magGlassIcon from "../../../assets/images/magnifying-glass-icon.png";
 import libraryIcon from "../../../assets/images/library-icon.png";
 class SideBarNav extends React.Component {
   render() {
-    const search = "";
+    // const search = "";
     return (
       <nav id="navBar">
         <Link className="navBar-link" to="/open">
@@ -25,11 +25,7 @@ class SideBarNav extends React.Component {
             <li>
               <div className="navBar-item">
                 <Link className="navBar-link" to="/open/search">
-                  <img
-                    className="magGlass-icon"
-                    src={magGlassIcon}
-                    alt=""
-                  ></img>
+                  <img className="magGlass-icon" src={magGlassIcon} alt=""></img>
                   Search
                 </Link>
               </div>

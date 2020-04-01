@@ -9,7 +9,7 @@ class Playlist extends React.Component {
     this.renderOptions = this.renderOptions.bind(this)
     this.renamePlaylist = this.renamePlaylist.bind(this)
     this.deletePlaylist = this.deletePlaylist.bind(this)
-
+    this.toggleRenamePopUp = this.toggleRenamePopUp.bind(this)
     this.state = {
       title: "",
       showDropDown: false,
@@ -77,6 +77,12 @@ class Playlist extends React.Component {
     }
   }
 
+  toggleRenamePopUp() {
+    this.setState({showRename: false})
+  }
+  
+
+
   renderPlaylists() {
     if (this.props.playlists) {
       let playlists = Object.assign({}, this.props.playlists);
@@ -107,7 +113,7 @@ class Playlist extends React.Component {
             onChange={this.update("title")}
             placeholder="New Playlist Name"
             style={{ left: this.state.renameCoordsLeft, top: this.state.renameCoordsTop }}
-            onContextMenu={this.state.showRename = false}
+            onContextMenu={this.toggleRenamePopUp}
           ></input>}
         </div >
       );

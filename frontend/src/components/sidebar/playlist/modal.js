@@ -1,5 +1,5 @@
 import React from "react";
-import { openModal, closeModal } from "../../../actions/modal_actions";
+import { closeModal } from "../../../actions/modal_actions";
 import CreatePlaylistContainer from "./create_playlist_container";
 import ChoosePlaylistContainer from "./choose_playlist_container";
 import { connect } from "react-redux";

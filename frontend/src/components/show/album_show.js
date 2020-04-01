@@ -56,7 +56,7 @@ class AlbumShow extends React.Component {
           <img className="album-background-photo" src="static/images/gradient.jpg" alt=""></img>
           <div className="open-player-body">
           <div className="artist-show-header">
-            <img className="album-show-photo" src={album.imageUrl} />
+            <img className="album-show-photo" src={album.imageUrl} alt=""/>
             <div className="album-header-info">
             <h1 className="album-show-title">{album.title}</h1>
             <div className="album-by">By <Link className="album-artist-name" to={`/open/artist/${album.artist._id}`} id={album.artist._id}>{album.artist.name}</Link></div>
