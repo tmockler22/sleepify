@@ -6,7 +6,7 @@ class Header extends React.Component {
       <div id="footer-container">
         <nav id="footer-nav">
           <div>
-            <img id="white-logo" src={logo} alt="logo" />
+            <img className="white-logo" src={logo} alt="logo" />
           </div>
           <div id="footer-nav-links">
             <ul>

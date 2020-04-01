@@ -10,7 +10,7 @@ class SideBarNav extends React.Component {
     return (
       <nav id="navBar">
         <Link className="navBar-link" to="/open">
-          <img id="white-logo" src={logo} alt=""></img>
+          <img className="nav-logo white-logo" src={logo} alt=""></img>
         </Link>
         <div id="navBar-header">
           <ul id="navBar-entry-points">
