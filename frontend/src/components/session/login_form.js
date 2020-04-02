@@ -175,7 +175,7 @@ class LoginForm extends React.Component {
     return (
       <div className='login-form-container'>
         <div className='heading'>
-          <img src="static/images/black-logo-white-music.png" alt="sleepify-logo" height="30"/>
+          <img src="static/images/white-logo-blue-music.png" alt="sleepify-logo" height="30"/>
         </div>
         <div className='login-form-error-container'>
           {this.renderMismatchError()}
