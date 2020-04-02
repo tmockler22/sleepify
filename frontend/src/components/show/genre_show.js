@@ -1,6 +1,6 @@
 import React from 'react';
 import SongIndexItem from '../index/song_index_item';
-import { Link } from 'react-router-dom';
+
 
 class GenreShow extends React.Component {
   componentDidMount() { 
@@ -26,7 +26,7 @@ class GenreShow extends React.Component {
         <img className="genre-background-photo" src="static/images/gradient2.jpg" alt=""></img>
         <div className="open-player-body">
           <div className="genre-show-header">
-            <img className="genre-show-photo" src={"static/images/" + this.props.match.params.genre + (".png")} />
+            <img className="genre-show-photo" src={"static/images/" + this.props.match.params.genre + (".png")} alt=""/>
             <div className="genre-header-info">
               <h1 className="genre-show-title">{genre}</h1>
             </div>

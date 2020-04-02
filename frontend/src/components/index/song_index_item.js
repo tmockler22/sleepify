@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { playTrack } from '../../actions/player_queue_actions';
+// import { playTrack } from '../../actions/player_queue_actions';
 
 class SongIndexItem extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class SongIndexItem extends React.Component {
     const song = this.props.song;
     return (
       <div className="song" >
-          <li><img className="song-photo" src={song.imageUrl}/></li> 
+          <li><img className="song-photo" src={song.imageUrl} alt=""/></li> 
           <li className="song-item-info">
           <p className="song-title">{song.title}</p>
           <Link to={`/open/artist/${song.artist._id}`} id={song.artist._id}>

@@ -17,7 +17,7 @@ class AlbumIndexItem extends React.Component {
       <div>
         <Link to={`/open/album/${album._id}`} id={album._id}>
           <div className="album">
-            <li><img className="album-photo" src={album.imageUrl} /></li>
+            <li><img className="album-photo" src={album.imageUrl} alt=""/></li>
             <li className="album-name">{album.title}</li>
             <Link to={`/open/artist/${album.artist._id}`} id={album.artist._id}><li className="album-artist">{album.artist.name}</li></Link>
             <li><div className="play-button-album" onClick={(e) => this.playSongs(e)}><i class="fas fa-play-circle"></i></div></li>

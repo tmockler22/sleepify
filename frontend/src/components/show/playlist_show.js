@@ -64,7 +64,7 @@ class PlaylistShow extends React.Component {
       <div className="open-player-body">
         <div className="ps-container">
           <div className="ps-left">
-            <img className="ps-image" src={playlist.songs[0].imageUrl} />
+            <img className="ps-image" src={playlist.songs[0].imageUrl} alt=""/>
             <h1>{playlist.title}</h1>
             <h2>{username}</h2>
             <button

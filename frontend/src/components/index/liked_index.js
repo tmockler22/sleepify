@@ -10,9 +10,9 @@ class LikedIndex extends React.Component {
           <div>
             <Link to="/open/likedsongs" id="likesongs">
               <div className="album">
-                <li><img className="album-photo" src='/static/images/playlist.png' /></li>
+                <li><img className="album-photo" src='/static/images/playlist.png' alt=""/></li>
                 <li className="album-name">Your Liked Songs</li>
-                <li><div className="play-button-album"><i class="fas fa-play-circle"></i></div></li>
+                <li><div className="play-button-album"><i className="fas fa-play-circle"></i></div></li>
               </div>
             </Link>
           </div>

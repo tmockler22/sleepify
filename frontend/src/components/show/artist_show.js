@@ -16,7 +16,7 @@ class ArtistShow extends React.Component {
     }
     return (
       <div className="artist-page">
-        <img className="artist-show-photo" src={artist.imageUrl} />
+        <img className="artist-show-photo" src={artist.imageUrl} alt=""/>
         <div className="open-player-body"> 
           <h1 className="artist-show-title">{artist.name}</h1>
           <div className="artist-show-songs">

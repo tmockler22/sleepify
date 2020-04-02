@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Player from './player';
 import { receiveVolume } from '../../actions/player_actions';
-import { fetchSongs } from '../../actions/song_actions';
+// import { fetchSongs } from '../../actions/song_actions';
 import {
     playAllTracks,
     nextTrack,
