@@ -22,12 +22,16 @@
   align-items: center;
 }
 
-#white-logo {
+.white-logo {
   min-width: 80px;
   max-width: 125px;
   min-height: 30px;
   max-height: 45px;
   margin: 15px;
+}
+
+.nav-logo {
+  margin-left: 30px;
 }
 .white-logo-icon {
   width: 25px;
