@@ -64,7 +64,7 @@ class AlbumShow extends React.Component {
             <div className="album-show-interactive">
                 <button className="album-show-play" onClick={(e) => this.props.playAllTracks(songs)}>PLAY</button>
                 <div className="like-album" onClick={this.toggleAlbumLike}>{this.renderAlbumLike()}</div>
-                <p className="album-options"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></p>
+                <p className="album-options"><i className="fas fa-ellipsis-h" aria-hidden="true"></i></p>
             </div>
             </div>
           </div>

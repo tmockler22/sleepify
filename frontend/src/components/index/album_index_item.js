@@ -20,7 +20,7 @@ class AlbumIndexItem extends React.Component {
             <li><img className="album-photo" src={album.imageUrl} alt=""/></li>
             <li className="album-name">{album.title}</li>
             <Link to={`/open/artist/${album.artist._id}`} id={album.artist._id}><li className="album-artist">{album.artist.name}</li></Link>
-            <li><div className="play-button-album" onClick={(e) => this.playSongs(e)}><i class="fas fa-play-circle"></i></div></li>
+            <li><div className="play-button-album" onClick={(e) => this.playSongs(e)}><i className="fas fa-play-circle"></i></div></li>
             
           </div>
         </Link>

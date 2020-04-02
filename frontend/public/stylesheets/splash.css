@@ -81,13 +81,15 @@
   text-transform: uppercase;
   white-space: normal;
   color: white;
-  background: #1db954;
+  background: rgb(82,220,255);
+  /* background: #1db954; */
   margin: 1;
   padding: 16px 48px 18px;
 }
 
 .launch-web-player-bttn:hover {
-  background: #1ed760;
+   background: rgb(38,195,249);
+  /* background: #1ed760; */
 }
 
 /*  

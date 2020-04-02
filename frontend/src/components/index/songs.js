@@ -16,7 +16,7 @@ class SongsIndex extends React.Component {
     let liSongs;
     if (!this.props.songs || this.props.songs.length === 0) return null;
     let songs = this.props.songs;
-    liSongs = Object.values(songs).map(song => <SongIndexItem key={song.id} song={song} addTrack={this.props.addTrack} playTrack={this.props.playTrack} addSongToPlaylist={this.props.addSongToPlaylist} openModal={this.props.openModal} closeModal={this.props.closeModal}/>);
+    liSongs = Object.values(songs).map(song => <SongIndexItem key={song._id} song={song} addTrack={this.props.addTrack} playTrack={this.props.playTrack} addSongToPlaylist={this.props.addSongToPlaylist} openModal={this.props.openModal} closeModal={this.props.closeModal}/>);
     //changed from <h1><h1> to null
     const title = liSongs.length > 0 ? <h1 className="songs-list-title">Songs</h1> : null
     return (
