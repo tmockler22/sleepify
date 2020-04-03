@@ -40,8 +40,18 @@
   margin-left: 40px; 
 }
 
+
+
 .album-show-title {
     font-size: 24px;
+    letter-spacing: -.005em;
+    font-weight: bold;
+    color: #fff; 
+}
+
+.album-show-count {
+    margin-top: 20px; 
+    font-size: 12px;
     letter-spacing: -.005em;
     font-weight: bold;
     color: #fff; 
@@ -50,6 +60,10 @@
 .album-show-songs {
     margin: 70px auto;
     width: calc(100% - 300px);
+}
+
+.no-liked-title {
+  color: white; 
 }
 
 .album-background-photo {
@@ -88,6 +102,13 @@
     cursor: pointer; 
 }
 
+
+.modal-title-choose {
+  margin: 0 auto; 
+  width: 100px; 
+  overflow: hidden;
+}
+
 .album-show-play, .playlist-show-play {
   color: white;
   font-size: 10px; 
@@ -102,4 +123,6 @@
   background: #1ed760; 
 }
 
-
+.modal-count {
+  font-size: 10px; 
+}
