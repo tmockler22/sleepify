@@ -7,7 +7,7 @@ import {
     nextTrack,
     prevTrack,
     shuffleTracks,
-
+    removeEverything,
 } 
 from '../../actions/player_queue_actions';
 import { withRouter } from 'react-router-dom';
@@ -27,6 +27,7 @@ const mapDispatchToProps = dispatch => ({
     nextTrack: () => dispatch(nextTrack()),
     prevTrack: () => dispatch(prevTrack()),
     shuffleTracks: () => dispatch(shuffleTracks()),
+    removeEverything: () => dispatch(removeEverything())
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Player));

@@ -8,6 +8,7 @@ export const PREV_TRACK = 'PREV_TRACK';
 export const SHUFFLE_TRACKS = 'SHUFFLE_TRACKS';
 export const MOVE_UP = 'MOVE_UP';
 export const MOVE_DOWN = 'MOVE_DOWN';
+export const REMOVE_EVERYTHING = 'REMOVE_EVERYTHING';
 
 
 export const playTrack = track => ({
@@ -32,6 +33,10 @@ export const removeTrack = trackId => ({
 
 export const removeAllTracks = () => ({
     type: REMOVE_ALL_TRACKS
+});
+
+export const removeEverything = () => ({
+    type: REMOVE_EVERYTHING
 });
 
 export const nextTrack = () => ({
