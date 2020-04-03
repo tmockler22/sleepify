@@ -76,7 +76,8 @@ class Playlist extends React.Component {
         showDropDown: false,
         renameCoordsLeft: e_offsetX,
         renameCoordsTop: e_offsetY,
-      })
+      }, () => this.setFocus())
+      
     }
   }
 
@@ -98,6 +99,10 @@ class Playlist extends React.Component {
     this.setState({showRename: false})
   }
   
+  setFocus() {
+    let input = document.getElementById("playlist-rename-input-field");
+    input.focus();
+  }
 
 
   renderPlaylists() {
@@ -125,6 +130,7 @@ class Playlist extends React.Component {
             ))
           }
           {this.state.showRename && <input
+            id="playlist-rename-input-field"
             className="playlist-rename-input-field"
             type="text"
             name="playlist-name"
@@ -132,7 +138,10 @@ class Playlist extends React.Component {
             placeholder="New Playlist Name"
             style={{ left: this.state.renameCoordsLeft, top: this.state.renameCoordsTop }}
             onContextMenu={this.toggleRenamePopUp}
-          ></input>}
+          ></input>
+          }
+          
+          
         </div >
       );
     }
