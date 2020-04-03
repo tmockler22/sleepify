@@ -35,9 +35,17 @@ class PlaylistShow extends React.Component {
   }
 
   showSongs() {
-    if (!this.props.playlist) return null;
+    if (!this.props.playlist) return (null);
     const songs = Object.values(this.props.playlist.songs);
-    if (songs.length === 0) return <div>Empty</div>
+    if (songs.length === 0) return (
+      <div
+        className="ps-empty-container">
+        <i className="fas fa-bed"></i>
+          <h1>It's a bit empty here...</h1>
+          <h3>Let's find some nice songs to relax to</h3>
+          <Link to="/open/search"><div className="ps-search">Search Songs</div></Link>
+      </div>
+    )
     return songs.map((song, i) => {
       return (
         <div
@@ -58,20 +66,21 @@ class PlaylistShow extends React.Component {
   }
 
   render() {
-    if (!this.props.playlist || this.props.playlist.songs.length === 0) return null;
     const { playlist, username } = this.props;
+    if (!playlist) return null;
+    const hasSong = playlist.songs.length;
     return (
       <div className="open-player-body">
         <div className="ps-container">
           <div className="ps-left">
-            <img className="ps-image" src={playlist.songs[0].imageUrl} alt=""/>
+            <img className="ps-image" src={hasSong ? playlist.songs[0].imageUrl : "/static/images/playlist.png"} alt=""/>
             <h1>{playlist.title}</h1>
             <h2>{username}</h2>
-            <button
+            {hasSong ? <button
               onClick={this.playAll}
               className="album-show-play">
                 PLAY
-            </button>
+            </button> : <button className="playlist-show-play disabled" id="disabled">PLAY</button> }
           </div>
 
           <div className="ps-right">
