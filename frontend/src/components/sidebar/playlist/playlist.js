@@ -10,6 +10,7 @@ class Playlist extends React.Component {
     this.closeOptions = this.closeOptions.bind(this)
     this.renderOptions = this.renderOptions.bind(this)
     this.renamePlaylist = this.renamePlaylist.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
     this.deletePlaylist = this.deletePlaylist.bind(this)
     this.toggleRenamePopUp = this.toggleRenamePopUp.bind(this)
     this.state = {
@@ -45,6 +46,17 @@ class Playlist extends React.Component {
       });
     }
   }
+
+  handleKeyDown(e){
+    if (e.key === 'Enter') {
+      console.log(this.state.title)
+      this.setState({
+        showRename: false
+      })
+    }
+  }
+
+
 
   closeOptions() {
     this.setState({showDropDown: false})
@@ -138,6 +150,7 @@ class Playlist extends React.Component {
             placeholder="New Playlist Name"
             style={{ left: this.state.renameCoordsLeft, top: this.state.renameCoordsTop }}
             onContextMenu={this.toggleRenamePopUp}
+            onKeyDown={this.handleKeyDown}
           ></input>
           }
           
