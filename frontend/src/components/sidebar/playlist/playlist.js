@@ -6,6 +6,7 @@ class Playlist extends React.Component {
   constructor(props) {
     super(props);
     this.renderPlaylists = this.renderPlaylists.bind(this);
+    this.closeOptions = this.closeOptions.bind(this)
     this.renderOptions = this.renderOptions.bind(this)
     this.renamePlaylist = this.renamePlaylist.bind(this)
     this.deletePlaylist = this.deletePlaylist.bind(this)
@@ -27,25 +28,23 @@ class Playlist extends React.Component {
       this.props.fetchUserPlaylists(this.props.currentUserId);
     }
   }
-
+  closeOptions() {
+    this.setState({showDropDown: false})
+  }
 
   renderOptions(e) {
     e.preventDefault()
-    let show
 
     if (e.target.dataset.playlistid) {
-      show = true
+      this.setState({
+        targetedPlaylistContainer: e.target,
+        showRename: false,
+        showDropDown: !this.state.showDropDown,
+        mouseCoordsLeft: e.clientX,
+        mouseCoordsTop: e.clientY,
+        currentTargetPlaylistId: e.target.dataset.playlistid
+      })
     }
-
-
-    this.setState({
-      targetedPlaylistContainer: e.target,
-      showRename: false,
-      showDropDown: show,
-      mouseCoordsLeft: e.clientX,
-      mouseCoordsTop: e.clientY,
-      currentTargetPlaylistId: e.target.dataset.playlistid
-    })
   }
 
 
@@ -92,6 +91,7 @@ class Playlist extends React.Component {
           {this.state.showDropDown && <div className="playlist-options-popup" style={{ left: this.state.mouseCoordsLeft, top: this.state.mouseCoordsTop }}>
             <p className="option-choice" onClick={this.renamePlaylist(this.state.currentTargetPlaylistId)}>Rename Playlist </p>
             <p className="option-choice" onClick={this.deletePlaylist(this.state.currentTargetPlaylistId)}>Delete Playlist</p>
+            <p className="option-choice" onClick={this.closeOptions}>Cancel</p>
           </div>}
           {
             Object.values(playlists).map((playlist, i) => (

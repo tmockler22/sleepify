@@ -20,7 +20,7 @@ class ArtistIndexItem extends React.Component {
         <li><img className="artist-photo" src={artist.imageUrl} alt=""/></li>
         <li className="artist-name">{artist.name}</li>
         <li className="artist-description">Artist</li>
-            <li><div className="play-button-album" onClick={(e) => this.playSongs(e)}><i class="fas fa-play-circle"></i></div></li>
+            <li><div className="play-button-album" onClick={(e) => this.playSongs(e)}><i className="fas fa-play-circle"></i></div></li>
       </div>
         </Link>
       </div>
