@@ -148,8 +148,8 @@ class LoginForm extends React.Component {
               j++;
               setTimeout(login, speed)
           } else {
-              this.resetClasses();
               this.setState({email: email, password: password});
+              this.resetClasses();
               this.props.login(this.state);
           }
 
