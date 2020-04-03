@@ -48,6 +48,22 @@ z-index: 3;
   width: 20px;
 }
 
+.fa-home {
+  margin-right: 20px;
+}
+
+.fa-book {
+  margin-right: 25px;
+}
+
+.fa-search {
+  margin-right: 20px;
+}
+
+.fa-plus-square {
+  margin-right: 22px;
+}
+
 .divider {
   margin: 8px;
   border-color: #282828;
