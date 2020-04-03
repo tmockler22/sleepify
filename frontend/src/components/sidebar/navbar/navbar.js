@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/images/white-logo-black-music.png";
-import homeIcon from "../../../assets/images/home-icon.png";
-import magGlassIcon from "../../../assets/images/magnifying-glass-icon.png";
-import libraryIcon from "../../../assets/images/library-icon.png";
+// import homeIcon from "../../../assets/images/home-icon.png";
+// import magGlassIcon from "../../../assets/images/magnifying-glass-icon.png";
+// import libraryIcon from "../../../assets/images/library-icon.png";
 class SideBarNav extends React.Component {
   render() {
     // const search = "";
@@ -17,7 +17,8 @@ class SideBarNav extends React.Component {
             <li>
               <div className="navBar-item">
                 <Link className="navBar-link" to="/open">
-                  <img className="home-icon" src={homeIcon} alt=""></img>
+                  <i class="fas fa-home home-icon"></i>
+                  {/* <img className="home-icon" src={homeIcon} alt=""></img> */}
                   Home
                 </Link>
               </div>
@@ -25,7 +26,8 @@ class SideBarNav extends React.Component {
             <li>
               <div className="navBar-item">
                 <Link className="navBar-link" to="/open/search">
-                  <img className="magGlass-icon" src={magGlassIcon} alt=""></img>
+                  <i class="fas fa-search magGlass-icon"></i>
+                  {/* <img className="magGlass-icon" src={magGlassIcon} alt=""></img> */}
                   Search
                 </Link>
               </div>
@@ -33,7 +35,8 @@ class SideBarNav extends React.Component {
             <li>
               <div className="navBar-item">
                 <Link className="navBar-link" to="/open/library">
-                  <img className="library-icon" src={libraryIcon} alt=""></img>
+                  <i class="fas fa-book libary-icon"></i>
+                  {/* <img className="library-icon" src={libraryIcon} alt=""></img> */}
                   Your Library
                 </Link>
               </div>

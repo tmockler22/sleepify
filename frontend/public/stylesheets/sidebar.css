@@ -23,6 +23,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
+
 #navBar {
   display: flex;
   flex-direction: column;
@@ -36,11 +37,13 @@
 }
 
 .navBar-link {
+  margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.015em;
+  font-weight: bold;
   color: #b3b3b3;
 }
 
@@ -64,8 +67,13 @@
   width: 20px;
 }
 
+.llibary-icon {
+  height: 18px;
+  width: 20px;
+  padding-right:px;
+}
+
 .navBar-item {
-  display: block;
   padding: 7px;
   margin-left: 8px;
 }
@@ -73,11 +81,3 @@
   opacity: 1;
 }
 
-.library-icon {
-  height: 18px;
-  width: 20px;
-}
-
-.navBar-item img {
-  padding: 0px 18px;
-}
