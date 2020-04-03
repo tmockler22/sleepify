@@ -154,7 +154,8 @@ class Playlist extends React.Component {
             className="navBar-link"
             onClick={() => this.props.openModal("createPlaylist")}
           >
-            <img className="plus-icon" src={plusIcon} alt=""></img>
+            <i class="fas fa-plus-square"></i>
+            {/* <img className="plus-icon" src={plusIcon} alt=""></img> */}
             Create Playlist
           </div>
         </div>
