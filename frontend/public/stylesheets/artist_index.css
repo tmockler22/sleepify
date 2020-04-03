@@ -35,6 +35,10 @@
   border-radius: 100%;  
 }
 
+.likedsongs-index { 
+  margin-bottom: 50px; 
+}
+
 .artists-list {
   display: flex;  
 }

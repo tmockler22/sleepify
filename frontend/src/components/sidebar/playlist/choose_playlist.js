@@ -22,11 +22,19 @@ class ChoosePlaylist extends React.Component {
   }
 
   render() { 
+    debugger; 
     let liPlaylists; 
     if (this.props.playlists) {
-      liPlaylists = Object.values(this.props.playlists).map(playlist =>  
-        <div className="choose-playlist" onClick={(e) => this.addSong(e, playlist._id)}>{playlist.title}</div>)
-      }
+      liPlaylists = Object.values(this.props.playlists).map(playlist =>  {
+        let count = playlist.songs.length === 1 ? playlist.songs.length + " song" : playlist.songs.length + " songs";
+        return (
+        <div className="choose-playlist" onClick={(e) => this.addSong(e, playlist._id)}>
+          <img className="album-photo" src='/static/images/playlist.png' alt="#" />
+          <p className="modal-title-choose">{playlist.title}</p>
+          <p className="modal-count">{count}</p>
+          </div>)
+      })
+    }
     return (
       <div className="create-playlist-modal">
         <button className="btn-transparent" onClick={this.handleClick}>
