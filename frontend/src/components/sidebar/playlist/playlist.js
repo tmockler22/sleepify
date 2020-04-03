@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import plusIcon from "../../../assets/images/plus-icon.png";
+import ReactDOM from 'react-dom';
 
 class Playlist extends React.Component {
   constructor(props) {
@@ -21,13 +22,30 @@ class Playlist extends React.Component {
       renameCoordsTop: 0,
       currentTargetPlaylistId: null,
     }
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     if (this.props.currentUserId) {
       this.props.fetchUserPlaylists(this.props.currentUserId);
     }
+    document.addEventListener('mousedown', this.handleClick, false);
   }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClick, false);
+  }
+
+  handleClick(e) {
+    const domNode = ReactDOM.findDOMNode(this);
+
+    if (!domNode || !domNode.contains(e.target)) {
+      this.setState({
+        showDropDown: false
+      });
+    }
+  }
+
   closeOptions() {
     this.setState({showDropDown: false})
   }
