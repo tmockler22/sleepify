@@ -70,7 +70,6 @@ router.patch('/rename/:id', (req, res) => {
     { new: true}
   )
     .then(playlist => {
-      console.log(playlist)
       res.json(playlist)
     })
     .catch(err =>

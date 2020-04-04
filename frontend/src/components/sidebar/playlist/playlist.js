@@ -53,10 +53,7 @@ class Playlist extends React.Component {
         title: this.state.title
       }
       this.props.renamePlaylist(data)
-      debugger
-      this.setState({
-        showRename: false
-      })
+      this.setState({ showRename: false })
     }
   }
 
