@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import plusIcon from "../../../assets/images/plus-icon.png";
 import ReactDOM from 'react-dom';
 
 class Playlist extends React.Component {
@@ -10,6 +9,7 @@ class Playlist extends React.Component {
     this.closeOptions = this.closeOptions.bind(this)
     this.renderOptions = this.renderOptions.bind(this)
     this.renamePlaylist = this.renamePlaylist.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
     this.deletePlaylist = this.deletePlaylist.bind(this)
     this.toggleRenamePopUp = this.toggleRenamePopUp.bind(this)
     this.state = {
@@ -46,6 +46,19 @@ class Playlist extends React.Component {
     }
   }
 
+  handleKeyDown(e){
+    if (e.key === 'Enter') {
+      const data = {
+        playlistId: this.state.currentTargetPlaylistId,
+        title: this.state.title
+      }
+      this.props.renamePlaylist(data)
+      this.setState({ showRename: false })
+    }
+  }
+
+
+
   closeOptions() {
     this.setState({showDropDown: false})
   }
@@ -66,7 +79,7 @@ class Playlist extends React.Component {
   }
 
 
-  renamePlaylist(playlistId) {
+  renamePlaylist() {
     return (e) => {
       let currentTargetRect = this.state.targetedPlaylistContainer.getBoundingClientRect();
       const e_offsetX = currentTargetRect.x,
@@ -76,7 +89,8 @@ class Playlist extends React.Component {
         showDropDown: false,
         renameCoordsLeft: e_offsetX,
         renameCoordsTop: e_offsetY,
-      })
+      }, () => this.setFocus())
+      
     }
   }
 
@@ -98,6 +112,10 @@ class Playlist extends React.Component {
     this.setState({showRename: false})
   }
   
+  setFocus() {
+    let input = document.getElementById("playlist-rename-input-field");
+    input.focus();
+  }
 
 
   renderPlaylists() {
@@ -125,6 +143,7 @@ class Playlist extends React.Component {
             ))
           }
           {this.state.showRename && <input
+            id="playlist-rename-input-field"
             className="playlist-rename-input-field"
             type="text"
             name="playlist-name"
@@ -132,7 +151,11 @@ class Playlist extends React.Component {
             placeholder="New Playlist Name"
             style={{ left: this.state.renameCoordsLeft, top: this.state.renameCoordsTop }}
             onContextMenu={this.toggleRenamePopUp}
-          ></input>}
+            onKeyDown={this.handleKeyDown}
+          ></input>
+          }
+          
+          
         </div >
       );
     }

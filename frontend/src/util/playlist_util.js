@@ -21,5 +21,9 @@ export const deletePlaylist = playlistData => {
   return axios.delete(`/api/playlists/delete/${playlistData.playlistId}`)
 }
 
+export const renamePlaylist = playlistData => {
+  return axios.patch(`/api/playlists/rename/${playlistData.playlistId}`, playlistData)
+};
+
 //to routes
 
