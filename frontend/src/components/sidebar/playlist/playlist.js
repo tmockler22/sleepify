@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import plusIcon from "../../../assets/images/plus-icon.png";
 import ReactDOM from 'react-dom';
 
 class Playlist extends React.Component {
@@ -49,7 +48,12 @@ class Playlist extends React.Component {
 
   handleKeyDown(e){
     if (e.key === 'Enter') {
-      console.log(this.state.title)
+      const data = {
+        playlistId: this.state.currentTargetPlaylistId,
+        title: this.state.title
+      }
+      this.props.renamePlaylist(data)
+      debugger
       this.setState({
         showRename: false
       })
@@ -78,7 +82,7 @@ class Playlist extends React.Component {
   }
 
 
-  renamePlaylist(playlistId) {
+  renamePlaylist() {
     return (e) => {
       let currentTargetRect = this.state.targetedPlaylistContainer.getBoundingClientRect();
       const e_offsetX = currentTargetRect.x,
