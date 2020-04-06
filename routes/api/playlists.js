@@ -62,4 +62,19 @@ router.patch('/addto/:id', (req, res) => {
     .then(playlist => playlist)
 })
 
+
+router.patch('/rename/:id', (req, res) => {
+  Playlist.findByIdAndUpdate(
+    req.params.id,
+    { title: req.body.title },
+    { new: true}
+  )
+    .then(playlist => {
+      res.json(playlist)
+    })
+    .catch(err =>
+      res.status(404).json({ noplaylistfound: 'No playlist found with that ID' })
+    );
+});
+
 module.exports = router;

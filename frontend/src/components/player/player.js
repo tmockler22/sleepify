@@ -48,6 +48,7 @@ class Player extends React.Component {
 
     componentWillUnmount() {
         clearInterval(this.interval);
+        this.props.removeEverything();
     }
 
     play(e) {

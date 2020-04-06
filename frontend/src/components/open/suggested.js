@@ -11,19 +11,19 @@ class Suggested extends React.Component {
         <h1 className="genre-title">Sleepy Genres</h1>
         <div className="suggested-genres">
           <Link to="/open/genre/softrock"><div className="genre-1">
-            Soft Rock
+                <p className="genre-subtitle">Soft Rock</p>
                 <img className="genre-img" src="static/images/softrock.png" alt="" />
           </div>
           </Link>
           <Link to="/open/genre/altrock">
             <div className="genre-2">
-              Alt Rock
+                 <p className="genre-subtitle">Alt Rock</p>
                  <img className="genre-img" src="static/images/altrock.png" alt="" />
             </div>
           </Link>
           <Link to="/open/genre/classicrock">
             <div className="genre-3">
-              Classic Rock
+                <p className="genre-subtitle">Classic Rock</p>
                 <img className="genre-img" src="static/images/classicrock.png" alt="" />
             </div>
           </Link>

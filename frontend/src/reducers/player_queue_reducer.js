@@ -9,6 +9,7 @@ import {
     SHUFFLE_TRACKS,
     MOVE_UP,
     MOVE_DOWN,
+    REMOVE_EVERYTHING
 } from '../actions/player_queue_actions';
 
 const playerQueueReducer = (state=[], action) => {
@@ -38,6 +39,8 @@ const playerQueueReducer = (state=[], action) => {
             return moveUp(nextState, action.track);
         case MOVE_DOWN: 
             return moveDown(nextState, action.track);
+        case REMOVE_EVERYTHING:
+            return [];
         default: 
             return state;
     }
