@@ -72,8 +72,10 @@ class LoginForm extends React.Component {
     }
   }
 
+
   changeBorder(values = "all") {
     if(values === "all") {
+      //change border of both input values
       let element = document.getElementById('email');
       let error = document.getElementById('email-error')
       if(element) {
@@ -81,6 +83,7 @@ class LoginForm extends React.Component {
           element.classList.add("has-error")
         }
       }
+      //change border of password input box
       element = document.getElementById('password');
       error = document.getElementById('password-error')
       if (element) {
@@ -89,6 +92,7 @@ class LoginForm extends React.Component {
         }
       }
     } else {
+      //change border of email input box
       let element = document.getElementById(values);
       const errorId = values + "-error"
       let error = document.getElementById(errorId)
@@ -99,6 +103,7 @@ class LoginForm extends React.Component {
     }
   }
 
+  //change border if something is in the input box
   changeBorderonBlur(value) {
     let element = document.getElementById(value);
     if(element && !this.state[value]) {
@@ -113,6 +118,7 @@ class LoginForm extends React.Component {
       element.classList.remove("has-error")
     }
   }
+  
   renderMismatchError() {
     if(this.state.errors.login) {
       return (

@@ -3,28 +3,10 @@
 ## Background and Overview
 Sleepify is a MERN stack application that mimics the style and functionality of the popular music streaming app Spotify. Visitors to the application are able to play music, create playlists, and like their favorite songs with the creation of an account. Users are also able to search for their favorite songs, artists, and albums.
 
+![](README_images/webplayer-home.png)
 
-## Functionality and MVPs
-- New account creation, login, and guest/demo login
-- Playlist CRUD
-- Media Player
-  - Play, Stop, Pause, Next, Previous
-  - Repeat, Shuffle
-  - Dynamic volume slider
-  - Move to different parts of the song
-  - Continuous play while navigating site
-- Search
-- Following playlists/ Liking songs
-- A production README (NB: check out the sample production README)
-- Hosting on Heroku
-
-- Bonus:
-  - Popular Tracks
-  - Recommendations
-  - OAuth
-  - Friending users
-  - Explore Page
-  - Radio (shuffle play)
+## Latest Version
+To see the most up to date version, please visit the [web application](https://sleepify-dev.herokuapp.com/).
 
 ## Technologies and Technical Challenges
 - Constructing HTML5 audio player
@@ -33,18 +15,33 @@ Sleepify is a MERN stack application that mimics the style and functionality of 
 - Search feature
 - Hosting on Heroku
 
+## Feature Spotlight
+### Media Player
+The implementation of the media player is illustrated below.
 
-## Group Members and Work Breakdown
+![](README_images/mediaplayer-demo.png)
 
-  - Tristan
-    - Database seeding
-  - Kevin
-    - Music Player 
-  - Don
-    - User Auth, Auth Errors
-    - Song Likes
-  - Sam
-    - Splash Page
+### Search
+
+A demonstration of the search functionality can be seen in the example below.
+
+![](README_images/search-demo.png)
+
+### Playlist CRUD (Create, Read, Update, Delete)
+
+An example of a playlist page can be seen below.
+
+![](README_images/playlist-show.png)
+
+The modal used to create a new playlist can be seen below.
+
+![](README_images/create-playlist-modal.png)
+
+
+### User Authentication
+A custom user authentication pattern was used in this application. A preview of the login and signup pages can be seen below.
+
+![](README_images/login-signup.png)
 
 
 ## Challenges ##
@@ -52,19 +49,73 @@ Sleepify is a MERN stack application that mimics the style and functionality of 
 
 One of the challenges we faced while building the custom authentication pattern for this application, was getting the auth errors to disappear and the input boxes to stop flashing red after the user has begun typing something in the incorrect field. The implementation of this can be seen below.
 
-![](README_images/sleepify_user_auth_errors.png)
-
-![](README_images/sleepify_error_disappear.png)
-
+![](README_images/user_auth_errors_merged.png)
 
 ## Solutions ##
 > Authentication Errors
 
+This functionality was achieved using class manipulation and CSS. The errors would be displayed if the input class did not contain 'hidden' and the input box would be red if the class included 'has-error'. 
+
+```javascript
+  changeBorder(values = "all") {
+    if(values === "all") {
+      //change border of both input values
+      let element = document.getElementById('email');
+      let error = document.getElementById('email-error')
+      if(element) {
+        if (!error.classList.contains("hidden") && (!this.state.errors.login)){
+          element.classList.add("has-error")
+        }
+      }
+      //change border of password input box
+      element = document.getElementById('password');
+      error = document.getElementById('password-error')
+      if (element) {
+        if (!error.classList.contains("hidden") && (!this.state.errors.login)){
+          element.classList.add("has-error")
+        }
+      }
+    } else {
+      //change border of email input box
+      let element = document.getElementById(values);
+      const errorId = values + "-error"
+      let error = document.getElementById(errorId)
+      if(element && error) {
+        element.classList.remove("has-error")
+        error.classList.add("hidden")
+      }
+    }
+  }
+```
+
+The function executed on the onBlur event handler can be seen below. If a value is present in the input, then the classes would be manipulated so the errors would dissappear. If a value is not present, the relevant classes would be added/removed so the errors would display.
+
+```javascript
+  //change border if something is in the input box
+  changeBorderonBlur(value) {
+    let element = document.getElementById(value);
+    if(element && !this.state[value]) {
+      const errorId = value + "-error"
+      let error = document.getElementById(errorId)
+      error.classList.remove("hidden")
+      element.classList.add("has-error")
+    } else if (element && this.state[value]){
+      const errorId = value + "-error"
+      let error = document.getElementById(errorId)
+      error.classList.add("hidden")
+      element.classList.remove("has-error")
+    }
+  }
+
+```
+
+## Future Updates
+| Version Number        | Updates           | 
+| :------------- |:------------- |
+| Version 1.0      | Initial Release |  
 
 
-
-
-
+<!-- 
 Task:
   - user auth
   - db/Schema
@@ -95,4 +146,4 @@ Task:
         - ID3?
 
     - seeding
-  - user dashboard
+  - user dashboard -->
