@@ -1,10 +1,10 @@
 # sleepify
 
 ## Background and Overview
-Spotify clone with a relaxing library of music. Zzzzz...
+Sleepify is a MERN stack application that mimics the style and functionality of the popular music streaming app Spotify. Visitors to the application are able to play music, create playlists, and like their favorite songs with the creation of an account. Users are also able to search for their favorite songs, artists, and albums.
 
 
-## Functionality and MVP
+## Functionality and MVPs
 - New account creation, login, and guest/demo login
 - Playlist CRUD
 - Media Player
@@ -28,22 +28,41 @@ Spotify clone with a relaxing library of music. Zzzzz...
 
 ## Technologies and Technical Challenges
 - Constructing HTML5 audio player
+- Routes using Express
 - Storing audio in AWS S3
 - Search feature
-
+- Hosting on Heroku
 
 
 ## Group Members and Work Breakdown
 
-### Day 1
   - Tristan
-    - 
+    - Database seeding
   - Kevin
     - Music Player 
-    
   - Don
-    -  
+    - User Auth, Auth Errors
+    - Song Likes
   - Sam
+    - Splash Page
+
+
+## Challenges ##
+> Authentication Errors
+
+One of the challenges we faced while building the custom authentication pattern for this application, was getting the auth errors to disappear and the input boxes to stop flashing red after the user has begun typing something in the incorrect field. The implementation of this can be seen below.
+
+![](README_images/sleepify_user_auth_errors.png)
+
+![](README_images/sleepify_error_disappear.png)
+
+
+## Solutions ##
+> Authentication Errors
+
+
+
+
 
 
 Task:
