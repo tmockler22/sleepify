@@ -35,11 +35,11 @@ class Header extends React.Component {
             </ul>
             <ul>
               <h4>Don <br></br>Sondapperumaarachchi</h4>
-              <li><a href="www.donsondapperumaarachchi.com"><i className="social-icon fas fa-portrait"></i></a>Portfolio</li>
-              <li><a href="https://github.com/kewlfeet" ><i className="social-icon fab fa-github"></i></a>GitHub</li>
-              <li><a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/" ><i className="social-icon fab fa-linkedin"></i></a>LinkedIn</li>
-              <li><a href="https://angel.co/u/don-sondapperumaarachchi" ><i className="social-icon fab fa-angellist"></i></a>AngelList</li>
-              <li><a href="mailto:ayesh98@gmail.com" ><i className="social-icon fas fa-envelope-square"></i></a>Email</li>
+              <li><a href="https://www.donsondapperumaarachchi.com" style={{color: 'white'}}><i className="social-icon fas fa-portrait"></i>Portfolio</a></li>
+              <li><a href="https://github.com/kewlfeet" style={{color: 'white'}}><i className="social-icon fab fa-github"></i>GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/" style={{color: 'white'}}><i className="social-icon fab fa-linkedin"></i>LinkedIn</a></li>
+              <li><a href="https://angel.co/u/don-sondapperumaarachchi" style={{color: 'white'}}><i className="social-icon fab fa-angellist"></i>AngelList</a></li>
+              <li><a href="mailto:ayesh98@gmail.com" style={{color: 'white'}}><i className="social-icon fas fa-envelope-square"></i>Email</a></li>
             </ul>
           </div>
           <div id="bottom-links">
